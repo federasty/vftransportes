@@ -2,23 +2,29 @@ import React, { useState, useEffect } from 'react';
 import { Award, Zap, Truck, TrendingUp, Clock, Shield, Package, ArrowRight, Sparkles, CheckCircle } from 'lucide-react';
 
 export default function Hero() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 }); // Inicializado al centro
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    // 1. Efecto de aparición del contenido principal
     setIsVisible(true);
     
+    // 2. Manejo de Mouse para Orbes
     const handleMouseMove = (e: MouseEvent): void => {
-      setMousePosition({ 
-        x: (e.clientX / window.innerWidth) * 100,
-        y: (e.clientY / window.innerHeight) * 100
-      });
+      // Solo actualiza si la pantalla es lo suficientemente grande (considerado "Desktop")
+      if (window.innerWidth > 1024) { 
+        setMousePosition({ 
+          x: (e.clientX / window.innerWidth) * 100,
+          y: (e.clientY / window.innerHeight) * 100
+        });
+      }
     };
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
+  // --- Datos ---
   const stats = [
     { icon: Truck, number: '02', label: 'Camiones con Zorra', color: 'from-blue-400 to-cyan-400' },
     { icon: TrendingUp, number: '500+', label: 'Cargas Completadas', color: 'from-purple-400 to-pink-400' },
@@ -54,51 +60,53 @@ export default function Hero() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-black">
+    <div className="relative min-h-screen bg-black overflow-hidden">
       
-      {/* Ultra Premium Animated Background with Road Effect */}
+      {/* 🌌 ULTRA PREMIUM ANIMATED BACKGROUND */}
       <div className="fixed inset-0 overflow-hidden -z-10">
-        {/* Animated Road/Path Effect */}
-        <svg className="absolute inset-0 w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg">
+        
+        {/* 1. Animated Road/Path Effect (SVG) - Optimizado para perspectiva */}
+        <svg className="absolute inset-0 w-full h-full opacity-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
           <defs>
+            {/* Gradiente para la "Carretera" */}
             <linearGradient id="roadGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" style={{ stopColor: 'rgba(255,255,255,0.1)', stopOpacity: 0 }} />
-              <stop offset="50%" style={{ stopColor: 'rgba(255,255,255,0.3)', stopOpacity: 1 }} />
-              <stop offset="100%" style={{ stopColor: 'rgba(255,255,255,0.1)', stopOpacity: 0 }} />
+              <stop offset="0%" style={{ stopColor: 'rgba(255,255,255,0.0)', stopOpacity: 0 }} />
+              <stop offset="60%" style={{ stopColor: 'rgba(255,255,255,0.4)', stopOpacity: 1 }} />
+              <stop offset="100%" style={{ stopColor: 'rgba(255,255,255,0.0)', stopOpacity: 0 }} />
             </linearGradient>
             
-            <pattern id="roadLines" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-              <rect x="45" y="0" width="10" height="40" fill="white" opacity="0.3">
-                <animate attributeName="y" from="-100" to="100" dur="3s" repeatCount="indefinite" />
+            {/* Patrón de líneas centrales animadas */}
+            <pattern id="roadLines" x="0" y="0" width="1" height="50" patternUnits="userSpaceOnUse">
+              <rect x="0" y="0" width="100" height="15" fill="white" opacity="0.8">
+                {/* Animación de movimiento de líneas */}
+                <animate attributeName="y" from="-50" to="0" dur="2s" repeatCount="indefinite" />
               </rect>
             </pattern>
           </defs>
           
-          {/* Main Road Path */}
+          {/* Main Road Path (Perspectiva desde abajo) */}
           <path 
-            d="M 50 -100 Q 30 20, 50 150 T 50 400 T 50 650 T 50 900" 
-            stroke="url(#roadGradient)" 
-            strokeWidth="200" 
-            fill="none"
-            opacity="0.4"
+            d="M 50 0 L 30 100 L 70 100 Z" // Forma de embudo (triángulo)
+            fill="url(#roadGradient)"
+            opacity="0.3"
           />
           
-          {/* Road center lines animation */}
+          {/* Road center lines animation (Aplicado al centro del embudo) */}
           <path 
-            d="M 50 -100 Q 30 20, 50 150 T 50 400 T 50 650 T 50 900" 
+            d="M 50 0 L 50 100" 
             stroke="url(#roadLines)" 
-            strokeWidth="5" 
+            strokeWidth="2" 
             fill="none"
-            strokeDasharray="40 30"
-          >
-            <animate attributeName="stroke-dashoffset" from="0" to="70" dur="2s" repeatCount="indefinite" />
-          </path>
+            strokeDasharray="15 35"
+            opacity="0.6"
+          />
         </svg>
 
-        {/* Gradient Orbs with Mouse Tracking */}
+        {/* 2. Gradient Orbs con Mouse Tracking (Solo Desktop) */}
         <div 
           className="absolute w-[400px] h-[400px] sm:w-[600px] sm:h-[600px] lg:w-[800px] lg:h-[800px] rounded-full blur-[100px] sm:blur-[120px] lg:blur-[150px] opacity-20 transition-all duration-1000"
           style={{
+            // Sigue el ratón en desktop, usa posición estática en móvil/tablet
             background: 'radial-gradient(circle, rgba(59, 130, 246, 0.6) 0%, transparent 70%)',
             left: `${mousePosition.x}%`,
             top: `${mousePosition.y}%`,
@@ -106,35 +114,36 @@ export default function Hero() {
           }}
         />
         
-        <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] lg:w-[600px] lg:h-[600px] bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full blur-[100px] sm:blur-[120px] animate-pulse"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-[250px] h-[250px] sm:w-[400px] sm:h-[400px] lg:w-[500px] lg:h-[500px] bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-full blur-[100px] sm:blur-[120px] animate-pulse" style={{ animationDelay: '1s' }}></div>
+        {/* Orbes Estáticos Animados (Para profundidad) */}
+        <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] lg:w-[600px] lg:h-[600px] bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full blur-[100px] sm:blur-[120px] opacity-10 animate-pulse"></div>
+        <div className="absolute bottom-1/4 left-1/3 w-[250px] h-[250px] sm:w-[400px] sm:h-[400px] lg:w-[500px] lg:h-[500px] bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-full blur-[100px] sm:blur-[120px] opacity-10 animate-pulse" style={{ animationDelay: '1.5s' }}></div>
         
-        {/* Animated Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:30px_30px] sm:bg-[size:40px_40px] lg:bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]"></div>
+        {/* 3. Animated Grid Pattern (Tecnológico) */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:30px_30px] sm:bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]"></div>
         
-        {/* Floating Particles */}
-        {[...Array(15)].map((_, i) => (
+        {/* 4. Floating Particles/Stars ✨ */}
+        {[...Array(30)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-white rounded-full animate-pulse"
+            className="absolute w-0.5 h-0.5 sm:w-1 sm:h-1 bg-white rounded-full animate-float-fade"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${2 + Math.random() * 3}s`
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${5 + Math.random() * 5}s`
             }}
           />
         ))}
         
-        {/* Diagonal Light Streaks */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-white to-transparent animate-pulse"></div>
-          <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-white to-transparent animate-pulse" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute top-0 left-2/3 w-px h-full bg-gradient-to-b from-transparent via-white to-transparent animate-pulse" style={{ animationDelay: '2s' }}></div>
+        {/* 5. Diagonal Light Streaks (Efecto de Velocidad) */}
+        <div className="absolute inset-0 opacity-15">
+          <div className="absolute top-0 -left-1/4 w-px h-full bg-gradient-to-b from-transparent via-white/50 to-transparent transform -skew-x-12 animate-light-streak"></div>
+          <div className="absolute top-0 left-1/2 w-px h-full bg-gradient-to-b from-transparent via-white/50 to-transparent transform -skew-x-12 animate-light-streak" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-0 -right-1/4 w-px h-full bg-gradient-to-b from-transparent via-white/50 to-transparent transform -skew-x-12 animate-light-streak" style={{ animationDelay: '4s' }}></div>
         </div>
       </div>
 
-      {/* Main Content - Positioned below navbar */}
+      {/* Main Content - Posicionado debajo del navbar */}
       <div className={`relative pt-32 sm:pt-40 lg:pt-48 pb-12 sm:pb-16 lg:pb-20 px-4 sm:px-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div className="max-w-7xl mx-auto">
           
@@ -327,6 +336,7 @@ export default function Hero() {
       </div>
 
       <style>{`
+        /* Animación para el efecto de aparición de contenido */
         @keyframes fadeInUp {
           from {
             opacity: 0;
@@ -337,7 +347,8 @@ export default function Hero() {
             transform: translateY(0);
           }
         }
-
+        
+        /* Animación para el degradado pulsante de los botones */
         @keyframes gradient-x {
           0%, 100% {
             background-position: 0% 50%;
@@ -350,6 +361,41 @@ export default function Hero() {
         .animate-gradient-x {
           background-size: 200% 200%;
           animation: gradient-x 3s ease infinite;
+        }
+
+        /* Nueva Animación para las partículas flotantes */
+        @keyframes float-fade {
+          0% {
+            opacity: 0;
+            transform: translateY(0) scale(1);
+          }
+          50% {
+            opacity: 1;
+          }
+          100% {
+            opacity: 0;
+            transform: translateY(-20px) scale(1.5); /* Movimiento vertical sutil */
+          }
+        }
+
+        .animate-float-fade {
+          animation-name: float-fade;
+          animation-iteration-count: infinite;
+          animation-timing-function: ease-in-out;
+        }
+
+        /* Nueva Animación para las Líneas de Luz Diagonales */
+        @keyframes light-streak {
+          0% {
+            transform: translateY(100%) skewX(-12deg);
+          }
+          100% {
+            transform: translateY(-100%) skewX(-12deg);
+          }
+        }
+
+        .animate-light-streak {
+          animation: light-streak 6s linear infinite;
         }
       `}</style>
     </div>

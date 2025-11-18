@@ -1,0 +1,11 @@
+/* src/index.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Si necesitas añadir estilos personalizados que Tailwind no maneja, */
+/* agrégalos aquí abajo, después de las directivas. */
+
+/* Por ejemplo, podrías dejar aquí solo los estilos de @media prefers-color-scheme: light */
+/* o estilos muy específicos de tu framework, pero NO los estilos de `body`, `button`, etc. */

@@ -13,7 +13,7 @@ const navItems: NavItem[] = [
   { id: 'flota', label: 'Nuestra Flota' },
   { id: 'materiales', label: 'Materiales' },
   { id: 'nosotros', label: 'Nosotros' },
-  { id: 'contacto', label: 'Contacto' },
+  
 ];
 
 export default function Navbar() {

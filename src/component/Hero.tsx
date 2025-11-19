@@ -200,43 +200,69 @@ export default function Hero() {
         <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-pulse shadow-[0_0_10px_rgba(59,130,246,0.8)]"></div>
     </div>
     
-    {/* ⚙️ RUEDA DERECHA (Más grande, más separada) */}
+    
+  {/* ⚙️ RUEDA DERECHA (Más cerca del badge) */}
     <img
         src="/rueda.png" 
         alt="Símbolo de Rueda" 
-        // 🚨 CAMBIO AQUÍ: Aumentado el tamaño de las ruedas
-        className="absolute w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 top-1/2 -translate-y-1/2 opacity-20 animate-spin-slow pointer-events-none"
-        // 🚨 CAMBIO AQUÍ: Aumentado el valor negativo para empujar más a la derecha
-        style={{ right: '50%', marginRight: '-350px' }} 
+        className="absolute w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 top-1/2 -translate-y-1/2 opacity-70 animate-spin-slow pointer-events-none brightness-200 contrast-125"
+        style={{ right: '05px', filter: 'brightness(1) contrast(1.25) saturate(0)' }} 
     />
     
-    {/* ⚙️ RUEDA IZQUIERDA (Más grande, más separada) */}
+    {/* ⚙️ RUEDA IZQUIERDA (Más cerca del badge) */}
     <img
         src="/rueda.png" 
         alt="Símbolo de Rueda" 
-        // 🚨 CAMBIO AQUÍ: Aumentado el tamaño de las ruedas
-        className="absolute w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 top-1/2 -translate-y-1/2 opacity-20 animate-spin-slow-reverse pointer-events-none"
-        // 🚨 CAMBIO AQUÍ: Aumentado el valor negativo para empujar más a la izquierda
-        style={{ left: '50%', marginLeft: '-350px' }} 
+        className="absolute w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 top-1/2 -translate-y-1/2 opacity-70 animate-spin-slow-reverse pointer-events-none brightness-200 contrast-125"
+        style={{ left: '05px', filter: 'brightness(1) contrast(1.25) saturate(0)' }} 
     />
 </div>
 
-          {/* Epic Headline */}
-          <div className="text-center mb-10 sm:mb-12 lg:mb-16">
-            <div className="relative inline-block mb-4 sm:mb-5 lg:mb-6">
-              <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black leading-none tracking-tighter">
-                <span className="block bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent drop-shadow-[0_0_60px_rgba(255,255,255,0.4)] sm:drop-shadow-[0_0_80px_rgba(255,255,255,0.4)] mb-1 sm:mb-2">
-                  TRANSPORTE
-                </span>
-                <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent drop-shadow-[0_0_60px_rgba(139,92,246,0.6)] sm:drop-shadow-[0_0_80px_rgba(139,92,246,0.6)] animate-pulse">
-                  PROFESIONAL
-                </span>
-              </h1>
+         {/* Premium Logo Section */}
+          <div className="text-center mb-10 sm:mb-12 lg:mb-16">
+            <div className="relative inline-block">
+              {/* Animated background glow */}
+              <div className="absolute inset-0 blur-3xl opacity-30 animate-pulse">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-96 sm:h-96 lg:w-[500px] lg:h-[500px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full"></div>
+              </div>
 
-              <div className="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 lg:-top-8 lg:-left-8 w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 border-t-2 border-l-2 border-white/20"></div>
-              <div className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 lg:-bottom-8 lg:-right-8 w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 border-b-2 border-r-2 border-white/20"></div>
-            </div>
+              {/* Orbiting particles */}
+              <div className="absolute inset-0 animate-spin" style={{ animationDuration: '20s' }}>
+                <div className="absolute top-0 left-1/2 w-2 h-2 sm:w-3 sm:h-3 bg-blue-400 rounded-full blur-sm"></div>
+                <div className="absolute bottom-0 left-1/2 w-2 h-2 sm:w-3 sm:h-3 bg-purple-400 rounded-full blur-sm"></div>
+              </div>
+              <div className="absolute inset-0 animate-spin" style={{ animationDuration: '15s', animationDirection: 'reverse' }}>
+                <div className="absolute top-1/2 left-0 w-2 h-2 sm:w-3 sm:h-3 bg-pink-400 rounded-full blur-sm"></div>
+                <div className="absolute top-1/2 right-0 w-2 h-2 sm:w-3 sm:h-3 bg-blue-300 rounded-full blur-sm"></div>
+              </div>
 
+              {/* Main logo container */}
+              <div className="relative group">
+                
+                
+                {/* Glowing frame */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                
+                {/* Logo wrapper with glassmorphism effect */}
+                <div className="relative bg-white/5 backdrop-blur-md rounded-3xl p-6 sm:p-8 lg:p-12 border border-white/10 shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:bg-white/10 group-hover:border-white/20">
+                  {/* Inner glow */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent rounded-3xl opacity-50"></div>
+                  
+                  {/* Logo */}
+                  <img 
+                    src="/logo.png" 
+                    alt="Logo Profesional" 
+                    className="relative w-48 h-auto sm:w-64 md:w-80 lg:w-96 xl:w-[450px] drop-shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all duration-500 group-hover:drop-shadow-[0_0_50px_rgba(255,255,255,0.5)] animate-float"
+                  />
+                </div>
+
+                {/* Floating shine effect */}
+                <div className="absolute inset-0 overflow-hidden rounded-3xl">
+                  <div className="absolute top-0 -left-full h-full w-1/2 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 animate-shine"></div>
+                </div>
+              </div>
+            </div>
+            
             <p className="text-sm sm:text-lg md:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto mb-8 sm:mb-10 lg:mb-12 leading-relaxed font-light tracking-wide px-4 mt-16">
     Especialistas en movimiento y transporte de materiales de cantera con{' '}
     <span className="relative inline-block">
@@ -251,6 +277,8 @@ export default function Hero() {
     </span>
     {' '}de última generación y rendimiento comprobado.
 </p>
+
+
             {/* Features List */}
             <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 lg:gap-4 mb-8 sm:mb-10 lg:mb-12">
               {[
@@ -304,14 +332,7 @@ export default function Hero() {
                 <div className="absolute inset-0 rounded-xl shadow-[0_0_30px_rgba(16,185,129,0.4)] sm:shadow-[0_0_50px_rgba(16,185,129,0.4)] group-hover:shadow-[0_0_60px_rgba(16,185,129,0.7)] sm:group-hover:shadow-[0_0_80px_rgba(16,185,129,0.7)] transition-shadow duration-700"></div>
               </a>
 
-              {/* Botón Ver Servicios */}
-              <button className="w-full sm:w-auto relative group px-6 py-3 sm:px-8 sm:py-4 lg:px-12 lg:py-6 bg-white/5 border-2 border-white/20 hover:border-white/40 backdrop-blur-xl hover:bg-white/10 transition-all duration-500 rounded-xl overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                <span className="relative font-bold text-xs sm:text-sm lg:text-lg tracking-[0.15em] uppercase text-gray-300 group-hover:text-white transition-colors duration-500 flex items-center justify-center gap-2 sm:gap-3">
-                  VER SERVICIOS
-                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-2 transition-transform duration-300" />
-                </span>
-              </button>
+            
             </div>
           </div>
 

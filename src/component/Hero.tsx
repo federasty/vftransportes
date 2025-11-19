@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Award, Zap, Truck, TrendingUp, Clock, Shield, Package, ArrowRight, Sparkles, CheckCircle } from 'lucide-react';
+import { Award, Truck, TrendingUp, Clock, Shield, Package, ArrowRight, Sparkles, CheckCircle, MessageCircle } from 'lucide-react';
 
 export default function Hero() {
-  const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 }); // Inicializado al centro
+  const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // 1. Efecto de aparición del contenido principal
     setIsVisible(true);
     
-    // 2. Manejo de Mouse para Orbes
-    const handleMouseMove = (e: MouseEvent): void => {
-      // Solo actualiza si la pantalla es lo suficientemente grande (considerado "Desktop")
+    const handleMouseMove = (e) => {
       if (window.innerWidth > 1024) { 
         setMousePosition({ 
           x: (e.clientX / window.innerWidth) * 100,
@@ -23,14 +20,19 @@ export default function Hero() {
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
-
-  // --- Datos ---
-  const stats = [
-    { icon: Truck, number: '02', label: 'Camiones con Zorra', color: 'from-blue-400 to-cyan-400' },
-    { icon: TrendingUp, number: '500+', label: 'Cargas Completadas', color: 'from-purple-400 to-pink-400' },
-    { icon: Clock, number: '24/7', label: 'Disponibilidad Total', color: 'from-green-400 to-emerald-400' },
-    { icon: Shield, number: '100%', label: 'Servicio Garantizado', color: 'from-orange-400 to-red-400' },
-  ];
+const stats = [
+    // Nuevo (Basado en el trabajo de transporte): Compromiso con la Seguridad
+    { icon: Truck, number: '100%', label: 'Compromiso con la Seguridad', color: 'from-green-600 to-lime-500' }, 
+    
+    // Mantiene: Cargas Completadas
+    { icon: Truck, number: '500+', label: 'Cargas Completadas', color: 'from-purple-400 to-pink-400' },
+    
+    // Nuevo (Basado en el trabajo de transporte): Cumplimiento Normativo
+    { icon: Truck, number: '100%', label: 'Adherencia a Normativas', color: 'from-indigo-500 to-blue-500' },
+    
+    // Nuevo (Basado en el trabajo de transporte): Conducción Especializada
+    { icon: Truck, number: '100%', label: 'Conducción Especializada', color: 'from-red-400 to-orange-400' },
+ ];
 
   const materials = [
     { 
@@ -62,88 +64,121 @@ export default function Hero() {
   return (
     <div className="relative min-h-screen bg-black overflow-hidden">
       
-      {/* 🌌 ULTRA PREMIUM ANIMATED BACKGROUND */}
+      {/* 🌌 MEGA PREMIUM ANIMATED BACKGROUND */}
       <div className="fixed inset-0 overflow-hidden -z-10">
         
-        {/* 1. Animated Road/Path Effect (SVG) - Optimizado para perspectiva */}
-        <svg className="absolute inset-0 w-full h-full opacity-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+        {/* 1. MESH GRADIENT BASE */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-slate-950 to-black"></div>
+        
+        {/* 2. ANIMATED MESH GRADIENT ORBS */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 w-[500px] h-[500px] sm:w-[800px] sm:h-[800px] lg:w-[1000px] lg:h-[1000px] bg-gradient-to-br from-blue-600/30 via-purple-600/20 to-transparent rounded-full blur-[120px] animate-mesh-move-1"></div>
+          <div className="absolute top-1/4 right-0 w-[400px] h-[400px] sm:w-[700px] sm:h-[700px] lg:w-[900px] lg:h-[900px] bg-gradient-to-br from-purple-600/30 via-pink-600/20 to-transparent rounded-full blur-[120px] animate-mesh-move-2"></div>
+          <div className="absolute bottom-0 left-1/3 w-[450px] h-[450px] sm:w-[750px] sm:h-[750px] lg:w-[950px] lg:h-[950px] bg-gradient-to-br from-cyan-600/30 via-blue-600/20 to-transparent rounded-full blur-[120px] animate-mesh-move-3"></div>
+          <div className="absolute top-1/2 right-1/4 w-[350px] h-[350px] sm:w-[600px] sm:h-[600px] lg:w-[800px] lg:h-[800px] bg-gradient-to-br from-pink-600/25 via-purple-600/15 to-transparent rounded-full blur-[120px] animate-mesh-move-4"></div>
+        </div>
+
+        {/* 3. VOLUMETRIC LIGHT RAYS */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-blue-400/0 via-blue-400/80 to-blue-400/0 blur-sm animate-light-ray-1"></div>
+          <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-purple-400/0 via-purple-400/80 to-purple-400/0 blur-sm animate-light-ray-2"></div>
+          <div className="absolute top-0 left-2/3 w-px h-full bg-gradient-to-b from-cyan-400/0 via-cyan-400/80 to-cyan-400/0 blur-sm animate-light-ray-3"></div>
+          <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-pink-400/0 via-pink-400/80 to-pink-400/0 blur-sm animate-light-ray-4"></div>
+        </div>
+
+        {/* 4. EXPANDING WAVES */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="absolute w-[200px] h-[200px] sm:w-[400px] sm:h-[400px] lg:w-[600px] lg:h-[600px] border border-blue-400/10 rounded-full animate-wave-expand"></div>
+          <div className="absolute w-[200px] h-[200px] sm:w-[400px] sm:h-[400px] lg:w-[600px] lg:h-[600px] border border-purple-400/10 rounded-full animate-wave-expand" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute w-[200px] h-[200px] sm:w-[400px] sm:h-[400px] lg:w-[600px] lg:h-[600px] border border-cyan-400/10 rounded-full animate-wave-expand" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute w-[200px] h-[200px] sm:w-[400px] sm:h-[400px] lg:w-[600px] lg:h-[600px] border border-pink-400/10 rounded-full animate-wave-expand" style={{ animationDelay: '3s' }}></div>
+        </div>
+
+        {/* 5. NEURAL NETWORK LINES */}
+        <svg className="absolute inset-0 w-full h-full opacity-10" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            {/* Gradiente para la "Carretera" */}
-            <linearGradient id="roadGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" style={{ stopColor: 'rgba(255,255,255,0.0)', stopOpacity: 0 }} />
-              <stop offset="60%" style={{ stopColor: 'rgba(255,255,255,0.4)', stopOpacity: 1 }} />
-              <stop offset="100%" style={{ stopColor: 'rgba(255,255,255,0.0)', stopOpacity: 0 }} />
+            <linearGradient id="lineGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style={{ stopColor: '#3b82f6', stopOpacity: 0.8 }} />
+              <stop offset="100%" style={{ stopColor: '#8b5cf6', stopOpacity: 0.2 }} />
             </linearGradient>
-            
-            {/* Patrón de líneas centrales animadas */}
-            <pattern id="roadLines" x="0" y="0" width="1" height="50" patternUnits="userSpaceOnUse">
-              <rect x="0" y="0" width="100" height="15" fill="white" opacity="0.8">
-                {/* Animación de movimiento de líneas */}
-                <animate attributeName="y" from="-50" to="0" dur="2s" repeatCount="indefinite" />
-              </rect>
-            </pattern>
+            <linearGradient id="lineGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style={{ stopColor: '#8b5cf6', stopOpacity: 0.8 }} />
+              <stop offset="100%" style={{ stopColor: '#ec4899', stopOpacity: 0.2 }} />
+            </linearGradient>
+            <linearGradient id="lineGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style={{ stopColor: '#06b6d4', stopOpacity: 0.8 }} />
+              <stop offset="100%" style={{ stopColor: '#3b82f6', stopOpacity: 0.2 }} />
+            </linearGradient>
           </defs>
-          
-          {/* Main Road Path (Perspectiva desde abajo) */}
-          <path 
-            d="M 50 0 L 30 100 L 70 100 Z" // Forma de embudo (triángulo)
-            fill="url(#roadGradient)"
-            opacity="0.3"
-          />
-          
-          {/* Road center lines animation (Aplicado al centro del embudo) */}
-          <path 
-            d="M 50 0 L 50 100" 
-            stroke="url(#roadLines)" 
-            strokeWidth="2" 
-            fill="none"
-            strokeDasharray="15 35"
-            opacity="0.6"
-          />
+          <g className="animate-neural-pulse">
+            <line x1="10%" y1="20%" x2="30%" y2="80%" stroke="url(#lineGrad1)" strokeWidth="1" opacity="0.4" />
+            <line x1="30%" y1="80%" x2="70%" y2="30%" stroke="url(#lineGrad2)" strokeWidth="1" opacity="0.4" />
+            <line x1="70%" y1="30%" x2="90%" y2="70%" stroke="url(#lineGrad3)" strokeWidth="1" opacity="0.4" />
+            <line x1="20%" y1="50%" x2="80%" y2="60%" stroke="url(#lineGrad1)" strokeWidth="1" opacity="0.4" />
+            <circle cx="10%" cy="20%" r="3" fill="#3b82f6" opacity="0.6" />
+            <circle cx="30%" cy="80%" r="3" fill="#8b5cf6" opacity="0.6" />
+            <circle cx="70%" cy="30%" r="3" fill="#ec4899" opacity="0.6" />
+            <circle cx="90%" cy="70%" r="3" fill="#06b6d4" opacity="0.6" />
+          </g>
         </svg>
 
-        {/* 2. Gradient Orbs con Mouse Tracking (Solo Desktop) */}
+        {/* 6. ADVANCED PARTICLES */}
+        {[...Array(50)].map((_, i) => {
+          const size = Math.random() * 3 + 1;
+          const isLarge = size > 2.5;
+          return (
+            <div
+              key={`particle-${i}`}
+              className={`absolute rounded-full ${isLarge ? 'animate-float-large' : 'animate-float-small'}`}
+              style={{
+                width: `${size}px`,
+                height: `${size}px`,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                background: isLarge 
+                  ? `radial-gradient(circle, rgba(59, 130, 246, ${Math.random() * 0.5 + 0.3}) 0%, transparent 70%)`
+                  : 'rgba(255, 255, 255, 0.6)',
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${5 + Math.random() * 10}s`,
+                boxShadow: isLarge ? '0 0 20px rgba(59, 130, 246, 0.4)' : 'none'
+              }}
+            />
+          );
+        })}
+
+        {/* 7. GRID PATTERN WITH GLOW */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:40px_40px] sm:bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_50%,black_20%,transparent_100%)]"></div>
+
+        {/* 8. SCANLINE EFFECT */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/20 to-transparent h-[200px] animate-scanline"></div>
+        </div>
+
+        {/* 9. MOUSE TRACKING ORB */}
         <div 
-          className="absolute w-[400px] h-[400px] sm:w-[600px] sm:h-[600px] lg:w-[800px] lg:h-[800px] rounded-full blur-[100px] sm:blur-[120px] lg:blur-[150px] opacity-20 transition-all duration-1000"
+          className="absolute w-[600px] h-[600px] sm:w-[900px] sm:h-[900px] lg:w-[1200px] lg:h-[1200px] rounded-full blur-[150px] opacity-20 transition-all duration-700 pointer-events-none"
           style={{
-            // Sigue el ratón en desktop, usa posición estática en móvil/tablet
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.6) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, rgba(59, 130, 246, 0.2) 50%, transparent 70%)',
             left: `${mousePosition.x}%`,
             top: `${mousePosition.y}%`,
-            transform: 'translate(-50%, -50%)'
+            transform: 'translate(-50%, -50%)',
+            mixBlendMode: 'screen'
           }}
         />
-        
-        {/* Orbes Estáticos Animados (Para profundidad) */}
-        <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] lg:w-[600px] lg:h-[600px] bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full blur-[100px] sm:blur-[120px] opacity-10 animate-pulse"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-[250px] h-[250px] sm:w-[400px] sm:h-[400px] lg:w-[500px] lg:h-[500px] bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-full blur-[100px] sm:blur-[120px] opacity-10 animate-pulse" style={{ animationDelay: '1.5s' }}></div>
-        
-        {/* 3. Animated Grid Pattern (Tecnológico) */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:30px_30px] sm:bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]"></div>
-        
-        {/* 4. Floating Particles/Stars ✨ */}
-        {[...Array(30)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-0.5 h-0.5 sm:w-1 sm:h-1 bg-white rounded-full animate-float-fade"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${5 + Math.random() * 5}s`
-            }}
-          />
-        ))}
-        
-        {/* 5. Diagonal Light Streaks (Efecto de Velocidad) */}
-        <div className="absolute inset-0 opacity-15">
-          <div className="absolute top-0 -left-1/4 w-px h-full bg-gradient-to-b from-transparent via-white/50 to-transparent transform -skew-x-12 animate-light-streak"></div>
-          <div className="absolute top-0 left-1/2 w-px h-full bg-gradient-to-b from-transparent via-white/50 to-transparent transform -skew-x-12 animate-light-streak" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute top-0 -right-1/4 w-px h-full bg-gradient-to-b from-transparent via-white/50 to-transparent transform -skew-x-12 animate-light-streak" style={{ animationDelay: '4s' }}></div>
-        </div>
+
+        {/* 10. GLASS MORPHISM SHAPES */}
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-white/5 backdrop-blur-3xl rounded-full border border-white/10 animate-float-slow opacity-30"></div>
+        <div className="absolute bottom-1/3 right-1/3 w-24 h-24 sm:w-40 sm:h-40 lg:w-56 lg:h-56 bg-blue-500/10 backdrop-blur-3xl rounded-full border border-blue-400/20 animate-float-slow opacity-30" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 right-1/4 w-28 h-28 sm:w-44 sm:h-44 lg:w-60 lg:h-60 bg-purple-500/10 backdrop-blur-3xl rounded-full border border-purple-400/20 animate-float-slow opacity-30" style={{ animationDelay: '4s' }}></div>
+
+        {/* 11. SPOTLIGHT EFFECT */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-gradient-radial from-white/5 via-transparent to-transparent opacity-50 blur-3xl"></div>
+
+        {/* 12. NOISE TEXTURE OVERLAY */}
+        <div className="absolute inset-0 opacity-[0.015] mix-blend-overlay bg-noise animate-noise"></div>
       </div>
 
-      {/* Main Content - Posicionado debajo del navbar */}
+      {/* MAIN CONTENT */}
       <div className={`relative pt-32 sm:pt-40 lg:pt-48 pb-12 sm:pb-16 lg:pb-20 px-4 sm:px-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div className="max-w-7xl mx-auto">
           
@@ -168,7 +203,6 @@ export default function Hero() {
                 </span>
               </h1>
               
-              {/* Decorative Elements */}
               <div className="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 lg:-top-8 lg:-left-8 w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 border-t-2 border-l-2 border-white/20"></div>
               <div className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 lg:-bottom-8 lg:-right-8 w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 border-b-2 border-r-2 border-white/20"></div>
             </div>
@@ -177,7 +211,7 @@ export default function Hero() {
               Especialistas en movimiento y transporte de materiales de cantera con{' '}
               <span className="relative inline-block">
                 <span className="text-white font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                  2 camiones con zorra
+                        camiones 
                 </span>
                 <span className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-blue-400 to-cyan-400"></span>
               </span>
@@ -187,9 +221,9 @@ export default function Hero() {
             {/* Features List */}
             <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 lg:gap-4 mb-8 sm:mb-10 lg:mb-12">
               {[
-                { icon: CheckCircle, text: 'Garantizado' },
-                { icon: Sparkles, text: 'Moderno' },
-                { icon: Shield, text: 'Asegurado' },
+                { icon: CheckCircle, text: 'Confianza' },
+                { icon: Clock, text: 'Garantia de tiempo' },
+                { icon: CheckCircle, text: 'Integridad' },
               ].map((feature, index) => {
                 const Icon = feature.icon;
                 return (
@@ -204,32 +238,40 @@ export default function Hero() {
               })}
             </div>
 
-            {/* Elite CTA Buttons */}
+            {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 lg:gap-6">
-              <button className="w-full sm:w-auto relative group overflow-hidden rounded-xl">
-                {/* Animated gradient background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 animate-gradient-x"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                
-                {/* Border glow */}
+              {/* Botón WhatsApp con degradado verde */}
+              <a 
+                href="https://wa.me/59894044545?text=Hola,%20me%20interesa%20solicitar%20una%20cotización%20para%20transporte%20de%20materiales..."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto relative group overflow-hidden rounded-xl"
+              >
+                {/* Gradiente verde animado */}
+                <div className="absolute inset-0 bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 animate-gradient-x"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-teal-600 via-emerald-600 to-green-600 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                 <div className="absolute inset-0 rounded-xl border-2 border-white/20 group-hover:border-white/40 transition-colors duration-500"></div>
-                
-                {/* Shine effect */}
                 <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
                 
-                {/* Content */}
-                <div className="relative px-6 py-3 sm:px-8 sm:py-4 lg:px-12 lg:py-6 flex items-center justify-center gap-2 sm:gap-3 lg:gap-4">
-                  <Zap className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
-                  <span className="font-black text-xs sm:text-sm lg:text-lg tracking-[0.15em] sm:tracking-[0.2em] uppercase text-white">
-                    SOLICITAR COTIZACIÓN
+                {/* Contenido del botón - más compacto en móvil */}
+                <div className="relative px-4 py-3 sm:px-8 sm:py-4 lg:px-12 lg:py-6 flex items-center justify-center gap-2 sm:gap-3 lg:gap-4">
+                  {/* Logo WhatsApp */}
+                  <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-white group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 fill-current" />
+                  {/* Camión */}
+                  <Truck className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white group-hover:scale-110 transition-all duration-300" />
+                  {/* Texto corto en móvil, largo en desktop */}
+                  <span className="font-black text-xs sm:text-sm lg:text-lg tracking-[0.1em] sm:tracking-[0.2em] uppercase text-white">
+                    <span className="sm:hidden">COTIZAR</span>
+                    <span className="hidden sm:inline">SOLICITAR COTIZACIÓN</span>
                   </span>
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white group-hover:translate-x-2 transition-transform duration-300" />
                 </div>
                 
-                {/* Outer glow */}
-                <div className="absolute inset-0 rounded-xl shadow-[0_0_30px_rgba(139,92,246,0.4)] sm:shadow-[0_0_50px_rgba(139,92,246,0.4)] group-hover:shadow-[0_0_60px_rgba(139,92,246,0.7)] sm:group-hover:shadow-[0_0_80px_rgba(139,92,246,0.7)] transition-shadow duration-700"></div>
-              </button>
+                {/* Sombra verde */}
+                <div className="absolute inset-0 rounded-xl shadow-[0_0_30px_rgba(16,185,129,0.4)] sm:shadow-[0_0_50px_rgba(16,185,129,0.4)] group-hover:shadow-[0_0_60px_rgba(16,185,129,0.7)] sm:group-hover:shadow-[0_0_80px_rgba(16,185,129,0.7)] transition-shadow duration-700"></div>
+              </a>
               
+              {/* Botón Ver Servicios */}
               <button className="w-full sm:w-auto relative group px-6 py-3 sm:px-8 sm:py-4 lg:px-12 lg:py-6 bg-white/5 border-2 border-white/20 hover:border-white/40 backdrop-blur-xl hover:bg-white/10 transition-all duration-500 rounded-xl overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                 <span className="relative font-bold text-xs sm:text-sm lg:text-lg tracking-[0.15em] uppercase text-gray-300 group-hover:text-white transition-colors duration-500 flex items-center justify-center gap-2 sm:gap-3">
@@ -240,7 +282,7 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Premium Stats */}
+          {/* Stats Grid */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-12 sm:mb-16 lg:mb-24">
             {stats.map((stat, index) => {
               const Icon = stat.icon;
@@ -253,10 +295,7 @@ export default function Hero() {
                     animation: isVisible ? 'fadeInUp 0.6s ease-out forwards' : 'none'
                   }}
                 >
-                  {/* Gradient overlay on hover */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-10 transition-all duration-700 rounded-xl sm:rounded-2xl`}></div>
-                  
-                  {/* Animated border */}
                   <div className="absolute inset-0 rounded-xl sm:rounded-2xl border-2 border-transparent group-hover:border-white/20 transition-all duration-700"></div>
                   
                   <Icon className={`w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 mb-3 sm:mb-4 lg:mb-6 bg-gradient-to-r ${stat.color} bg-clip-text text-transparent group-hover:scale-110 sm:group-hover:scale-125 group-hover:rotate-12 transition-all duration-700`} />
@@ -267,12 +306,10 @@ export default function Hero() {
                     {stat.label}
                   </div>
                   
-                  {/* Bottom glow line */}
                   <div className={`absolute bottom-0 left-0 h-0.5 sm:h-1 w-0 bg-gradient-to-r ${stat.color} group-hover:w-full transition-all duration-700 rounded-full`}>
                     <div className="absolute inset-0 blur-sm sm:blur-md"></div>
                   </div>
                   
-                  {/* Corner decorations */}
                   <div className="absolute top-1 right-1 sm:top-2 sm:right-2 w-2 h-2 sm:w-3 sm:h-3 border-t-2 border-r-2 border-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="absolute bottom-1 left-1 sm:bottom-2 sm:left-2 w-2 h-2 sm:w-3 sm:h-3 border-b-2 border-l-2 border-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
@@ -280,7 +317,7 @@ export default function Hero() {
             })}
           </div>
 
-          {/* Elite Materials Grid */}
+          {/* Materials Grid */}
           <div>
             <div className="text-center mb-8 sm:mb-10 lg:mb-12">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-2 sm:mb-3 lg:mb-4 bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">
@@ -301,13 +338,9 @@ export default function Hero() {
                       animation: isVisible ? 'fadeInUp 0.6s ease-out forwards' : 'none'
                     }}
                   >
-                    {/* Animated gradient background */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${material.gradient} opacity-0 group-hover:opacity-100 transition-all duration-700 rounded-xl sm:rounded-2xl`}></div>
-                    
-                    {/* Shine effect */}
                     <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
                     
-                    {/* Content */}
                     <div className="relative p-6 sm:p-8 lg:p-10">
                       <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 mb-4 sm:mb-6 lg:mb-8 bg-gradient-to-br from-white/10 to-white/5 border-2 border-white/20 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.1)] sm:shadow-[0_0_30px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] sm:group-hover:shadow-[0_0_50px_rgba(255,255,255,0.3)] group-hover:scale-110 group-hover:rotate-12 transition-all duration-700 backdrop-blur-sm">
                         <Icon className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />
@@ -319,12 +352,10 @@ export default function Hero() {
                         {material.desc}
                       </p>
                       
-                      {/* Bottom indicator with gradient */}
                       <div className={`absolute bottom-0 left-0 h-0.5 sm:h-1 w-0 bg-gradient-to-r ${material.gradient.replace('/20', '')} group-hover:w-full transition-all duration-700 rounded-full`}>
                         <div className="absolute inset-0 blur-sm"></div>
                       </div>
 
-                      {/* Corner accent */}
                       <div className="absolute top-3 right-3 sm:top-4 sm:right-4 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full opacity-0 group-hover:opacity-100 animate-pulse transition-opacity duration-500"></div>
                     </div>
                   </div>
@@ -336,7 +367,10 @@ export default function Hero() {
       </div>
 
       <style>{`
-        /* Animación para el efecto de aparición de contenido */
+        /* ============================================
+           ANIMACIONES PREMIUM PARA FONDO ULTRA MODERNO
+           ============================================ */
+        
         @keyframes fadeInUp {
           from {
             opacity: 0;
@@ -348,7 +382,6 @@ export default function Hero() {
           }
         }
         
-        /* Animación para el degradado pulsante de los botones */
         @keyframes gradient-x {
           0%, 100% {
             background-position: 0% 50%;
@@ -363,39 +396,313 @@ export default function Hero() {
           animation: gradient-x 3s ease infinite;
         }
 
-        /* Nueva Animación para las partículas flotantes */
-        @keyframes float-fade {
-          0% {
-            opacity: 0;
-            transform: translateY(0) scale(1);
+        /* MESH GRADIENT MOVEMENTS */
+        @keyframes mesh-move-1 {
+          0%, 100% {
+            transform: translate(0, 0) scale(1);
+          }
+          33% {
+            transform: translate(-10%, 10%) scale(1.1);
+          }
+          66% {
+            transform: translate(10%, -5%) scale(0.95);
+          }
+        }
+
+        @keyframes mesh-move-2 {
+          0%, 100% {
+            transform: translate(0, 0) scale(1);
+          }
+          33% {
+            transform: translate(10%, -10%) scale(1.05);
+          }
+          66% {
+            transform: translate(-5%, 15%) scale(0.9);
+          }
+        }
+
+        @keyframes mesh-move-3 {
+          0%, 100% {
+            transform: translate(0, 0) scale(1);
+          }
+          33% {
+            transform: translate(15%, 5%) scale(0.95);
+          }
+          66% {
+            transform: translate(-10%, -10%) scale(1.1);
+          }
+        }
+
+        @keyframes mesh-move-4 {
+          0%, 100% {
+            transform: translate(0, 0) scale(1);
+          }
+          33% {
+            transform: translate(-15%, -5%) scale(1.08);
+          }
+          66% {
+            transform: translate(5%, 10%) scale(0.92);
+          }
+        }
+
+        .animate-mesh-move-1 {
+          animation: mesh-move-1 20s ease-in-out infinite;
+        }
+
+        .animate-mesh-move-2 {
+          animation: mesh-move-2 25s ease-in-out infinite;
+        }
+
+        .animate-mesh-move-3 {
+          animation: mesh-move-3 30s ease-in-out infinite;
+        }
+
+        .animate-mesh-move-4 {
+          animation: mesh-move-4 22s ease-in-out infinite;
+        }
+
+        /* VOLUMETRIC LIGHT RAYS */
+        @keyframes light-ray-1 {
+          0%, 100% {
+            opacity: 0.3;
+            transform: translateX(0) scaleY(1);
           }
           50% {
+            opacity: 0.6;
+            transform: translateX(20px) scaleY(1.2);
+          }
+        }
+
+        @keyframes light-ray-2 {
+          0%, 100% {
+            opacity: 0.4;
+            transform: translateX(0) scaleY(1);
+          }
+          50% {
+            opacity: 0.7;
+            transform: translateX(-15px) scaleY(1.15);
+          }
+        }
+
+        @keyframes light-ray-3 {
+          0%, 100% {
+            opacity: 0.35;
+            transform: translateX(0) scaleY(1);
+          }
+          50% {
+            opacity: 0.65;
+            transform: translateX(25px) scaleY(1.1);
+          }
+        }
+
+        @keyframes light-ray-4 {
+          0%, 100% {
+            opacity: 0.3;
+            transform: translateX(0) scaleY(1);
+          }
+          50% {
+            opacity: 0.6;
+            transform: translateX(-20px) scaleY(1.25);
+          }
+        }
+
+        .animate-light-ray-1 {
+          animation: light-ray-1 8s ease-in-out infinite;
+        }
+
+        .animate-light-ray-2 {
+          animation: light-ray-2 10s ease-in-out infinite;
+        }
+
+        .animate-light-ray-3 {
+          animation: light-ray-3 12s ease-in-out infinite;
+        }
+
+        .animate-light-ray-4 {
+          animation: light-ray-4 9s ease-in-out infinite;
+        }
+
+        /* EXPANDING WAVES */
+        @keyframes wave-expand {
+          0% {
+            transform: scale(0.5);
+            opacity: 0.8;
+          }
+          100% {
+            transform: scale(2.5);
+            opacity: 0;
+          }
+        }
+
+        .animate-wave-expand {
+          animation: wave-expand 4s ease-out infinite;
+        }
+
+        /* NEURAL NETWORK PULSE */
+        @keyframes neural-pulse {
+          0%, 100% {
+            opacity: 0.3;
+          }
+          50% {
+            opacity: 0.7;
+          }
+        }
+
+        .animate-neural-pulse {
+          animation: neural-pulse 3s ease-in-out infinite;
+        }
+
+        /* ADVANCED PARTICLES */
+        @keyframes float-small {
+          0% {
+            transform: translate(0, 0) scale(1);
+            opacity: 0;
+          }
+          10% {
+            opacity: 1;
+          }
+          90% {
             opacity: 1;
           }
           100% {
+            transform: translate(
+              calc((random() - 0.5) * 100px),
+              calc(-50px - random() * 100px)
+            ) scale(1.5);
             opacity: 0;
-            transform: translateY(-20px) scale(1.5); /* Movimiento vertical sutil */
           }
         }
 
-        .animate-float-fade {
-          animation-name: float-fade;
-          animation-iteration-count: infinite;
-          animation-timing-function: ease-in-out;
-        }
-
-        /* Nueva Animación para las Líneas de Luz Diagonales */
-        @keyframes light-streak {
+        @keyframes float-large {
           0% {
-            transform: translateY(100%) skewX(-12deg);
+            transform: translate(0, 0) scale(1);
+            opacity: 0;
+          }
+          10% {
+            opacity: 0.6;
+          }
+          90% {
+            opacity: 0.6;
           }
           100% {
-            transform: translateY(-100%) skewX(-12deg);
+            transform: translate(
+              calc((random() - 0.5) * 150px),
+              calc(-80px - random() * 150px)
+            ) scale(2);
+            opacity: 0;
           }
         }
 
-        .animate-light-streak {
-          animation: light-streak 6s linear infinite;
+        .animate-float-small {
+          animation: float-small linear infinite;
+        }
+
+        .animate-float-large {
+          animation: float-large linear infinite;
+        }
+
+        /* SCANLINE EFFECT */
+        @keyframes scanline {
+          0% {
+            transform: translateY(-100%);
+          }
+          100% {
+            transform: translateY(100vh);
+          }
+        }
+
+        .animate-scanline {
+          animation: scanline 8s linear infinite;
+        }
+
+        /* GLASS MORPHISM FLOAT */
+        @keyframes float-slow {
+          0%, 100% {
+            transform: translate(0, 0) rotate(0deg);
+          }
+          25% {
+            transform: translate(20px, -20px) rotate(5deg);
+          }
+          50% {
+            transform: translate(-10px, -40px) rotate(-5deg);
+          }
+          75% {
+            transform: translate(-20px, -20px) rotate(3deg);
+          }
+        }
+
+        .animate-float-slow {
+          animation: float-slow 20s ease-in-out infinite;
+        }
+
+        /* NOISE TEXTURE ANIMATION */
+        @keyframes noise {
+          0%, 100% {
+            transform: translate(0, 0);
+          }
+          10% {
+            transform: translate(-5%, -5%);
+          }
+          20% {
+            transform: translate(-10%, 5%);
+          }
+          30% {
+            transform: translate(5%, -10%);
+          }
+          40% {
+            transform: translate(-5%, 15%);
+          }
+          50% {
+            transform: translate(-10%, 5%);
+          }
+          60% {
+            transform: translate(15%, 0);
+          }
+          70% {
+            transform: translate(0, 10%);
+          }
+          80% {
+            transform: translate(-15%, 0);
+          }
+          90% {
+            transform: translate(10%, 5%);
+          }
+        }
+
+        .animate-noise {
+          animation: noise 8s steps(10) infinite;
+        }
+
+        /* UTILITY CLASSES */
+        .bg-gradient-radial {
+          background: radial-gradient(circle, var(--tw-gradient-stops));
+        }
+
+        .bg-noise {
+          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='3.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* RESPONSIVE OPTIMIZATIONS */
+        @media (max-width: 640px) {
+          .animate-mesh-move-1,
+          .animate-mesh-move-2,
+          .animate-mesh-move-3,
+          .animate-mesh-move-4 {
+            animation-duration: 15s;
+          }
+        }
+
+        /* PERFORMANCE OPTIMIZATION */
+        .animate-mesh-move-1,
+        .animate-mesh-move-2,
+        .animate-mesh-move-3,
+        .animate-mesh-move-4,
+        .animate-light-ray-1,
+        .animate-light-ray-2,
+        .animate-light-ray-3,
+        .animate-light-ray-4,
+        .animate-float-slow {
+          will-change: transform;
         }
       `}</style>
     </div>

@@ -191,17 +191,35 @@ export default function Hero() {
       {/* MAIN CONTENT */}
       <div className={`relative pt-32 sm:pt-40 lg:pt-48 pb-12 sm:pb-16 lg:pb-20 px-4 sm:px-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div className="max-w-7xl mx-auto">
-
-          {/* Premium Badge */}
-          <div className="text-center mb-8 sm:mb-10 lg:mb-12">
-            <div className="inline-flex items-center gap-2 sm:gap-3 px-4 py-2 sm:px-6 sm:py-3 lg:px-8 lg:py-4 bg-white/5 border border-white/10 backdrop-blur-xl hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all duration-500 group cursor-pointer rounded-full shadow-[0_0_50px_rgba(255,255,255,0.1)]">
-              <Award className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white group-hover:rotate-12 group-hover:scale-110 transition-all duration-500" />
-              <span className="text-white font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase text-[10px] sm:text-xs lg:text-sm">Líder en Transporte Pesado</span>
-              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-pulse shadow-[0_0_10px_rgba(59,130,246,0.8)]"></div>
-            </div>
-          </div>
-
-          
+{/* Premium Badge (Contenedor con relative) */}
+<div className="text-center mb-8 sm:mb-10 lg:mb-12 relative"> 
+    {/* Contenedor del Badge */}
+    <div className="inline-flex items-center gap-2 sm:gap-3 px-4 py-2 sm:px-6 sm:py-3 lg:px-8 lg:py-4 bg-white/5 border border-white/10 backdrop-blur-xl hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all duration-500 group cursor-pointer rounded-full shadow-[0_0_50px_rgba(255,255,255,0.1)]">
+        <Award className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white group-hover:rotate-12 group-hover:scale-110 transition-all duration-500" />
+        <span className="text-white font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase text-[10px] sm:text-xs lg:text-sm">Líder en Transporte Pesado</span>
+        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-pulse shadow-[0_0_10px_rgba(59,130,246,0.8)]"></div>
+    </div>
+    
+    {/* ⚙️ RUEDA DERECHA (Más grande, más separada) */}
+    <img
+        src="/rueda.png" 
+        alt="Símbolo de Rueda" 
+        // 🚨 CAMBIO AQUÍ: Aumentado el tamaño de las ruedas
+        className="absolute w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 top-1/2 -translate-y-1/2 opacity-20 animate-spin-slow pointer-events-none"
+        // 🚨 CAMBIO AQUÍ: Aumentado el valor negativo para empujar más a la derecha
+        style={{ right: '50%', marginRight: '-350px' }} 
+    />
+    
+    {/* ⚙️ RUEDA IZQUIERDA (Más grande, más separada) */}
+    <img
+        src="/rueda.png" 
+        alt="Símbolo de Rueda" 
+        // 🚨 CAMBIO AQUÍ: Aumentado el tamaño de las ruedas
+        className="absolute w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 top-1/2 -translate-y-1/2 opacity-20 animate-spin-slow-reverse pointer-events-none"
+        // 🚨 CAMBIO AQUÍ: Aumentado el valor negativo para empujar más a la izquierda
+        style={{ left: '50%', marginLeft: '-350px' }} 
+    />
+</div>
 
           {/* Epic Headline */}
           <div className="text-center mb-10 sm:mb-12 lg:mb-16">

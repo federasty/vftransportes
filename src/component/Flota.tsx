@@ -1,17 +1,129 @@
-import React from 'react';
-import { useState, useEffect, useRef } from 'react';
-import { Truck, Shield, Award, Zap, Star, Clock, Users, TrendingUp, Package, Settings } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Truck, Shield, Award, Zap, Star, Clock, Users, TrendingUp, Package, Settings, CheckCircle } from 'lucide-react';
+
+// Tipado para un componente más limpio
+interface Feature {
+  text: string;
+  icon: React.ElementType;
+}
+
+interface Spec {
+  label: string;
+  value: string;
+  icon: React.ElementType;
+}
+
+interface TruckModel {
+  name: string;
+  model: string;
+  image: string;
+  cabinImage: string; // Propiedad para la imagen de la cabina
+  capacity: string;
+  year: string;
+  engine: string;
+  power: string;
+  features: Feature[];
+  gradient: string;
+  glowColor: string;
+  specs: Spec[];
+}
+
+interface Certification {
+  icon: React.ElementType;
+  text: string;
+  color: string;
+  bgGlow: string;
+}
+
+interface Stat {
+  number: string;
+  label: string;
+  icon: React.ElementType;
+  color: string;
+  description: string;
+}
+
+// --- Datos Actualizados de la Flota ---
+const trucks: TruckModel[] = [
+  {
+    name: 'Mercedes-Benz Atego 2428',
+    model: 'Alto Rendimiento (6x2)',
+    image: '/camion1.jpg',
+    cabinImage: '/habitaculo.png', // Imagen de cabina
+    capacity: '24.1 Toneladas PBT',
+    year: '2023',
+    engine: 'Motor OM 926 LA (7.2L)',
+    power: '279 CV / 1.100 Nm',
+    features: [
+      { text: 'Motor de 7.2L y 279 CV para máxima potencia y torque.', icon: Zap },
+      { text: 'Caja de cambios MB G 131-9 (9 velocidades) para rutas exigentes.', icon: Settings },
+      { text: 'Alta Capacidad Máxima de Tracción (CMT: 45 ton).', icon: TrendingUp },
+      { text: 'Sistema de frenos ABS, ESP y ASR de última generación.', icon: Shield },
+      { text: 'Freno auxiliar Top Brake, ideal para control en pendientes.', icon: Award }
+    ],
+    gradient: 'from-blue-600 via-cyan-500 to-blue-700',
+    glowColor: 'rgba(59, 130, 246, 0.4)',
+    specs: [
+      { label: 'Carga Útil', value: '~17.3 Ton', icon: Package },
+      { label: 'Potencia', value: '279 CV', icon: Zap },
+      { label: 'Caja', value: '9 Vel.', icon: Settings }
+    ]
+  },
+  {
+    name: 'Mercedes-Benz Atego 2425',
+    model: 'Distribución Pesada (6x2)',
+    image: '/camion2.jpg',
+    cabinImage: '/habitaculo.png', // Misma imagen por simplicidad
+    capacity: '24.1 Toneladas PBT',
+    year: '2022',
+    engine: 'Motor OM 906 LA (6.4L)',
+    power: '245 CV / 902 Nm',
+    features: [
+      { text: 'Motor OM 906 LA de 6.4L, eficiente y robusto para el trabajo diario.', icon: Zap },
+      { text: 'Caja de cambios MB G 85-6 (6 velocidades), ideal para distribución.', icon: Settings },
+      { text: 'Relación de eje optimizada para un mejor rendimiento en distribución pesada.', icon: TrendingUp },
+      { text: 'Chasis reforzado con suspensión de ballestas parabólicas para mayor durabilidad.', icon: Shield },
+      { text: 'Cabina dormitorio ergonómica, asegurando el confort del conductor.', icon: Award }
+    ],
+    gradient: 'from-green-600 via-emerald-500 to-green-700',
+    glowColor: 'rgba(16, 185, 129, 0.4)',
+    specs: [
+      { label: 'Carga Útil', value: '~17.7 Ton', icon: Package },
+      { label: 'Potencia', value: '245 CV', icon: Zap },
+      { label: 'Caja', value: '6 Vel.', icon: Settings }
+    ]
+  }
+];
+
+const certifications: Certification[] = [
+  { icon: Star, text: 'Flota 100% Mercedes-Benz', color: 'from-yellow-400 to-orange-400', bgGlow: 'from-yellow-500/20' },
+  { icon: Shield, text: 'Certificación ISO 9001', color: 'from-blue-400 to-cyan-400', bgGlow: 'from-blue-500/20' },
+  { icon: Zap, text: 'Tecnología BlueTec 5', color: 'from-green-400 to-emerald-400', bgGlow: 'from-green-500/20' }
+];
+
+const stats: Stat[] = [
+  { number: '100%', label: 'Flota Mercedes-Benz', icon: Truck, color: 'from-blue-400 to-cyan-400', description: 'Calidad alemana certificada y estandarizada' },
+  { number: '24/7', label: 'Monitoreo Activo', icon: Clock, color: 'from-purple-400 to-pink-400', description: 'Servicio ininterrumpido con rastreo GPS' },
+  { number: '+1500', label: 'Viajes Exitosos', icon: Users, color: 'from-green-400 to-emerald-400', description: 'Experiencia y logística comprobada' }
+];
+
+// --- Componente Principal Flota ---
 
 export default function Flota() {
   const [isVisible, setIsVisible] = useState(false);
   const [selectedTruck, setSelectedTruck] = useState(0); 
   const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
   const [imageLoaded, setImageLoaded] = useState<boolean[]>([false, false]); 
-  const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
+  const [cabinImageLoaded, setCabinImageLoaded] = useState(false); // Estado para la imagen de la cabina
   const imageRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     setIsVisible(true);
+    // Carga inicial de la imagen de cabina (es la misma para ambos en este ejemplo)
+    const cabinImg = new Image();
+    cabinImg.src = trucks[0].cabinImage;
+    cabinImg.onload = () => setCabinImageLoaded(true);
+
     const handleMouseMove = (e: MouseEvent) => {
       if (window.innerWidth > 1024) {
         setMousePosition({
@@ -32,74 +144,14 @@ export default function Flota() {
     });
   };
 
-  const trucks = [
-    {
-      name: 'Mercedes-Benz Atego 2428',
-      model: 'Alto Rendimiento (6x2)',
-      image: '/camion1.jpg',
-      capacity: '24.1 Toneladas PBT',
-      year: '2023',
-      engine: 'Motor OM 926 LA (7.2L)',
-      power: '279 CV / 1.100 Nm',
-      features: [
-        { text: 'Motor de 7.2L y 279 CV para máxima potencia.', icon: Zap },
-        { text: 'Caja de cambios MB G 131-9 (9 velocidades) para rutas exigentes.', icon: Settings },
-        { text: 'Alta Capacidad Máxima de Tracción (CMT: 45 ton).', icon: TrendingUp },
-        { text: 'Sistema de frenos ABS y ESP de última generación.', icon: Shield },
-        { text: 'Freno auxiliar Top Brake, ideal para pendientes.', icon: Award }
-      ],
-      gradient: 'from-blue-600 via-cyan-500 to-blue-700',
-      glowColor: 'rgba(59, 130, 246, 0.4)',
-      specs: [
-        { label: 'Carga Útil', value: '~17.3 Ton', icon: Package },
-        { label: 'Potencia', value: '279 CV', icon: Zap },
-        { label: 'Caja', value: '9 Vel.', icon: Settings }
-      ]
-    },
-    {
-      name: 'Mercedes-Benz Atego 2425',
-      model: 'Distribución Pesada (6x2)',
-      image: '/camion2.jpg',
-      capacity: '24.1 Toneladas PBT',
-      year: '2022',
-      engine: 'Motor OM 906 LA (6.4L)',
-      power: '245 CV / 902 Nm',
-      features: [
-        { text: 'Motor OM 906 LA de 6.4L, eficiente y robusto.', icon: Zap },
-        { text: 'Caja de cambios MB G 85-6 (6 velocidades).', icon: Settings },
-        { text: 'Relación de eje optimizada para distribución pesada.', icon: TrendingUp },
-        { text: 'Chasis reforzado con suspensión de ballestas parabólicas.', icon: Shield },
-        { text: 'Cabina dormitorio ergonómica para rutas medianas.', icon: Award }
-      ],
-      gradient: 'from-green-600 via-emerald-500 to-green-700',
-      glowColor: 'rgba(16, 185, 129, 0.4)',
-      specs: [
-        { label: 'Carga Útil', value: '~17.7 Ton', icon: Package },
-        { label: 'Potencia', value: '245 CV', icon: Zap },
-        { label: 'Caja', value: '6 Vel.', icon: Settings }
-      ]
-    }
-  ];
-
-  const certifications = [
-    { icon: Star, text: 'Flota 100% Mercedes-Benz', color: 'from-yellow-400 to-orange-400', bgGlow: 'from-yellow-500/20' },
-    { icon: Shield, text: 'Certificación ISO 9001', color: 'from-blue-400 to-cyan-400', bgGlow: 'from-blue-500/20' },
-    { icon: Zap, text: 'Tecnología BlueTec 5', color: 'from-green-400 to-emerald-400', bgGlow: 'from-green-500/20' }
-  ];
-
-  const stats = [
-    { number: '100%', label: 'Flota Mercedes-Benz', icon: Truck, color: 'from-blue-400 to-cyan-400', description: 'Calidad alemana certificada' },
-    { number: '24/7', label: 'Disponibilidad', icon: Clock, color: 'from-purple-400 to-pink-400', description: 'Servicio ininterrumpido' },
-    { number: '+1500', label: 'Viajes Exitosos', icon: Users, color: 'from-green-400 to-emerald-400', description: 'Experiencia comprobada' }
-  ];
+  const currentTruck = trucks[selectedTruck];
 
   return (
     <section className="relative min-h-screen bg-black overflow-hidden py-32 sm:py-36 lg:py-40">
-      {/* Premium Background Effects */}
+      
+      {/* Premium Background Effects (Manteniendo la lógica original) */}
       <div className="fixed inset-0 overflow-hidden -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-black via-slate-950 to-black"></div>
-        
-        {/* Animated Background Image */}
         <div className="absolute inset-0">
           <img 
             src="/rueda.png" 
@@ -108,18 +160,12 @@ export default function Flota() {
             style={{ transform: 'scale(1.2)' }} 
           />
         </div>
-        
-        {/* Multi-Layer Gradient Orbs */}
         <div className="absolute inset-0">
           <div className="absolute top-0 left-0 w-[500px] h-[500px] sm:w-[900px] sm:h-[900px] bg-gradient-to-br from-blue-600/25 via-cyan-600/15 to-transparent rounded-full blur-[140px] animate-mesh-move-1"></div>
           <div className="absolute bottom-0 right-0 w-[400px] h-[400px] sm:w-[800px] sm:h-[800px] bg-gradient-to-br from-purple-600/25 via-fuchsia-600/15 to-transparent rounded-full blur-[140px] animate-mesh-move-2"></div>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-green-600/20 via-emerald-600/10 to-transparent rounded-full blur-[120px] animate-pulse-slow"></div>
         </div>
-        
-        {/* Premium Grid Pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.04)_1px,transparent_1px)] bg-[size:50px_50px] sm:bg-[size:70px_70px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_50%,black_25%,transparent_100%)]"></div>
-        
-        {/* Mouse Follow Glow */}
         <div
           className="absolute w-[700px] h-[700px] rounded-full blur-[180px] opacity-15 transition-all duration-700 pointer-events-none hidden lg:block"
           style={{
@@ -129,8 +175,6 @@ export default function Flota() {
             transform: 'translate(-50%, -50%)'
           }}
         />
-        
-        {/* Enhanced Floating Particles */}
         {[...Array(50)].map((_, i) => {
           const size = Math.random() * 4 + 1;
           const colors = ['59, 130, 246', '139, 92, 246', '16, 185, 129', '168, 85, 247'];
@@ -156,11 +200,11 @@ export default function Flota() {
 
       <div className={`relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         
-        {/* Hero Header with Enhanced Design */}
+        {/* Hero Header and Certifications */}
         <div className="text-center mb-16 sm:mb-20 lg:mb-24">
           <div className="inline-flex items-center gap-3 px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-white/10 via-white/5 to-white/10 border border-white/20 backdrop-blur-2xl rounded-full mb-8 sm:mb-10 group hover:bg-gradient-to-r hover:from-white/15 hover:via-white/10 hover:to-white/15 hover:border-white/30 transition-all duration-500 shadow-2xl hover:shadow-blue-500/20">
             <Truck className="w-6 h-6 sm:w-7 sm:h-7 text-blue-400 group-hover:rotate-12 group-hover:scale-110 transition-transform duration-500" />
-            <span className="text-white font-black tracking-[0.25em] uppercase text-sm sm:text-base">Mercedes-Benz Atego</span>
+            <span className="text-white font-black tracking-[0.25em] uppercase text-sm sm:text-base">Mercedes Benz Atego</span>
             <div className="flex gap-1">
               <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-pulse"></div>
               <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
@@ -170,18 +214,14 @@ export default function Flota() {
           
           <h2 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 sm:mb-8">
             <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent drop-shadow-2xl">
-              Nuestra Flota 
+              Nuestra flota
             </span>
           </h2>
           
           <div className="h-1.5 w-32 mx-auto bg-gradient-to-r from-transparent via-blue-500 to-transparent rounded-full mb-8"></div>
           
           <p className="text-gray-300 text-lg sm:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed">
-            Flota 100% <span className="text-white font-black bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Mercedes-Benz Atego</span>, 
-            equipamiento alemán de primer nivel para garantizar 
-            <span className="text-white font-bold"> seguridad absoluta</span>, 
-            <span className="text-white font-bold"> eficiencia máxima</span> y 
-            <span className="text-white font-bold"> confiabilidad total</span> en cada transporte.
+            Flota 100% **Mercedes-Benz Atego**, equipamiento alemán de primer nivel para garantizar **seguridad absoluta**, **eficiencia máxima** y **confiabilidad total** en cada transporte.
           </p>
         </div>
 
@@ -192,10 +232,9 @@ export default function Flota() {
             return (
               <div key={index} className="group relative overflow-hidden">
                 <div className={`absolute inset-0 bg-gradient-to-r ${cert.bgGlow} to-transparent rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-                
-                <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-white/[0.02] border-2 border-white/20 hover:border-white/40 rounded-full px-6 py-3 sm:px-8 sm:py-4 backdrop-blur-2xl transition-all duration-500 hover:scale-110 shadow-xl hover:shadow-2xl">
+                <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-white/[0.02] border-2 border-white/20 hover:border-white/40 rounded-full px-6 py-3 sm:px-8 sm:py-4 backdrop-blur-2xl transition-all duration-500 hover:scale-105 shadow-xl hover:shadow-2xl">
                   <div className="flex items-center gap-3">
-                    <div className={`w-10 h-10 bg-gradient-to-br ${cert.color} rounded-lg flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500`}>
+                    <div className={`w-10 h-10 bg-gradient-to-br ${cert.color} rounded-lg flex items-center justify-center group-hover:scale-110 transition-all duration-500`}>
                       <Icon className="w-5 h-5 text-white" />
                     </div>
                     <span className="text-white text-sm sm:text-base font-bold tracking-wide">{cert.text}</span>
@@ -207,7 +246,8 @@ export default function Flota() {
         </div>
 
         {/* Truck Selection with Premium Design */}
-        <div className="mb-16 sm:mb-20">
+        <div className="mb-20 sm:mb-28">
+          <h3 className="text-4xl font-black text-center mb-10 text-white">Detalles del Modelo</h3>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-12 sm:mb-16">
             {trucks.map((truck, index) => (
               <button
@@ -215,8 +255,8 @@ export default function Flota() {
                 onClick={() => setSelectedTruck(index)}
                 className={`relative px-8 py-4 sm:px-12 sm:py-6 rounded-2xl font-black text-base sm:text-lg tracking-wider transition-all duration-500 overflow-hidden group backdrop-blur-2xl shadow-2xl ${
                   selectedTruck === index 
-                    ? 'bg-gradient-to-r from-white/15 to-white/10 border-2 border-white/40 scale-110' 
-                    : 'bg-gradient-to-r from-white/5 to-white/[0.02] border-2 border-white/20 hover:bg-gradient-to-r hover:from-white/10 hover:to-white/5 hover:border-white/30 hover:scale-105'
+                    ? 'bg-gradient-to-r from-white/15 to-white/10 border-2 border-white/40 scale-105' 
+                    : 'bg-gradient-to-r from-white/5 to-white/[0.02] border-2 border-white/20 hover:bg-gradient-to-r hover:from-white/10 hover:to-white/5 hover:border-white/30 hover:scale-[1.02]'
                 }`}
               >
                 <div className={`absolute inset-0 bg-gradient-to-r ${truck.gradient} opacity-0 ${selectedTruck === index ? 'opacity-20' : 'group-hover:opacity-10'} transition-all duration-500`}></div>
@@ -242,40 +282,28 @@ export default function Flota() {
 
           {/* Premium Truck Detail Card */}
           <div className="relative group">
-            <div className={`absolute inset-0 bg-gradient-to-br ${trucks[selectedTruck].gradient} opacity-10 rounded-[2rem] blur-3xl group-hover:blur-[100px] transition-all duration-700`}></div>
+            <div className={`absolute inset-0 bg-gradient-to-br ${currentTruck.gradient} opacity-10 rounded-[2rem] blur-3xl group-hover:blur-[100px] transition-all duration-700`}></div>
             
             <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-white/[0.02] border-2 border-white/20 rounded-[2rem] overflow-hidden backdrop-blur-2xl p-6 sm:p-10 lg:p-14 shadow-2xl">
-              <div className={`absolute inset-0 bg-gradient-to-br ${trucks[selectedTruck].gradient} opacity-5`}></div>
+              <div className={`absolute inset-0 bg-gradient-to-br ${currentTruck.gradient} opacity-5`}></div>
               
-              <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+              <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
                 
-                {/* Premium Image Section */}
+                {/* Image Section */}
                 <div className="relative group/image">
                   <div className={`absolute inset-0 rounded-3xl blur-2xl group-hover/image:blur-3xl transition-all duration-700`} 
-                       style={{ background: `radial-gradient(circle, ${trucks[selectedTruck].glowColor} 0%, transparent 70%)` }}>
+                        style={{ background: `radial-gradient(circle, ${currentTruck.glowColor} 0%, transparent 70%)` }}>
                   </div>
                   
                   <div className="relative aspect-video bg-gradient-to-br from-gray-900 via-slate-900 to-black rounded-3xl overflow-hidden border-2 border-white/20 group-hover/image:border-white/40 transition-all duration-700 shadow-2xl group-hover/image:shadow-[0_0_80px_rgba(59,130,246,0.4)] cursor-pointer">
-                    
-                    {/* Loading State */}
                     {!imageLoaded[selectedTruck] && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-900 to-black">
-                        <div className="flex flex-col items-center gap-5">
-                          <div className="relative">
-                            <div className="w-20 h-20 border-4 border-blue-400/30 border-t-blue-400 rounded-full animate-spin"></div>
-                            <div className="absolute inset-0 w-20 h-20 border-4 border-transparent border-t-cyan-400 rounded-full animate-spin" style={{ animationDuration: '1.5s', animationDirection: 'reverse' }}></div>
-                          </div>
-                          <p className="text-gray-400 text-base font-semibold">Cargando imagen premium...</p>
-                        </div>
-                      </div>
+                      <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-900 to-black"><div className="flex flex-col items-center gap-5"><div className="relative"><div className="w-20 h-20 border-4 border-blue-400/30 border-t-blue-400 rounded-full animate-spin"></div><div className="absolute inset-0 w-20 h-20 border-4 border-transparent border-t-cyan-400 rounded-full animate-spin" style={{ animationDuration: '1.5s', animationDirection: 'reverse' }}></div></div><p className="text-gray-400 text-base font-semibold">Cargando imagen...</p></div></div>
                     )}
-                    
-                    {/* Truck Image with Premium Zoom */}
                     <img 
                       ref={imageRef}
-                      src={trucks[selectedTruck].image}
-                      alt={trucks[selectedTruck].name}
-                      className={`w-full h-full object-cover transition-all duration-700 ease-out group-hover/image:scale-110 group-active/image:scale-110 ${imageLoaded[selectedTruck] ? 'opacity-100' : 'opacity-0'}`}
+                      src={currentTruck.image}
+                      alt={currentTruck.name}
+                      className={`w-full h-full object-cover transition-all duration-700 ease-out group-hover/image:scale-110 ${imageLoaded[selectedTruck] ? 'opacity-100' : 'opacity-0'}`}
                       onLoad={() => handleImageLoad(selectedTruck)}
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
@@ -284,25 +312,17 @@ export default function Flota() {
                           target.parentElement.innerHTML += `
                             <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-900 to-black">
                               <div class="text-center p-8">
-                                <svg class="w-24 h-24 mx-auto mb-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                </svg>
+                                <svg class="w-24 h-24 mx-auto mb-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
                                 <p class="text-gray-400 text-base font-semibold mb-2">Imagen no disponible</p>
-                                <p class="text-gray-600 text-sm">Verificar: /public${trucks[selectedTruck].image}</p>
                               </div>
                             </div>
                           `;
                         }
                       }}
                     />
-                    
-                    {/* Premium Shine Effect */}
                     <div className="absolute inset-0 opacity-0 group-hover/image:opacity-100 transition-opacity duration-1000 pointer-events-none">
                       <div className="absolute top-0 -left-full h-full w-1/2 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12 animate-shine"></div>
                     </div>
-
-                    {/* Premium Mercedes Badge */}
-                   
                   </div>
                 </div>
 
@@ -310,24 +330,24 @@ export default function Flota() {
                 <div className="space-y-8">
                   <div>
                     <h3 className="text-4xl sm:text-5xl font-black mb-3 bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent leading-tight">
-                      {trucks[selectedTruck].name}
+                      {currentTruck.name}
                     </h3>
                     <p className="text-gray-300 text-base sm:text-lg mb-8">
-                      Modelo: <span className="text-white font-bold">{trucks[selectedTruck].model}</span>
+                      Modelo: <span className="text-white font-bold">{currentTruck.model}</span>
                     </p>
                     
                     {/* Premium Specs Cards */}
                     <div className="grid grid-cols-3 gap-4 sm:gap-5 mb-8">
-                      {trucks[selectedTruck].specs.map((spec, index) => {
+                      {currentTruck.specs.map((spec, index) => {
                         const SpecIcon = spec.icon;
                         return (
                           <div 
                             key={index} 
-                            className={`relative group/spec p-4 sm:p-5 bg-gradient-to-br ${trucks[selectedTruck].gradient} bg-opacity-10 border-2 border-white/30 rounded-2xl hover:scale-110 hover:border-white/50 transition-all duration-500 overflow-hidden`}
+                            className={`relative group/spec p-4 sm:p-5 bg-gradient-to-br ${currentTruck.gradient} bg-opacity-10 border-2 border-white/30 rounded-2xl hover:scale-105 hover:border-white/50 transition-all duration-500 overflow-hidden`}
                           >
-                            <div className={`absolute inset-0 bg-gradient-to-br ${trucks[selectedTruck].gradient} opacity-0 group-hover/spec:opacity-20 transition-opacity duration-500`}></div>
+                            <div className={`absolute inset-0 bg-gradient-to-br ${currentTruck.gradient} opacity-0 group-hover/spec:opacity-20 transition-opacity duration-500`}></div>
                             <div className="relative">
-                              <SpecIcon className="w-5 h-5 text-white mb-2 group-hover/spec:scale-110 group-hover/spec:rotate-12 transition-all duration-300" />
+                              <SpecIcon className="w-5 h-5 text-white mb-2 group-hover/spec:scale-110 transition-all duration-300" />
                               <p className="text-[10px] sm:text-xs text-gray-300 mb-1 font-semibold">{spec.label}</p>
                               <p className="text-white font-black text-base sm:text-lg">{spec.value}</p>
                             </div>
@@ -338,21 +358,21 @@ export default function Flota() {
 
                     {/* Premium Engine Info */}
                     <div className="relative group/engine p-6 bg-gradient-to-br from-white/10 to-white/5 border-2 border-white/20 group-hover/engine:border-white/40 rounded-2xl backdrop-blur-xl mb-8 transition-all duration-500 overflow-hidden">
-                      <div className={`absolute inset-0 bg-gradient-to-br ${trucks[selectedTruck].gradient} opacity-0 group-hover/engine:opacity-10 transition-opacity duration-500`}></div>
+                      <div className={`absolute inset-0 bg-gradient-to-br ${currentTruck.gradient} opacity-0 group-hover/engine:opacity-10 transition-opacity duration-500`}></div>
                       <div className="relative grid sm:grid-cols-2 gap-5">
                         <div>
                           <div className="flex items-center gap-2 mb-2">
                             <Settings className="w-4 h-4 text-blue-400" />
                             <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider">Motor</p>
                           </div>
-                          <p className="text-white font-bold text-base">{trucks[selectedTruck].engine}</p>
+                          <p className="text-white font-bold text-base">{currentTruck.engine}</p>
                         </div>
                         <div>
                           <div className="flex items-center gap-2 mb-2">
                             <Zap className="w-4 h-4 text-yellow-400" />
                             <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider">Potencia / Torque</p>
                           </div>
-                          <p className="text-white font-bold text-base">{trucks[selectedTruck].power}</p>
+                          <p className="text-white font-bold text-base">{currentTruck.power}</p>
                         </div>
                       </div>
                     </div>
@@ -367,19 +387,17 @@ export default function Flota() {
                       Características Premium
                     </h4>
                     
-                    {trucks[selectedTruck].features.map((feature, index) => {
+                    {currentTruck.features.map((feature, index) => {
                       const FeatureIcon = feature.icon;
                       return (
                         <div 
                           key={index} 
                           className="relative group/feature p-5 bg-gradient-to-br from-white/5 to-white/[0.02] border-2 border-white/10 hover:border-white/30 rounded-xl hover:bg-gradient-to-br hover:from-white/10 hover:to-white/5 transition-all duration-500 overflow-hidden cursor-pointer"
-                          onMouseEnter={() => setHoveredFeature(index)}
-                          onMouseLeave={() => setHoveredFeature(null)}
                         >
-                          <div className={`absolute inset-0 bg-gradient-to-br ${trucks[selectedTruck].gradient} opacity-0 group-hover/feature:opacity-10 transition-opacity duration-500`}></div>
+                          <div className={`absolute inset-0 bg-gradient-to-br ${currentTruck.gradient} opacity-0 group-hover/feature:opacity-10 transition-opacity duration-500`}></div>
                           
                           <div className="relative flex items-start gap-4">
-                            <div className={`w-10 h-10 flex-shrink-0 bg-gradient-to-br ${trucks[selectedTruck].gradient} rounded-lg flex items-center justify-center group-hover/feature:scale-110 group-hover/feature:rotate-12 transition-all duration-500`}>
+                            <div className={`w-10 h-10 flex-shrink-0 bg-gradient-to-br ${currentTruck.gradient} rounded-lg flex items-center justify-center group-hover/feature:scale-110 transition-all duration-500`}>
                               <FeatureIcon className="w-5 h-5 text-white" />
                             </div>
                             <span className="text-gray-300 text-sm sm:text-base leading-relaxed group-hover/feature:text-white transition-colors duration-300 font-medium">
@@ -394,6 +412,61 @@ export default function Flota() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* --- SECCIÓN REUBICADA: Cabina/Habitáculo --- */}
+        <div className="mb-20 sm:mb-28">
+            <h2 className="text-4xl sm:text-5xl font-black text-center mb-12 text-white">
+                <span className="bg-gradient-to-r from-green-400 via-white to-green-400 bg-clip-text text-transparent">
+                    Habitáculo de Clase Mundial
+                </span>
+            </h2>
+
+            <div className="relative group/cabin p-6 sm:p-10 bg-gradient-to-br from-white/10 to-white/5 border-2 border-white/20 rounded-3xl backdrop-blur-xl transition-all duration-500 hover:border-white/40 shadow-2xl">
+                <div className={`absolute inset-0 bg-gradient-to-br ${currentTruck.gradient} opacity-0 group-hover/cabin:opacity-10 transition-opacity duration-500 rounded-3xl`}></div>
+                
+                <div className="relative grid md:grid-cols-2 items-center gap-10">
+                    
+                    {/* Cabina Text */}
+                    <div className="text-left order-2 md:order-1">
+                        <div className="flex items-center gap-3 mb-4">
+                            <CheckCircle className="w-6 h-6 text-green-400" />
+                            <h4 className="text-2xl font-black text-white">Confort y Ergonomía Certificada</h4>
+                        </div>
+                        <p className="text-gray-300 text-lg mb-6 leading-relaxed">
+                            Nuestras cabinas **Mercedes-Benz Atego** están diseñadas para el **máximo confort** y **ergonomía**, reduciendo la fatiga del conductor en rutas largas.
+                            Esta dedicación a los detalles internos es una garantía de que su carga es transportada por un conductor **concentrado**, **descansado** y en un **ambiente seguro**.
+                        </p>
+                        <ul className="space-y-3">
+                            <li className="flex items-start gap-3 text-gray-400 font-semibold">
+                                <Star className="flex-shrink-0 w-5 h-5 mt-1 text-yellow-400" />
+                                <span>**Puesto de Mando Ergonómico:** Controles intuitivos y asientos con suspensión de aire.</span>
+                            </li>
+                            <li className="flex items-start gap-3 text-gray-400 font-semibold">
+                                <Shield className="flex-shrink-0 w-5 h-5 mt-1 text-blue-400" />
+                                <span>**Aislamiento Acústico Superior:** Reducción del ruido para mayor concentración.</span>
+                            </li>
+                            <li className="flex items-start gap-3 text-gray-400 font-semibold">
+                                <Clock className="flex-shrink-0 w-5 h-5 mt-1 text-purple-400" />
+                                <span>**Cabina Dormitorio:** Espacio optimizado para el descanso reglamentario del personal.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    {/* Cabina Image */}
+                    <div className="flex-shrink-0 w-full aspect-video bg-gray-900 rounded-2xl overflow-hidden border-2 border-white/20 order-1 md:order-2 shadow-xl hover:shadow-cyan-500/30 transition-shadow duration-500">
+                        {!cabinImageLoaded ? (
+                            <div className="w-full h-full flex items-center justify-center text-gray-500 text-sm">Cargando imagen del habitáculo...</div>
+                        ) : (
+                            <img 
+                                src={currentTruck.cabinImage} 
+                                alt="Imagen del Habitáculo Mercedes-Benz Atego" 
+                                className="w-full h-full object-cover object-center md:object-contain group-hover/cabin:scale-[1.05] transition-transform duration-700"
+                            />
+                        )}
+                    </div>
+                </div>
+            </div>
         </div>
 
         {/* Premium Stats Grid */}
@@ -433,6 +506,7 @@ export default function Flota() {
         </div>
       </div>
 
+      {/* Estilos CSS (Manteniendo la lógica original) */}
       <style>{`
         @keyframes mesh-move-1 {
           0%, 100% { transform: translate(0, 0) scale(1); }

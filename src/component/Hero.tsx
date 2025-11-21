@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Award, Truck, Clock, Package, ArrowRight, CheckCircle, MessageCircle } from 'lucide-react';
+import { Award, Truck, Clock, Package, CheckCircle, MessageCircle } from 'lucide-react';
 
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });

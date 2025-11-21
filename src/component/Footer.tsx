@@ -1,5 +1,5 @@
 import React from 'react';
-import { Truck, Instagram, Facebook, Phone } from 'lucide-react';
+import { Truck, Instagram, Phone } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

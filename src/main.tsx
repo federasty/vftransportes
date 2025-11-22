@@ -8,6 +8,7 @@ import Hero from './component/Hero.tsx'
 import Flota from './component/Flota.tsx'
 import Footer from './component/Footer.tsx'
 import Nosotros from './component/Nosotros.tsx'
+import Servicio from './component/Servicio.tsx' 
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -18,7 +19,8 @@ createRoot(document.getElementById('root')!).render(
         <Routes>
           <Route path="/" element={<Hero />} />
           <Route path="/flota" element={<Flota />} />
-          <Route path="/Nosotros" element={<Nosotros />} />
+          <Route path="/nosotros" element={<Nosotros />} />
+          <Route path="/servicios" element={<Servicio />} />
           {/* Agrega más rutas aquí cuando las necesites */}
         </Routes>
         

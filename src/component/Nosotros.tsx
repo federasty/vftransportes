@@ -149,16 +149,24 @@ export default function Nosotros() {
             <div className="w-2 h-2 bg-gradient-to-r from-fuchsia-400 to-purple-400 rounded-full animate-pulse"></div>
           </div>
           
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black mb-6">
-            <span className="bg-gradient-to-r from-white via-blue-200 to-white bg-clip-text text-transparent">
-              Quiénes Somos
-            </span>
-          </h1>
           
-          <p className="text-gray-400 text-lg sm:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed">
-            Liderando la industria del transporte con <span className="text-white font-bold">excelencia</span>, 
-            <span className="text-white font-bold"> innovación</span> y <span className="text-white font-bold">compromiso</span>
-          </p>
+
+           <header className="text-center mb-20 sm:mb-24">
+    <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black mb-6">
+        <span className="bg-gradient-to-r from-white via-blue-200 to-white bg-clip-text text-transparent">
+            Quiénes Somos
+        </span>
+    </h1>
+
+    <div className="h-1.5 w-32 mx-auto bg-gradient-to-r from-transparent via-fuchsia-500 to-transparent rounded-full mb-8"></div>
+    
+    <p className="text-gray-400 text-lg sm:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed">
+        Liderando la industria del transporte con <span className="text-white font-bold">excelencia</span>, 
+        <span className="text-white font-bold"> innovación</span> y <span className="text-white font-bold">compromiso</span>
+    </p>
+</header>
+          
+          
         </header>
         
         {/* Video Section with Enhanced Design */}
@@ -181,6 +189,8 @@ export default function Nosotros() {
             <p className="text-gray-300 text-lg leading-relaxed">
               Somos <span className="text-white font-bold">VF Transportes</span>, una empresa líder en el sector logístico y de transporte pesado con una trayectoria sólida construida sobre años de excelencia operativa. Nuestra misión es <span className="text-blue-400 font-semibold">superar constantemente las expectativas</span> de nuestros clientes.
             </p>
+
+            
             
             <div className="relative p-6 bg-gradient-to-br from-blue-500/10 via-purple-500/5 to-transparent border border-blue-500/20 rounded-2xl backdrop-blur-sm">
               <div className="absolute top-4 left-4">

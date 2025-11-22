@@ -25,7 +25,7 @@ export default function Hero() {
     { icon: Truck, number: '100%', label: 'Compromiso con la Seguridad', color: 'from-green-600 to-lime-500' },
 
     // Mantiene: Cargas Completadas
-    { icon: Truck, number: '500+', label: 'Cargas Completadas', color: 'from-purple-400 to-pink-400' },
+    { icon: Truck, number: '+5000', label: 'Cargas Completadas', color: 'from-purple-400 to-pink-400' },
 
     // Nuevo (Basado en el trabajo de transporte): Cumplimiento Normativo
     { icon: Truck, number: '100%', label: 'Adherencia a Normativas', color: 'from-indigo-500 to-blue-500' },

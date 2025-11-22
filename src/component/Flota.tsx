@@ -104,7 +104,7 @@ const certifications: Certification[] = [
 const stats: Stat[] = [
   { number: '100%', label: 'Flota Mercedes-Benz', icon: Truck, color: 'from-blue-400 to-cyan-400', description: 'Calidad alemana certificada y estandarizada' },
   { number: '24/7', label: 'Monitoreo Activo', icon: Clock, color: 'from-purple-400 to-pink-400', description: 'Servicio ininterrumpido con rastreo GPS' },
-  { number: '+1500', label: 'Viajes Exitosos', icon: Users, color: 'from-green-400 to-emerald-400', description: 'Experiencia y logística comprobada' }
+  { number: '+5000', label: 'Viajes Exitosos', icon: Users, color: 'from-green-400 to-emerald-400', description: 'Experiencia y logística comprobada' }
 ];
 
 // --- Componente Principal Flota ---
@@ -221,7 +221,7 @@ export default function Flota() {
           <div className="h-1.5 w-32 mx-auto bg-gradient-to-r from-transparent via-blue-500 to-transparent rounded-full mb-8"></div>
           
           <p className="text-gray-300 text-lg sm:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed">
-            Flota 100% **Mercedes-Benz Atego**, equipamiento alemán de primer nivel para garantizar **seguridad absoluta**, **eficiencia máxima** y **confiabilidad total** en cada transporte.
+            Flota 100% "Mercedes-Benz Atego", equipamiento alemán de primer nivel para garantizar "seguridad absoluta", "eficiencia máxima" y "confiabilidad total" en cada transporte.
           </p>
         </div>
 

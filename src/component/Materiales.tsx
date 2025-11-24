@@ -431,51 +431,52 @@ export default function Materiales() {
 
         
 
-    {/* --- Stats Section (ADAPTABLE / RESPONSIVE) --- */}
-        {/* CAMBIO CLAVE 1: Grid de 1 columna en móvil, 2 en sm, 3 en lg */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-32">
-          {STATS.map((stat, index) => {
-            const Icon = stat.icon;
-            return (
-              <div key={index} className="relative group">
-                {/* Sombra de fondo NARANJA/ÁMBAR */}
-                <div className={`absolute inset-0 bg-gradient-to-br from-${ORANGE_PRIMARY}-500/20 to-amber-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700`}></div>
+   {/* --- Stats Section (ADAPTABLE / RESPONSIVE) --- */}
+{/* Grid de 1 columna en móvil, 2 en sm, 3 en lg */}
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-32">
+  {STATS.map((stat, index) => {
+    const Icon = stat.icon;
+    return (
+      <div key={index} className="relative group">
+        {/* Sombra de fondo NARANJA/ÁMBAR más visible */}
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-500/30 to-amber-500/20 rounded-2xl blur-xl opacity-40 group-hover:opacity-100 transition-all duration-700"></div>
 
-                <div className="relative p-6 sm:p-8 
-                    bg-gradient-to-br from-white/5 via-white/[0.02] to-transparent 
-                    border border-white/10 
-                    group-hover:border-${ORANGE_PRIMARY}-500/30 
-                    rounded-2xl backdrop-blur-xl 
-                    transition-all duration-500 
-                    group-hover:scale-[1.03] // Ajuste de escala más elegante
-                    text-center h-full"> {/* h-full para asegurar altura uniforme */}
-                  
-                  {/* Ícono Centrado y color Naranja/Ámbar */}
-                  <Icon className={`
-                      w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-4 
-                      text-${ORANGE_PRIMARY}-400 
-                      group-hover:text-amber-400 
-                      group-hover:scale-110 group-hover:rotate-12 transition-all duration-500
-                  `} />
+        <div className="relative p-6 sm:p-8 
+            bg-gradient-to-br from-orange-950/40 via-orange-900/20 to-amber-950/30 
+            border border-orange-500/20 
+            group-hover:border-orange-400/50 
+            rounded-2xl backdrop-blur-xl 
+            transition-all duration-500 
+            group-hover:scale-[1.03]
+            text-center h-full">
+          
+          {/* Ícono Centrado en tonos Naranja/Ámbar brillantes */}
+          <Icon className="
+              w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-4 
+              text-orange-400 
+              group-hover:text-amber-300 
+              group-hover:scale-110 group-hover:rotate-12 transition-all duration-500
+          " />
 
-                  {/* Número con Degradado Naranja/Ámbar (Ajuste de tamaño responsive) */}
-                  <div className={`
-                      text-4xl sm:text-5xl lg:text-6xl font-black mb-2 // Se hace más grande en escritorio
-                      bg-gradient-to-r from-${ORANGE_PRIMARY}-400 to-amber-400 
-                      bg-clip-text text-transparent
-                  `}>
-                    {stat.number}
-                  </div>
+          {/* Número con Degradado Naranja/Ámbar visible */}
+          <div className="
+              text-4xl sm:text-5xl lg:text-6xl font-black mb-2
+              bg-gradient-to-r from-orange-400 via-orange-300 to-amber-400 
+              bg-clip-text text-transparent
+              drop-shadow-[0_0_15px_rgba(251,146,60,0.5)]
+          ">
+            {stat.number}
+          </div>
 
-                  {/* Etiqueta Centrada (Ajuste de tamaño responsive) */}
-                  <p className="text-gray-400 text-xs sm:text-sm lg:text-base font-semibold uppercase tracking-wider group-hover:text-white transition-colors duration-300">
-                    {stat.label}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
+          {/* Etiqueta en tono naranja tenue */}
+          <p className="text-orange-200/70 text-xs sm:text-sm lg:text-base font-semibold uppercase tracking-wider group-hover:text-orange-100 transition-colors duration-300">
+            {stat.label}
+          </p>
         </div>
+      </div>
+    );
+  })}
+</div>
 
        {/* Bloque Blur inferior (Ajustado a Naranja/Ámbar) - Se mantiene el color Naranja de la sección anterior */}
         <div className="relative mb-32">

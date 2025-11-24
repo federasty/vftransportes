@@ -211,38 +211,69 @@ export default function Nosotros() {
               </div>
             </div>
           </div>
-
           {/* Video Column with Premium Effects */}
           <div className="relative group lg:order-1">
-            <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/20 via-purple-500/10 to-blue-500/20 rounded-3xl blur-3xl group-hover:blur-[100px] transition-all duration-700"></div>
 
-            <div className="relative aspect-video bg-gradient-to-br from-gray-900 via-slate-900 to-black rounded-3xl overflow-hidden shadow-2xl border-2 border-white/10 group-hover:border-fuchsia-500/50 transition-all duration-700 group-hover:scale-[1.02]">
+            {/* Glow ambiental multicapa fucsia/púrpura/azul */}
+            <div className="absolute -inset-6 bg-gradient-to-br from-fuchsia-500/30 via-purple-500/20 to-blue-500/25 rounded-[3rem] blur-[140px] opacity-70 group-hover:opacity-100 transition-opacity duration-1000"></div>
 
-              <video
-                ref={videoRef}
-                src="/camion3.mp4"
-                className="w-full h-full object-cover"
-                autoPlay
-                loop
-                muted
-                playsInline
-                onError={handleVideoError}
-              >
-                Tu navegador no soporta el elemento de video.
-              </video>
+            <div className="absolute -inset-3 bg-gradient-to-br from-fuchsia-400/20 via-purple-400/15 to-blue-400/20 rounded-[2.5rem] blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
 
-              {/* Video Overlay Effects */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
+            <div className="relative aspect-video bg-gradient-to-br from-slate-950 via-gray-900 to-black rounded-3xl overflow-hidden shadow-[0_25px_80px_-15px_rgba(0,0,0,0.9)] group-hover:shadow-[0_35px_120px_-15px_rgba(217,70,239,0.6)] border border-white/10 group-hover:border-fuchsia-500/50 transition-all duration-700 group-hover:scale-[1.02]">
 
-              {/* Shine Effect on Hover */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none">
-                <div className="absolute top-0 -left-full h-full w-1/2 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 animate-shine"></div>
+              {/* Marco decorativo gradiente (aparece en hover) */}
+              <div className="absolute inset-0 rounded-3xl p-[2px] bg-gradient-to-br from-fuchsia-500/50 via-purple-500/40 to-blue-500/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                <div className="w-full h-full bg-transparent rounded-3xl"></div>
               </div>
 
+              {/* Video con zoom sutil */}
+              <div className="absolute inset-0 transition-transform duration-1000 group-hover:scale-105">
+                <video
+                  ref={videoRef}
+                  src="/camion3.mp4"
+                  className="w-full h-full object-cover"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  onError={handleVideoError}
+                >
+                  Tu navegador no soporta el elemento de video.
+                </video>
+              </div>
+
+              {/* Video Overlay Effects - Mejorados */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-transparent pointer-events-none"></div>
+
+              {/* Vignette premium */}
+              <div className="absolute inset-0 shadow-[inset_0_0_120px_rgba(0,0,0,0.6)] pointer-events-none"></div>
+
+              {/* Grid técnico decorativo fucsia */}
+              <div className="absolute inset-0 opacity-[0.04] pointer-events-none">
+                <div className="absolute inset-0" style={{
+                  backgroundImage: 'linear-gradient(to right, rgba(217,70,239,0.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(217,70,239,0.5) 1px, transparent 1px)',
+                  backgroundSize: '50px 50px'
+                }}></div>
+              </div>
+
+              {/* Shine Effect on Hover - Mejorado con color fucsia */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none overflow-hidden">
+                <div className="absolute top-0 -left-full h-full w-1/2 bg-gradient-to-r from-transparent via-fuchsia-400/40 to-transparent skew-x-12 group-hover:animate-shine"></div>
+              </div>
+
+              {/* Partículas de luz en esquinas (hover) */}
+              <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-fuchsia-500/35 via-purple-500/25 to-transparent rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
+              <div className="absolute bottom-0 right-0 w-48 h-48 bg-gradient-to-tl from-blue-500/30 via-purple-500/25 to-transparent rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
 
             </div>
+
+            {/* Línea decorativa inferior fucsia */}
+            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-2/3 h-1 bg-gradient-to-r from-transparent via-fuchsia-500/70 to-transparent blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+
           </div>
         </div>
+
 
         {/* Mission & Vision Cards */}
         <div className="grid lg:grid-cols-2 gap-8 mb-32">
@@ -352,32 +383,32 @@ export default function Nosotros() {
               la <span className="text-fuchsia-400 font-bold">dedicación</span> y el <span className="text-purple-400 font-bold">compromiso absoluto</span> con su éxito
             </p>
 
-          <a
-    href="/servicios"
-    className="relative inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-10 py-4 sm:py-5 font-bold text-base sm:text-lg rounded-full transition-all duration-500 transform hover:scale-105 active:scale-95 shadow-2xl backdrop-blur-sm group overflow-hidden"
-  >
-    {/* Animated gradient background */}
-    <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-fuchsia-600 group-hover:from-blue-500 group-hover:via-purple-500 group-hover:to-fuchsia-500 transition-all duration-500"></div>
-    
-    {/* Shine effect on hover */}
-    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
-    </div>
+            <a
+              href="/servicios"
+              className="relative inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-10 py-4 sm:py-5 font-bold text-base sm:text-lg rounded-full transition-all duration-500 transform hover:scale-105 active:scale-95 shadow-2xl backdrop-blur-sm group overflow-hidden"
+            >
+              {/* Animated gradient background */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-fuchsia-600 group-hover:from-blue-500 group-hover:via-purple-500 group-hover:to-fuchsia-500 transition-all duration-500"></div>
 
-    {/* Glow effect */}
-    <div className="absolute inset-0 rounded-full blur-xl opacity-0 group-hover:opacity-100 bg-gradient-to-r from-blue-600 via-purple-600 to-fuchsia-600 transition-opacity duration-500 -z-10"></div>
+              {/* Shine effect on hover */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+              </div>
 
-    {/* Content */}
-    <MapPin className="relative w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:rotate-12 transition-transform duration-300 flex-shrink-0" />
-    <span className="relative text-white font-bold">
-      <span className="hidden sm:inline">Descubrir Nuestros Servicios</span>
-      <span className="inline sm:hidden">Ver Servicios</span>
-    </span>
-    <ArrowRight className="relative w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:translate-x-2 transition-transform duration-300 flex-shrink-0" />
+              {/* Glow effect */}
+              <div className="absolute inset-0 rounded-full blur-xl opacity-0 group-hover:opacity-100 bg-gradient-to-r from-blue-600 via-purple-600 to-fuchsia-600 transition-opacity duration-500 -z-10"></div>
 
-    {/* Pulse effect on mobile tap */}
-    <div className="absolute inset-0 rounded-full bg-white/20 scale-0 group-active:scale-100 transition-transform duration-200 sm:hidden"></div>
-  </a>
+              {/* Content */}
+              <MapPin className="relative w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:rotate-12 transition-transform duration-300 flex-shrink-0" />
+              <span className="relative text-white font-bold">
+                <span className="hidden sm:inline">Descubrir Nuestros Servicios</span>
+                <span className="inline sm:hidden">Ver Servicios</span>
+              </span>
+              <ArrowRight className="relative w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:translate-x-2 transition-transform duration-300 flex-shrink-0" />
+
+              {/* Pulse effect on mobile tap */}
+              <div className="absolute inset-0 rounded-full bg-white/20 scale-0 group-active:scale-100 transition-transform duration-200 sm:hidden"></div>
+            </a>
           </div>
         </div>
 

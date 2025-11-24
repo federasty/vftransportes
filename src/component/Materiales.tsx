@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Package, Truck, ShieldCheck, Award, CheckCircle2, Sparkles, Box, Layers, ArrowRight, Mountain, Construction, Factory } from 'lucide-react';
+import { Package, Truck, ShieldCheck, Award, Clock8, MessageSquare,  Layers,  Mountain, Construction, Factory } from 'lucide-react';
 
 // --- DATA (Sin cambios) ---
 const MATERIAL_FEATURES = [
@@ -82,7 +82,7 @@ const ALL_MATERIALS = [
 const STATS = [
   { number: '+8', label: 'Tipos de Materiales', icon: Layers },
   { number: '100%', label: 'Certificados', icon: ShieldCheck },
-  { number: '24/7', label: 'Disponibilidad', icon: Sparkles },
+  { number: '✔', label: 'Entrega Segura', icon: Clock8 },
 ];
 
 // --- COMPONENTE PRINCIPAL ---
@@ -182,21 +182,58 @@ export default function Materiales() {
             <span className="text-white font-bold"> la mejor base</span> y <span className="text-white font-bold">durabilidad</span> para su proyecto.
           </p>
           
-          {/* --- IMAGEN camion4.jpg AQUÍ (Se mantiene) --- */}
+     {/* --- IMAGEN camion4.jpg AQUÍ (ETIQUETA MÁS PEQUEÑA) --- */}
           <div className="relative max-w-5xl mx-auto mb-20 lg:mb-32 group">
-            <div className={`absolute inset-0 bg-gradient-to-br from-${ORANGE_PRIMARY}-500/30 via-${PRIMARY_COLOR}-500/20 to-${TERTIARY_COLOR}-500/30 rounded-3xl blur-[100px] opacity-70 group-hover:opacity-100 transition-opacity duration-700`}></div>
             
-            <div className={`relative aspect-[16/7] bg-gradient-to-br from-gray-900 via-slate-900 to-black rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10 transition-all duration-700 group-hover:border-${PRIMARY_COLOR}-500/50 group-hover:scale-[1.01]`}>
+            {/* Sombra/Blur exterior naranja/ámbar - Base de brillo constante y premium */}
+            <div className={`absolute inset-0 bg-gradient-to-br from-${ORANGE_PRIMARY}-500/20 via-${ORANGE_SECONDARY}-500/10 to-transparent rounded-3xl blur-[120px] opacity-100 transition-opacity duration-700`}></div>
+            
+            {/* Contenedor principal de la imagen: Bordes, Ring interior y Efecto Hover */}
+            <div className={`
+                relative aspect-[16/7] 
+                bg-gradient-to-br from-gray-900 via-slate-900 to-black 
+                rounded-3xl 
+                overflow-hidden 
+                shadow-2xl 
+                transition-all duration-700 
+                
+                // Borde inicial SUTIL
+                border border-white/10 
+                
+                // Efecto Premium en Hover: Borde más grueso y sombra luminosa
+                group-hover:ring-2 
+                group-hover:ring-${ORANGE_PRIMARY}-500/80 
+                group-hover:border-${ORANGE_PRIMARY}-500/40 
+                group-hover:scale-[1.005] 
+                group-hover:shadow-[0_0_100px_rgba(251,146,60,0.4)]
+            `}>
+              
               <img
                 src="/camion4.jpg"
                 alt="Camión cargado con materiales de primera categoría"
-                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.03]"
+                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.03]" 
                 onError={() => {/* error handling */}}
               />
-              <div className="absolute inset-0 bg-black/20"></div>
-              <div className="absolute top-6 right-6">
-                <div className={`px-4 py-2 bg-black/60 backdrop-blur-md border border-${ORANGE_PRIMARY}-500/30 rounded-full text-white font-semibold text-sm flex items-center gap-2`}>
-                    <Truck className={`w-4 h-4 text-${ORANGE_PRIMARY}-400`} />
+              {/* Degradado para añadir profundidad en la imagen */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+              
+              {/* Etiqueta superior - AHORA MÁS PEQUEÑA */}
+              <div className="absolute top-4 right-4 sm:top-6 sm:right-6"> 
+                <div className={`
+                    // CAMBIO CLAVE 1: Relleno Mínimo
+                    px-2 py-1 
+                    bg-black/60 
+                    backdrop-blur-md 
+                    border border-${ORANGE_PRIMARY}-500/30 
+                    rounded-full 
+                    // CAMBIO CLAVE 2: Texto Mínimo (extra small)
+                    text-white font-semibold text-[10px] // Usando un valor explícito si text-xs no es suficiente
+                    flex items-center gap-1
+                    transition-all duration-300
+                    group-hover:bg-${ORANGE_PRIMARY}-500/10
+                `}>
+                    {/* CAMBIO CLAVE 3: Ícono Mínimo */}
+                    <Truck className={`w-3 h-3 text-${ORANGE_PRIMARY}-400`} /> 
                     <span>Transporte de Confianza</span>
                 </div>
               </div>
@@ -242,7 +279,7 @@ export default function Materiales() {
                       </p>
 
                       <div className="flex justify-end pt-2">
-                        <ArrowRight className="w-5 h-5 text-white/50 group-hover:text-white group-hover:translate-x-1 transition-all duration-300" />
+                     
                       </div>
                     </div>
                   </div>
@@ -253,110 +290,106 @@ export default function Materiales() {
         </div>
         {/* --- FIN Catálogo de Materiales --- */}
 
-        {/* --- BLOQUE DE IMAGEN SOLICITADO (camion5.jpg) - AHORA NARANJA --- */}
+   {/* --- BLOQUE DE IMAGEN SOLICITADO (camion5.jpg) - MUCHO MÁS GRANDE Y VERTICAL --- */}
         <div className="mb-32">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl sm:text-4xl font-black text-white mb-4">
-              Logística y Distribución a Gran Escala
+          <div className="text-center mb-16">
+            <h3 className="text-4xl sm:text-5xl font-black text-white mb-4">
+              Logística Impecable a Gran Escala
             </h3>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Nuestra flota de camiones modernos garantiza una entrega eficiente y segura de sus materiales.
+            <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
+              Nuestra avanzada flota de camiones garantiza una <span className={`text-${ORANGE_PRIMARY}-300 font-semibold`}>entrega eficiente, segura y puntual</span> de todos sus materiales, sin importar el volumen o la complejidad.
             </p>
           </div>
           
-          <div className="relative max-w-7xl mx-auto group">
-             {/* Sombra/Blur exterior naranja/ámbar */}
-             <div className={`absolute inset-0 bg-gradient-to-br from-${IMAGE_GRADIENT_COLOR_1}-500/20 via-${IMAGE_GRADIENT_COLOR_2}-500/10 to-transparent rounded-3xl blur-3xl group-hover:blur-[100px] transition-all duration-700`}></div>
+          {/* Contenedor principal del bloque de imagen */}
+          {/* CAMBIO CLAVE 1: max-w-md para un ancho más contenido y mx-auto para centrarlo */}
+          <div className="relative max-w-md mx-auto group">
+             {/* Sombra/Blur exterior naranja/ámbar - Más dinámico en hover */}
+             <div className={`absolute inset-0 bg-gradient-to-br from-${IMAGE_GRADIENT_COLOR_1}-500/20 via-${IMAGE_GRADIENT_COLOR_2}-500/10 to-transparent rounded-3xl blur-3xl group-hover:blur-[120px] transition-all duration-700`}></div>
             
-            <div className={`relative aspect-[16/6] lg:aspect-[16/5] bg-gradient-to-br from-gray-900 via-slate-900 to-black rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10 transition-all duration-700 group-hover:border-${IMAGE_BORDER_COLOR}-500/50 group-hover:scale-[1.01]`}>
-              <img
-                src="/camion5.jpg" // La imagen solicitada
-                alt="Vista panorámica de camiones modernos en un entorno de obra"
-                className="w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-[1.03]"
-                 onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                    const parent = target.parentElement;
-                    if (parent) {
-                        parent.innerHTML = `
-                        <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-900 to-black">
-                            <div class="text-center p-8">
-                                <p class="text-gray-500 text-sm">Imagen de logística (camion5.jpg) no disponible</p>
-                            </div>
-                        </div>
-                        `;
-                    }
-                }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
+            {/* Contenedor principal de la imagen con borde y efecto hover */}
+            {/* CAMBIO CLAVE 2: aspect-[9/16] para un contenedor VERTICAL y border-2 más fino */}
+            <div className={`relative aspect-[9/16] bg-gradient-to-br from-gray-950 via-slate-900 to-black rounded-3xl overflow-hidden shadow-2xl border-2 border-white/10 transition-all duration-700 group-hover:border-${IMAGE_BORDER_COLOR}-500/50 group-hover:shadow-[0_0_80px_rgba(251,146,60,0.4)] group-hover:scale-[1.005]`}>
+              
+              {/* Contenedor interno para la imagen, con fondo sutil para object-contain */}
+              <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-900 to-black p-0">
+                <img
+                  src="/camion5.jpg" // La imagen solicitada (horizontal)
+                  alt="Vista panorámica de camiones modernos en un entorno de obra"
+                  className="max-w-full max-h-full object-contain object-center rounded-2xl shadow-xl transition-all duration-700 group-hover:scale-[1.01]"
+                   onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      const parent = target.parentElement;
+                      if (parent) {
+                          parent.innerHTML = `
+                          <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-900 to-black">
+                              <div class="text-center p-8">
+                                  <p class="text-gray-500 text-sm">Imagen de logística (camion5.jpg) no disponible</p>
+                              </div>
+                          </div>
+                          `;
+                      }
+                  }}
+                />
+              </div>
 
-              {/* Se eliminó la leyenda "Visión de Logística" */}
+              {/* Degradado superpuesto para un look más profundo, sobre la imagen */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none"></div>
+
+              {/* Etiqueta opcional en la esquina para profesionalismo (se mantiene, pero su posición podría ajustarse si la imagen es muy alta) */}
+              <div className="absolute bottom-6 right-6">
+                <div className={`flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-md border border-${ORANGE_PRIMARY}-500/30 rounded-full text-white font-semibold text-sm opacity-90 group-hover:opacity-100 transition-opacity duration-300`}>
+                    <Truck className={`w-4 h-4 text-${ORANGE_PRIMARY}-400`} />
+                    <span>Movilizando su Futuro</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         {/* --- FIN BLOQUE DE IMAGEN camion5.jpg --- */}
 
 
-        {/* Features Grid */}
-        <div className="mb-32">
-          <div className="text-center mb-16">
-            <h3 className="text-4xl sm:text-5xl font-black text-white mb-4">
-              Características Destacadas
-            </h3>
-            <div className={`h-1 w-24 mx-auto bg-gradient-to-r from-${PRIMARY_COLOR}-500 to-${TERTIARY_COLOR}-500 rounded-full mb-6`}></div>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Cada elemento de nuestro inventario cumple con los más altos estándares de calidad
-            </p>
-          </div>
+        
 
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-            {MATERIAL_FEATURES.map((feature, index) => {
-              const Icon = feature.icon;
-              return (
-                <div key={index} className="relative group">
-                  <div className={`absolute inset-0 bg-gradient-to-br from-${PRIMARY_COLOR}-600 to-${TERTIARY_COLOR}-600 opacity-0 group-hover:opacity-20 rounded-3xl blur-2xl transition-all duration-700`}></div>
-
-                  <div className={`relative p-8 bg-gradient-to-br from-white/5 via-white/[0.02] to-transparent border-2 border-white/10 group-hover:border-${PRIMARY_COLOR}-500/30 rounded-3xl backdrop-blur-xl transition-all duration-500 group-hover:scale-[1.05] h-full`}>
-                    <div className={`absolute inset-0 bg-gradient-to-br from-${PRIMARY_COLOR}-500/10 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl`}></div>
-
-                    <div className="relative z-10 space-y-4">
-                      <div className={`w-14 h-14 bg-gradient-to-br from-${PRIMARY_COLOR}-600 to-${TERTIARY_COLOR}-500 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500`}>
-                        <Icon className="w-7 h-7 text-white" />
-                      </div>
-
-                      <h4 className="text-2xl font-black text-white">
-                        {feature.title}
-                      </h4>
-
-                      <p className="text-gray-400 text-base leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
-                        {feature.description}
-                      </p>
-
-                      <div className={`w-12 h-1 bg-gradient-to-r from-${PRIMARY_COLOR}-600 to-${TERTIARY_COLOR}-500 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500`}></div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Stats Section, Quality Assurance, and CTA (Se mantienen sin cambios) */}
-        <div className="grid grid-cols-3 gap-4 sm:gap-6 mb-32">
+    {/* --- Stats Section (ADAPTABLE / RESPONSIVE) --- */}
+        {/* CAMBIO CLAVE 1: Grid de 1 columna en móvil, 2 en sm, 3 en lg */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-32">
           {STATS.map((stat, index) => {
             const Icon = stat.icon;
             return (
               <div key={index} className="relative group">
-                <div className={`absolute inset-0 bg-gradient-to-br from-${PRIMARY_COLOR}-500/20 to-${TERTIARY_COLOR}-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700`}></div>
+                {/* Sombra de fondo NARANJA/ÁMBAR */}
+                <div className={`absolute inset-0 bg-gradient-to-br from-${ORANGE_PRIMARY}-500/20 to-amber-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700`}></div>
 
-                <div className="relative p-6 sm:p-8 bg-gradient-to-br from-white/5 via-white/[0.02] to-transparent border border-white/10 group-hover:border-fuchsia-500/30 rounded-2xl backdrop-blur-xl transition-all duration-500 group-hover:scale-105 text-center">
-                  <Icon className={`w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-4 text-${PRIMARY_COLOR}-400 group-hover:text-${SECONDARY_COLOR}-400 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500`} />
+                <div className="relative p-6 sm:p-8 
+                    bg-gradient-to-br from-white/5 via-white/[0.02] to-transparent 
+                    border border-white/10 
+                    group-hover:border-${ORANGE_PRIMARY}-500/30 
+                    rounded-2xl backdrop-blur-xl 
+                    transition-all duration-500 
+                    group-hover:scale-[1.03] // Ajuste de escala más elegante
+                    text-center h-full"> {/* h-full para asegurar altura uniforme */}
+                  
+                  {/* Ícono Centrado y color Naranja/Ámbar */}
+                  <Icon className={`
+                      w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-4 
+                      text-${ORANGE_PRIMARY}-400 
+                      group-hover:text-amber-400 
+                      group-hover:scale-110 group-hover:rotate-12 transition-all duration-500
+                  `} />
 
-                  <div className={`text-4xl sm:text-5xl font-black mb-2 bg-gradient-to-r from-${PRIMARY_COLOR}-400 to-${TERTIARY_COLOR}-400 bg-clip-text text-transparent`}>
+                  {/* Número con Degradado Naranja/Ámbar (Ajuste de tamaño responsive) */}
+                  <div className={`
+                      text-4xl sm:text-5xl lg:text-6xl font-black mb-2 // Se hace más grande en escritorio
+                      bg-gradient-to-r from-${ORANGE_PRIMARY}-400 to-amber-400 
+                      bg-clip-text text-transparent
+                  `}>
                     {stat.number}
                   </div>
 
-                  <p className="text-gray-400 text-xs sm:text-sm font-semibold uppercase tracking-wider group-hover:text-white transition-colors duration-300">
+                  {/* Etiqueta Centrada (Ajuste de tamaño responsive) */}
+                  <p className="text-gray-400 text-xs sm:text-sm lg:text-base font-semibold uppercase tracking-wider group-hover:text-white transition-colors duration-300">
                     {stat.label}
                   </p>
                 </div>
@@ -365,43 +398,24 @@ export default function Materiales() {
           })}
         </div>
 
+       {/* Bloque Blur inferior (Ajustado a Naranja/Ámbar) - Se mantiene el color Naranja de la sección anterior */}
         <div className="relative mb-32">
-          <div className={`absolute inset-0 bg-gradient-to-r from-${PRIMARY_COLOR}-500/10 via-${SECONDARY_COLOR}-500/10 to-${TERTIARY_COLOR}-500/10 rounded-3xl blur-3xl`}></div>
-
-          <div className="relative p-10 sm:p-12 bg-gradient-to-br from-white/5 via-white/[0.02] to-transparent border-2 border-white/10 rounded-3xl backdrop-blur-xl">
-            <div className="grid lg:grid-cols-1 gap-8 items-center">
-              <div>
-                <div className="flex items-center gap-4 mb-6">
-                  <div className={`w-16 h-16 bg-gradient-to-br from-${PRIMARY_COLOR}-600 to-${TERTIARY_COLOR}-500 rounded-2xl flex items-center justify-center`}>
-                    <CheckCircle2 className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-3xl sm:text-4xl font-black text-white">
-                    Garantía de <span className={`text-${PRIMARY_COLOR}-400`}>Calidad</span>
-                  </h3>
-                </div>
-
-                <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                  Cada material pasa por un riguroso proceso de inspección y certificación antes de ser incorporado
-                  a nuestra flota. Trabajamos únicamente con proveedores certificados y reconocidos internacionalmente.
-                </p>
-
-                <div className="space-y-3">
-                  {['Inspección inicial completa', 'Certificación internacional', 'Mantenimiento preventivo', 'Garantía extendida'].map((item, i) => (
-                    <div key={i} className={`flex items-center gap-3 p-3 bg-white/5 border border-${PRIMARY_COLOR}-500/20 rounded-xl backdrop-blur-sm group hover:bg-${PRIMARY_COLOR}-500/10 hover:border-${PRIMARY_COLOR}-500/40 transition-all duration-300`}>
-                      <CheckCircle2 className={`w-5 h-5 text-${PRIMARY_COLOR}-400 flex-shrink-0 group-hover:scale-110 transition-transform duration-300`} />
-                      <span className="text-gray-300 group-hover:text-white transition-colors duration-300">{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
+          <div className={`absolute inset-0 bg-gradient-to-r from-${ORANGE_PRIMARY}-500/10 via-${ORANGE_SECONDARY}-500/10 to-amber-500/10 rounded-3xl blur-3xl`}></div>
+          {/* ... Contenido siguiente ... */}
         </div>
 
-        <div className="relative">
+        {/* --- BLOQUE CTA: ¿Listo para la Mejor Calidad? (FUCSIA + BOTÓN WHATSAPP VERDE) --- */}
+        <div className="relative max-w-5xl mx-auto">
+          {/* Sombra de fondo FUCSIA/PÚRPURA */}
           <div className={`absolute inset-0 bg-gradient-to-r from-${PRIMARY_COLOR}-500/10 via-${SECONDARY_COLOR}-500/10 to-${TERTIARY_COLOR}-500/10 rounded-3xl blur-3xl`}></div>
 
-          <div className="relative p-12 sm:p-16 bg-gradient-to-br from-white/5 via-white/[0.02] to-transparent border-2 border-fuchsia-500/20 rounded-3xl backdrop-blur-xl text-center">
+          <div className={`
+              relative p-12 sm:p-16 
+              bg-gradient-to-br from-white/5 via-white/[0.02] to-transparent 
+              // Borde de la tarjeta FUCSIA
+              border-2 border-fuchsia-500/20 
+              rounded-3xl backdrop-blur-xl text-center
+          `}>
             <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-6 text-white">
               ¿Listo para la Mejor Calidad?
             </h3>
@@ -413,16 +427,33 @@ export default function Materiales() {
             </p>
 
             <a
-              href="/contacto"
-              className={`inline-flex items-center justify-center gap-3 px-10 py-5 font-bold text-lg rounded-full transition-all duration-500 transform hover:scale-105 shadow-2xl backdrop-blur-sm group bg-gradient-to-r from-${PRIMARY_COLOR}-600 via-${SECONDARY_COLOR}-600 to-${TERTIARY_COLOR}-600 text-white hover:shadow-[0_0_60px_rgba(236,72,153,0.6)]`}
+              // CAMBIO CLAVE 1: Enlace directo a WhatsApp con mensaje preestablecido codificado
+              href={`https://wa.me/+59894044545?text=${encodeURIComponent("Hola, me gustaría recibir más información sobre ...")}`}
+              target="_blank" // Abrir en nueva pestaña
+              rel="noopener noreferrer" // Seguridad para enlaces externos
+              className={`
+                inline-flex items-center justify-center gap-3 
+                px-10 py-5 font-bold text-lg rounded-full 
+                transition-all duration-500 transform 
+                hover:scale-105 shadow-2xl backdrop-blur-sm group-button
+                
+                // Botón VERDE (Estilo WhatsApp)
+                bg-gradient-to-r from-emerald-600 via-green-600 to-lime-600 
+                text-white 
+                
+                // Sombra en Hover VERDE
+                hover:shadow-[0_0_60px_rgba(52,211,153,0.7)] 
+              `}
             >
               <Truck className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" />
-              <span>Solicitar Información</span>
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
+              <span>Contactar por WhatsApp</span> {/* Texto del botón más específico */}
+              
+              {/* CAMBIO CLAVE 2: Ícono de WhatsApp simulado */}
+              <MessageSquare className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
             </a>
           </div>
         </div>
-
+        {/* --- FIN BLOQUE CTA --- */}
       </div>
 
       <style>{`

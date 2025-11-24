@@ -352,14 +352,32 @@ export default function Nosotros() {
               la <span className="text-fuchsia-400 font-bold">dedicación</span> y el <span className="text-purple-400 font-bold">compromiso absoluto</span> con su éxito
             </p>
 
-            <a
-              href="/servicios"
-              className="inline-flex items-center justify-center gap-3 px-10 py-5 font-bold text-lg rounded-full transition-all duration-500 transform hover:scale-105 shadow-2xl backdrop-blur-sm group bg-gradient-to-r from-blue-600 via-purple-600 to-fuchsia-600 text-white hover:shadow-[0_0_60px_rgba(139,92,246,0.6)]"
-            >
-              <MapPin className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" />
-              <span>Descubrir Nuestros Servicios</span>
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
-            </a>
+          <a
+    href="/servicios"
+    className="relative inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-10 py-4 sm:py-5 font-bold text-base sm:text-lg rounded-full transition-all duration-500 transform hover:scale-105 active:scale-95 shadow-2xl backdrop-blur-sm group overflow-hidden"
+  >
+    {/* Animated gradient background */}
+    <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-fuchsia-600 group-hover:from-blue-500 group-hover:via-purple-500 group-hover:to-fuchsia-500 transition-all duration-500"></div>
+    
+    {/* Shine effect on hover */}
+    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+    </div>
+
+    {/* Glow effect */}
+    <div className="absolute inset-0 rounded-full blur-xl opacity-0 group-hover:opacity-100 bg-gradient-to-r from-blue-600 via-purple-600 to-fuchsia-600 transition-opacity duration-500 -z-10"></div>
+
+    {/* Content */}
+    <MapPin className="relative w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:rotate-12 transition-transform duration-300 flex-shrink-0" />
+    <span className="relative text-white font-bold">
+      <span className="hidden sm:inline">Descubrir Nuestros Servicios</span>
+      <span className="inline sm:hidden">Ver Servicios</span>
+    </span>
+    <ArrowRight className="relative w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:translate-x-2 transition-transform duration-300 flex-shrink-0" />
+
+    {/* Pulse effect on mobile tap */}
+    <div className="absolute inset-0 rounded-full bg-white/20 scale-0 group-active:scale-100 transition-transform duration-200 sm:hidden"></div>
+  </a>
           </div>
         </div>
 

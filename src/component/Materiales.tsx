@@ -505,31 +505,42 @@ export default function Materiales() {
               <span className={`text-${PRIMARY_COLOR}-400 font-bold`}> rendimiento excepcional</span>
             </p>
 
-            <a
-              // CAMBIO CLAVE 1: Enlace directo a WhatsApp con mensaje preestablecido codificado
-              href={`https://wa.me/+59894044545?text=${encodeURIComponent("Hola, me gustaría recibir más información sobre ...")}`}
-              target="_blank" // Abrir en nueva pestaña
-              rel="noopener noreferrer" // Seguridad para enlaces externos
-              className={`
-                inline-flex items-center justify-center gap-3 
-                px-10 py-5 font-bold text-lg rounded-full 
-                transition-all duration-500 transform 
-                hover:scale-105 shadow-2xl backdrop-blur-sm group-button
-                
-                // Botón VERDE (Estilo WhatsApp)
-                bg-gradient-to-r from-emerald-600 via-green-600 to-lime-600 
-                text-white 
-                
-                // Sombra en Hover VERDE
-                hover:shadow-[0_0_60px_rgba(52,211,153,0.7)] 
-              `}
-            >
-              <Truck className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" />
-              <span>Contactar por WhatsApp</span> {/* Texto del botón más específico */}
-              
-              {/* CAMBIO CLAVE 2: Ícono de WhatsApp simulado */}
-              <MessageSquare className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
-            </a>
+           <a
+    href={`https://wa.me/+59894044545?text=${encodeURIComponent("Hola, me gustaría recibir más información sobre ...")}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="relative inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-10 py-4 sm:py-5 font-bold text-base sm:text-lg rounded-full transition-all duration-500 transform hover:scale-105 active:scale-95 shadow-2xl backdrop-blur-sm group overflow-hidden"
+  >
+    {/* Animated gradient background */}
+    <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-green-600 to-lime-600 group-hover:from-emerald-500 group-hover:via-green-500 group-hover:to-lime-500 transition-all duration-500"></div>
+    
+    {/* Shine effect on hover */}
+    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+    </div>
+
+    {/* Glow effect - WhatsApp green */}
+    <div className="absolute inset-0 rounded-full blur-xl opacity-0 group-hover:opacity-100 bg-gradient-to-r from-emerald-600 via-green-600 to-lime-600 transition-opacity duration-500 -z-10"></div>
+
+    {/* Pulse animation for attention */}
+    <div className="absolute inset-0 rounded-full bg-emerald-400/30 animate-ping opacity-75"></div>
+
+    {/* Content */}
+    <Truck className="relative w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:rotate-12 transition-transform duration-300 flex-shrink-0" />
+    
+    <span className="relative text-white font-bold">
+      <span className="hidden sm:inline">Contactar por WhatsApp</span>
+      <span className="inline sm:hidden">WhatsApp</span>
+    </span>
+    
+    <MessageSquare className="relative w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:translate-x-1 group-hover:scale-110 transition-all duration-300 flex-shrink-0" />
+
+    {/* Tap feedback for mobile */}
+    <div className="absolute inset-0 rounded-full bg-white/20 scale-0 group-active:scale-100 transition-transform duration-200 sm:hidden"></div>
+
+    {/* WhatsApp badge indicator */}
+    <div className="absolute -top-1 -right-1 w-3 h-3 sm:w-4 sm:h-4 bg-white rounded-full border-2 border-emerald-600 animate-pulse"></div>
+  </a>
           </div>
         </div>
         {/* --- FIN BLOQUE CTA --- */}

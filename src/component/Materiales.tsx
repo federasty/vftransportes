@@ -26,56 +26,64 @@ const ALL_MATERIALS = [
     name: 'Balastro', 
     description: 'Todo tipo y granulometría', 
     longDescription: 'Material fundamental para bases de construcción y ferrocarriles. Ofrecemos diferentes granulometrías certificadas (como 15-50, 40-70, etc.) para asegurar la estabilidad estructural y el drenaje adecuado en cualquier proyecto.',
-    gradient: 'from-blue-500 to-cyan-400' 
+    gradient: 'from-blue-500 to-cyan-400',
+    accentColor: '#3b82f6'  // ← Agregar esto
   }, 
   { 
     icon: Mountain, 
     name: 'Pedregullo', 
     description: 'Varios tamaños disponibles', 
     longDescription: 'Agregado grueso esencial en la producción de hormigón, asfalto y como base de caminos. Suministramos pedregullo lavado y clasificado (por ejemplo, 6/20 o 20/40) para la máxima pureza y resistencia mecánica.',
-    gradient: 'from-red-500 to-orange-500' 
+    gradient: 'from-red-500 to-orange-500',
+    accentColor: '#ef4444'  // ← Agregar esto
   },
   { 
     icon: Package, 
     name: 'Arena', 
     description: 'Fina, gruesa y especializada', 
     longDescription: 'Indispensable para morteros, hormigones y revoques. Disponemos de arena de río, triturada y fina, cumpliendo con los estándares de limpieza y humedad más exigentes para optimizar la mezcla.',
-    gradient: 'from-amber-400 to-yellow-300' 
+    gradient: 'from-amber-400 to-yellow-300',
+    accentColor: '#fbbf24'  // ← Agregar esto
   }, 
   { 
     icon: Mountain, 
     name: 'Piedra', 
     description: 'Triturada y decorativa', 
     longDescription: 'Piedra triturada (como la 0-32 o 0-45) para rellenos, drenajes y sub-bases, y piedra ornamental para proyectos paisajísticos. Contamos con diversas calidades y colores, desde grava hasta roca de contención.',
-    gradient: 'from-violet-600 to-fuchsia-500' 
+    gradient: 'from-violet-600 to-fuchsia-500',
+    accentColor: '#8b5cf6'  // ← Agregar esto
   },
   { 
     icon: Construction, 
     name: 'Tosca', 
     description: 'Para relleno y base', 
     longDescription: 'Material granular arcilloso ideal para la compactación y nivelación de grandes terrenos, utilizado comúnmente en la preparación de sub-bases de carreteras, terraplenes y edificaciones que requieren alta densidad.',
-    gradient: 'from-green-600 to-emerald-500' 
+    gradient: 'from-green-600 to-emerald-500',
+    accentColor: '#22c55e'  // ← Agregar esto
   },
   { 
     icon: Layers, 
     name: 'Tierra Negra', 
     description: 'Fertilizada y compactada', 
     longDescription: 'Tierra de alta calidad, fertilizada y cribada (libre de impurezas), perfecta para jardinería, paisajismo y proyectos agrícolas. Asegura un sustrato rico en materia orgánica para el óptimo desarrollo vegetal.',
-    gradient: 'from-gray-500 to-stone-400' 
+    gradient: 'from-gray-500 to-stone-400',
+    accentColor: '#6b7280'  // ← Agregar esto
   },
   { 
     icon: Factory, 
     name: 'Escombros', 
     description: 'Retiro y transporte', 
     longDescription: 'Servicio integral de retiro, transporte y disposición final de escombros y restos de construcción. Gestionamos el material cumpliendo todas las normativas ambientales y de seguridad, incluyendo la clasificación de residuos.',
-    gradient: 'from-teal-400 to-lime-400' 
+    gradient: 'from-teal-400 to-lime-400',
+    accentColor: '#14b8a6'  // ← Agregar esto
   },
   { 
     icon: Package, 
     name: 'Materiales Especiales', 
     description: 'Según requerimiento', 
     longDescription: 'Soluciones personalizadas para materiales no estándar, cargas de volumen específico o con requerimientos técnicos únicos. Nos adaptamos a cualquier especificación que su proyecto industrial o de obra civil requiera.',
-    gradient: 'from-pink-500 to-rose-400' 
+    gradient: 'from-pink-500 to-rose-400',
+    accentColor: '#ec4899'  // ← Agregar esto
   }
 ];
 
@@ -243,11 +251,19 @@ export default function Materiales() {
 
         </header>
 
-        {/* --- Catálogo de Materiales --- */}
+    {/* --- Catálogo de Materiales --- */}
         <div className="mb-32">
           <div className="text-center mb-16">
+            {/* Premium badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full border border-blue-400/30 mb-6 backdrop-blur-xl">
+              <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+              <span className="text-sm font-semibold text-blue-300">Materiales Premium</span>
+            </div>
+
             <h3 className="text-4xl sm:text-5xl font-black text-white mb-4">
-              Catálogo Completo
+              <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent drop-shadow-2xl">
+                Catálogo Completo
+              </span>
             </h3>
             
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
@@ -260,26 +276,63 @@ export default function Materiales() {
               const Icon = material.icon;
               return (
                 <div key={index} className="relative group h-full">
-                  <div className={`absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700`}
-                    style={{ background: `linear-gradient(to bottom right, ${material.gradient.replace('from-', 'rgba(').replace('to-', ''), 0.2})` }}></div>
+                  {/* Animated glow effect */}
+                  <div className={`absolute -inset-1 bg-gradient-to-br ${material.gradient} rounded-3xl blur-xl opacity-0 group-hover:opacity-50 transition-all duration-700`}></div>
 
-                  <div className="relative p-6 bg-white/5 border border-white/10 rounded-3xl backdrop-blur-xl transition-all duration-500 group-hover:scale-[1.03] h-full flex flex-col justify-between">
-                    <div className="relative z-10 space-y-3">
-                      <div className={`w-12 h-12 bg-gradient-to-br ${material.gradient} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-500`}>
-                        <Icon className="w-6 h-6 text-white" />
+                  {/* Shine effect */}
+                  <div className="absolute inset-0 rounded-3xl overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+                  </div>
+
+                  {/* Main card */}
+                  <div className="relative p-6 sm:p-7 bg-gradient-to-br from-white/10 via-white/5 to-transparent border border-white/10 group-hover:border-white/30 rounded-3xl backdrop-blur-2xl transition-all duration-500 group-hover:scale-[1.05] sm:group-hover:scale-[1.08] h-full flex flex-col shadow-2xl overflow-hidden">
+                    
+                    {/* Background gradient overlay - Single tone on hover */}
+                    <div className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-3xl`}
+                      style={{ background: material.accentColor }}></div>
+
+                    {/* Top accent bar */}
+                    <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${material.gradient} opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-t-3xl`}></div>
+
+                    {/* Content */}
+                    <div className="relative z-10 space-y-4 flex-1 flex flex-col">
+                      
+                      {/* Icon with glow */}
+                      <div className="relative mb-2">
+                        <div className={`absolute inset-0 bg-gradient-to-br ${material.gradient} rounded-xl blur-md opacity-50 group-hover:opacity-80 transition-opacity duration-500`}></div>
+                        <div className={`relative w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br ${material.gradient} rounded-xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-2xl`}>
+                          <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-lg" />
+                        </div>
                       </div>
 
-                      <h4 className="text-xl font-black text-white">
+                      {/* Title with gradient on hover */}
+                      <h4 className={`text-xl sm:text-2xl font-black text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text ${material.gradient} transition-all duration-300`}>
                         {material.name}
                       </h4>
                       
-                      <p className="text-gray-400 text-sm leading-relaxed mb-4">
-                        <span className="font-semibold italic text-white/80 block mb-1">{material.description}</span> 
-                        {material.longDescription}
-                      </p>
+                      {/* Description with accent */}
+                      <div className="space-y-2 flex-1">
+                        <p className="text-xs sm:text-sm font-semibold text-blue-300/90 flex items-center gap-2">
+                          <span className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${material.gradient}`}></span>
+                          <span className="italic">{material.description}</span>
+                        </p>
+                        
+                        <p className="text-gray-400 text-xs sm:text-sm leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
+                          {material.longDescription}
+                        </p>
+                      </div>
 
-                      <div className="flex justify-end pt-2">
-                     
+                      {/* Bottom shine effect */}
+                      <div className={`absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r ${material.gradient} opacity-0 group-hover:opacity-60 transition-all duration-500`}></div>
+
+                      {/* Corner accent - Desktop only */}
+                      <div className={`hidden sm:block absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${material.gradient} opacity-0 group-hover:opacity-10 transition-all duration-500 rounded-bl-full`}></div>
+
+                      {/* Floating particles effect - Desktop */}
+                      <div className="hidden lg:block absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+                        <div className={`absolute top-1/4 left-1/4 w-1 h-1 bg-gradient-to-r ${material.gradient} rounded-full animate-float`}></div>
+                        <div className={`absolute top-3/4 right-1/4 w-1.5 h-1.5 bg-gradient-to-r ${material.gradient} rounded-full animate-float-delayed`}></div>
+                        <div className={`absolute bottom-1/3 left-2/3 w-1 h-1 bg-gradient-to-r ${material.gradient} rounded-full animate-float-slow`}></div>
                       </div>
                     </div>
                   </div>
@@ -287,6 +340,38 @@ export default function Materiales() {
               );
             })}
           </div>
+
+          {/* Add custom animations */}
+          <style>{`
+            @keyframes float {
+              0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0; }
+              50% { transform: translateY(-20px) translateX(10px); opacity: 1; }
+            }
+            @keyframes float-delayed {
+              0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0; }
+              50% { transform: translateY(-15px) translateX(-10px); opacity: 1; }
+            }
+            @keyframes float-slow {
+              0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0; }
+              50% { transform: translateY(-25px) translateX(15px); opacity: 1; }
+            }
+            .animate-float {
+              animation: float 3s ease-in-out infinite;
+            }
+            .animate-float-delayed {
+              animation: float-delayed 4s ease-in-out infinite 0.5s;
+            }
+            .animate-float-slow {
+              animation: float-slow 5s ease-in-out infinite 1s;
+            }
+            .animate-fade-in {
+              animation: fadeIn 0.8s ease-out;
+            }
+            @keyframes fadeIn {
+              from { opacity: 0; transform: translateY(-10px); }
+              to { opacity: 1; transform: translateY(0); }
+            }
+          `}</style>
         </div>
         {/* --- FIN Catálogo de Materiales --- */}
 

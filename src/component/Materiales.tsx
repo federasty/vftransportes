@@ -190,64 +190,87 @@ export default function Materiales() {
             <span className="text-white font-bold"> la mejor base</span> y <span className="text-white font-bold">durabilidad</span> para su proyecto.
           </p>
           
-     {/* --- IMAGEN camion4.jpg AQUÍ (ETIQUETA MÁS PEQUEÑA) --- */}
-          <div className="relative max-w-5xl mx-auto mb-20 lg:mb-32 group">
-            
-            {/* Sombra/Blur exterior naranja/ámbar - Base de brillo constante y premium */}
-            <div className={`absolute inset-0 bg-gradient-to-br from-${ORANGE_PRIMARY}-500/20 via-${ORANGE_SECONDARY}-500/10 to-transparent rounded-3xl blur-[120px] opacity-100 transition-opacity duration-700`}></div>
-            
-            {/* Contenedor principal de la imagen: Bordes, Ring interior y Efecto Hover */}
-            <div className={`
-                relative aspect-[16/7] 
-                bg-gradient-to-br from-gray-900 via-slate-900 to-black 
-                rounded-3xl 
-                overflow-hidden 
-                shadow-2xl 
-                transition-all duration-700 
-                
-                // Borde inicial SUTIL
-                border border-white/10 
-                
-                // Efecto Premium en Hover: Borde más grueso y sombra luminosa
-                group-hover:ring-2 
-                group-hover:ring-${ORANGE_PRIMARY}-500/80 
-                group-hover:border-${ORANGE_PRIMARY}-500/40 
-                group-hover:scale-[1.005] 
-                group-hover:shadow-[0_0_100px_rgba(251,146,60,0.4)]
-            `}>
-              
-              <img
-                src="/camion4.jpg"
-                alt="Camión cargado con materiales de primera categoría"
-                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.03]" 
-                onError={() => {/* error handling */}}
-              />
-              {/* Degradado para añadir profundidad en la imagen */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-              
-              {/* Etiqueta superior - AHORA MÁS PEQUEÑA */}
-              <div className="absolute top-4 right-4 sm:top-6 sm:right-6"> 
-                <div className={`
-                    // CAMBIO CLAVE 1: Relleno Mínimo
-                    px-2 py-1 
-                    bg-black/60 
-                    backdrop-blur-md 
-                    border border-${ORANGE_PRIMARY}-500/30 
-                    rounded-full 
-                    // CAMBIO CLAVE 2: Texto Mínimo (extra small)
-                    text-white font-semibold text-[10px] // Usando un valor explícito si text-xs no es suficiente
-                    flex items-center gap-1
-                    transition-all duration-300
-                    group-hover:bg-${ORANGE_PRIMARY}-500/10
-                `}>
-                    {/* CAMBIO CLAVE 3: Ícono Mínimo */}
-                    <Truck className={`w-3 h-3 text-${ORANGE_PRIMARY}-400`} /> 
-                    <span>Transporte de Confianza</span>
-                </div>
-              </div>
-            </div>
+    {/* --- IMAGEN camion4.jpg AQUÍ (VERSIÓN PREMIUM MEJORADA) --- */}
+<div className="relative max-w-6xl mx-auto mb-20 lg:mb-32 px-4 sm:px-6 group">
+  
+  {/* Layer 1: Glow ambiental externo - Premium y siempre visible */}
+  <div className="absolute -inset-8 bg-gradient-to-br from-orange-500/30 via-amber-500/20 to-orange-600/25 rounded-[3rem] blur-[140px] opacity-70 group-hover:opacity-100 transition-opacity duration-1000"></div>
+  
+  {/* Layer 2: Anillo de luz intermedio */}
+  <div className="absolute -inset-4 bg-gradient-to-br from-orange-400/15 to-amber-400/15 rounded-[2.5rem] blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+  
+  {/* Contenedor principal de la imagen: Diseño ultra premium */}
+  <div className="relative aspect-[16/9] sm:aspect-[16/8] lg:aspect-[21/9] bg-gradient-to-br from-slate-950 via-gray-900 to-black rounded-3xl overflow-hidden shadow-[0_25px_80px_-15px_rgba(0,0,0,0.9)] group-hover:shadow-[0_35px_120px_-15px_rgba(251,146,60,0.6)] transition-all duration-700 border border-white/10 group-hover:border-orange-500/40">
+    
+    {/* Marco decorativo con gradiente (aparece en hover) */}
+    <div className="absolute inset-0 rounded-3xl p-[2px] bg-gradient-to-br from-orange-500/40 via-amber-500/30 to-orange-600/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+      <div className="w-full h-full bg-transparent rounded-3xl"></div>
+    </div>
+    
+    {/* Imagen principal con zoom parallax */}
+    <div className="absolute inset-0 transition-transform duration-1000 group-hover:scale-105">
+      <img
+        src="/camion4.jpg"
+        alt="Camión cargado con materiales de primera categoría"
+        className="w-full h-full object-cover"
+        onError={() => {/* error handling */}}
+      />
+      
+      {/* Overlays de gradiente múltiples para profundidad cinematográfica */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-transparent"></div>
+      
+      {/* Efecto vignette premium */}
+      <div className="absolute inset-0 shadow-[inset_0_0_120px_rgba(0,0,0,0.6)]"></div>
+    </div>
+    
+    {/* Grid técnico decorativo (efecto profesional sutil) */}
+    <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+      <div className="absolute inset-0" style={{
+        backgroundImage: 'linear-gradient(to right, rgba(251,146,60,0.4) 1px, transparent 1px), linear-gradient(to bottom, rgba(251,146,60,0.4) 1px, transparent 1px)',
+        backgroundSize: '60px 60px'
+      }}></div>
+    </div>
+    
+    {/* Badge premium superior derecha - Ultra refinado y pequeño */}
+    <div className="absolute top-4 right-4 sm:top-6 sm:right-6 lg:top-8 lg:right-8 z-10">
+      <div className="relative group/badge">
+        
+        {/* Glow del badge */}
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-500/60 to-amber-500/60 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        
+        {/* Badge principal con glassmorphism */}
+        <div className="relative flex items-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-3 sm:py-1.5 bg-black/80 backdrop-blur-2xl border border-orange-500/30 rounded-full shadow-lg group-hover:border-orange-400/60 group-hover:bg-black/90 transition-all duration-300">
+          
+          {/* Icono con glow propio */}
+          <div className="relative flex items-center justify-center">
+            <div className="absolute inset-0 bg-orange-500/30 rounded-full blur-sm"></div>
+            <Truck className="relative w-3 h-3 sm:w-3.5 sm:h-3.5 text-orange-400 group-hover/badge:text-orange-300 group-hover/badge:rotate-12 transition-all duration-300" />
           </div>
-          {/* --- FIN IMAGEN camion4.jpg --- */}
+          
+          {/* Texto ultra compacto */}
+          <span className="text-[9px] sm:text-[10px] font-bold tracking-wider text-white/95 group-hover/badge:text-white transition-colors duration-300 uppercase whitespace-nowrap">
+            Transporte Premium
+          </span>
+          
+          {/* Punto indicador de calidad (solo desktop) */}
+          <div className="hidden sm:flex items-center justify-center w-1.5 h-1.5 bg-gradient-to-br from-orange-400 to-amber-400 rounded-full shadow-[0_0_8px_rgba(251,146,60,0.9)]">
+            <div className="w-1 h-1 bg-white rounded-full animate-pulse"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    {/* Efecto de brillo en esquina superior (hover) */}
+    <div className="absolute top-0 right-0 w-48 h-48 sm:w-64 sm:h-64 bg-gradient-to-br from-orange-500/25 to-transparent rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
+    
+  </div>
+  
+  {/* Línea decorativa inferior (efecto premium) */}
+  <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-2/3 h-1 bg-gradient-to-r from-transparent via-orange-500/60 to-transparent blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+  
+</div>
+{/* --- FIN IMAGEN camion4.jpg --- */}
 
         </header>
 

@@ -86,9 +86,18 @@ const Footer = () => {
             {/* Redes sociales PREMIUM - RESPONSIVE */}
             <div className="flex gap-2 sm:gap-2.5">
               {[
-                { Icon: Instagram, href: "#", label: "Instagram", color: "from-pink-500 to-purple-600" },
-                
-                { Icon: Phone, href: "#", label: "Teléfono", color: "from-blue-600 to-purple-600" },
+                { 
+                  Icon: Instagram, 
+                  href: "https://www.instagram.com/vftransportesuy/", 
+                  label: "Instagram", 
+                  color: "from-pink-500 to-purple-600" 
+                },
+                { 
+                  Icon: Phone, 
+                  href: "https://wa.me/+59894044545?text=" + encodeURIComponent("Hola, me gustaría recibir más información sobre ..."), 
+                  label: "WhatsApp", 
+                  color: "from-green-500 to-emerald-600" 
+                },
               ].map(({ Icon, href, label, color }) => (
                 <a
                   key={label}

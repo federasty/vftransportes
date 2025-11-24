@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Truck, Shield, Award, Zap, Star, Clock, Users, TrendingUp, Package, Settings, CheckCircle } from 'lucide-react';
 
+
 // Tipado para un componente más limpio
 interface Feature {
   text: string;

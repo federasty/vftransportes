@@ -251,15 +251,10 @@ export default function Materiales() {
 
         </header>
 
-    {/* --- Catálogo de Materiales --- */}
+  {/* --- Catálogo de Materiales --- */}
         <div className="mb-32">
           <div className="text-center mb-16">
-            {/* Premium badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full border border-blue-400/30 mb-6 backdrop-blur-xl">
-              <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-              <span className="text-sm font-semibold text-blue-300">Materiales Premium</span>
-            </div>
-
+            
             <h3 className="text-4xl sm:text-5xl font-black text-white mb-4">
               <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent drop-shadow-2xl">
                 Catálogo Completo
@@ -277,7 +272,7 @@ export default function Materiales() {
               return (
                 <div key={index} className="relative group h-full">
                   {/* Animated glow effect */}
-                  <div className={`absolute -inset-1 bg-gradient-to-br ${material.gradient} rounded-3xl blur-xl opacity-0 group-hover:opacity-50 transition-all duration-700`}></div>
+                  <div className={`absolute -inset-1 bg-gradient-to-br ${material.gradient} rounded-3xl blur-xl opacity-0 group-hover:opacity-15 transition-all duration-700`}></div>
 
                   {/* Shine effect */}
                   <div className="absolute inset-0 rounded-3xl overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -285,10 +280,10 @@ export default function Materiales() {
                   </div>
 
                   {/* Main card */}
-                  <div className="relative p-6 sm:p-7 bg-gradient-to-br from-white/10 via-white/5 to-transparent border border-white/10 group-hover:border-white/30 rounded-3xl backdrop-blur-2xl transition-all duration-500 group-hover:scale-[1.05] sm:group-hover:scale-[1.08] h-full flex flex-col shadow-2xl overflow-hidden">
+                  <div className="relative p-6 sm:p-7 bg-gradient-to-br from-white/10 via-white/5 to-transparent border border-white/10 group-hover:border-white/25 rounded-3xl backdrop-blur-2xl transition-all duration-500 group-hover:scale-[1.05] sm:group-hover:scale-[1.08] h-full flex flex-col shadow-2xl group-hover:shadow-3xl overflow-hidden">
                     
                     {/* Background gradient overlay - Single tone on hover */}
-                    <div className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-3xl`}
+                    <div className={`absolute inset-0 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500 rounded-3xl`}
                       style={{ background: material.accentColor }}></div>
 
                     {/* Top accent bar */}
@@ -299,7 +294,7 @@ export default function Materiales() {
                       
                       {/* Icon with glow */}
                       <div className="relative mb-2">
-                        <div className={`absolute inset-0 bg-gradient-to-br ${material.gradient} rounded-xl blur-md opacity-50 group-hover:opacity-80 transition-opacity duration-500`}></div>
+                        <div className={`absolute inset-0 bg-gradient-to-br ${material.gradient} rounded-xl blur-md opacity-20 group-hover:opacity-35 transition-opacity duration-500`}></div>
                         <div className={`relative w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br ${material.gradient} rounded-xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-2xl`}>
                           <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-lg" />
                         </div>
@@ -323,10 +318,10 @@ export default function Materiales() {
                       </div>
 
                       {/* Bottom shine effect */}
-                      <div className={`absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r ${material.gradient} opacity-0 group-hover:opacity-60 transition-all duration-500`}></div>
+                      <div className={`absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r ${material.gradient} opacity-0 group-hover:opacity-30 transition-all duration-500`}></div>
 
                       {/* Corner accent - Desktop only */}
-                      <div className={`hidden sm:block absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${material.gradient} opacity-0 group-hover:opacity-10 transition-all duration-500 rounded-bl-full`}></div>
+                      <div className={`hidden sm:block absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${material.gradient} opacity-0 group-hover:opacity-[0.03] transition-all duration-500 rounded-bl-full`}></div>
 
                       {/* Floating particles effect - Desktop */}
                       <div className="hidden lg:block absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
@@ -339,8 +334,7 @@ export default function Materiales() {
                 </div>
               );
             })}
-          </div>
-
+           </div>
           {/* Add custom animations */}
           <style>{`
             @keyframes float {

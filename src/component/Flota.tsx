@@ -103,7 +103,7 @@ const certifications: Certification[] = [
 
 const stats: Stat[] = [
   { number: '100%', label: 'Flota Mercedes-Benz', icon: Truck, color: 'from-blue-400 to-cyan-400', description: 'Calidad alemana certificada y estandarizada' },
-  { number: '24/7', label: 'Monitoreo Activo', icon: Clock, color: 'from-purple-400 to-pink-400', description: 'Servicio ininterrumpido con rastreo GPS' },
+  { number: '24/7', label: 'Alta Disponibilidad', icon: Clock, color: 'from-purple-400 to-pink-400', description: 'Servicio ininterrumpido' },
   { number: '+5000', label: 'Viajes Exitosos', icon: Users, color: 'from-green-400 to-emerald-400', description: 'Experiencia y logística comprobada' }
 ];
 
@@ -111,9 +111,9 @@ const stats: Stat[] = [
 
 export default function Flota() {
   const [isVisible, setIsVisible] = useState(false);
-  const [selectedTruck, setSelectedTruck] = useState(0); 
+  const [selectedTruck, setSelectedTruck] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
-  const [imageLoaded, setImageLoaded] = useState<boolean[]>([false, false]); 
+  const [imageLoaded, setImageLoaded] = useState<boolean[]>([false, false]);
   const [cabinImageLoaded, setCabinImageLoaded] = useState(false); // Estado para la imagen de la cabina
   const imageRef = useRef<HTMLImageElement>(null);
 
@@ -148,16 +148,16 @@ export default function Flota() {
 
   return (
     <section className="relative min-h-screen bg-black overflow-hidden py-32 sm:py-36 lg:py-40">
-      
+
       {/* Premium Background Effects (Manteniendo la lógica original) */}
       <div className="fixed inset-0 overflow-hidden -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-black via-slate-950 to-black"></div>
         <div className="absolute inset-0">
-          <img 
-            src="/rueda.png" 
-            alt="Fondo" 
-            className="w-full h-full object-cover opacity-[0.04] mix-blend-lighten pointer-events-none transition-opacity duration-1000" 
-            style={{ transform: 'scale(1.2)' }} 
+          <img
+            src="/rueda.png"
+            alt="Fondo"
+            className="w-full h-full object-cover opacity-[0.04] mix-blend-lighten pointer-events-none transition-opacity duration-1000"
+            style={{ transform: 'scale(1.2)' }}
           />
         </div>
         <div className="absolute inset-0">
@@ -199,7 +199,7 @@ export default function Flota() {
       </div>
 
       <div className={`relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-        
+
         {/* Hero Header and Certifications */}
         <div className="text-center mb-16 sm:mb-20 lg:mb-24">
           <div className="inline-flex items-center gap-3 px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-white/10 via-white/5 to-white/10 border border-white/20 backdrop-blur-2xl rounded-full mb-8 sm:mb-10 group hover:bg-gradient-to-r hover:from-white/15 hover:via-white/10 hover:to-white/15 hover:border-white/30 transition-all duration-500 shadow-2xl hover:shadow-blue-500/20">
@@ -211,15 +211,15 @@ export default function Flota() {
               <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
             </div>
           </div>
-          
+
           <h2 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 sm:mb-8">
             <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent drop-shadow-2xl">
               Nuestra flota
             </span>
           </h2>
-          
+
           <div className="h-1.5 w-32 mx-auto bg-gradient-to-r from-transparent via-blue-500 to-transparent rounded-full mb-8"></div>
-          
+
           <p className="text-gray-300 text-lg sm:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed">
             Flota 100% "Mercedes-Benz Atego", equipamiento alemán de primer nivel para garantizar "seguridad absoluta", "eficiencia máxima" y "confiabilidad total" en cada transporte.
           </p>
@@ -253,14 +253,13 @@ export default function Flota() {
               <button
                 key={index}
                 onClick={() => setSelectedTruck(index)}
-                className={`relative px-8 py-4 sm:px-12 sm:py-6 rounded-2xl font-black text-base sm:text-lg tracking-wider transition-all duration-500 overflow-hidden group backdrop-blur-2xl shadow-2xl ${
-                  selectedTruck === index 
-                    ? 'bg-gradient-to-r from-white/15 to-white/10 border-2 border-white/40 scale-105' 
+                className={`relative px-8 py-4 sm:px-12 sm:py-6 rounded-2xl font-black text-base sm:text-lg tracking-wider transition-all duration-500 overflow-hidden group backdrop-blur-2xl shadow-2xl ${selectedTruck === index
+                    ? 'bg-gradient-to-r from-white/15 to-white/10 border-2 border-white/40 scale-105'
                     : 'bg-gradient-to-r from-white/5 to-white/[0.02] border-2 border-white/20 hover:bg-gradient-to-r hover:from-white/10 hover:to-white/5 hover:border-white/30 hover:scale-[1.02]'
-                }`}
+                  }`}
               >
                 <div className={`absolute inset-0 bg-gradient-to-r ${truck.gradient} opacity-0 ${selectedTruck === index ? 'opacity-20' : 'group-hover:opacity-10'} transition-all duration-500`}></div>
-                
+
                 <div className="relative">
                   <div className="flex items-center gap-3 mb-2">
                     <Truck className={`w-5 h-5 ${selectedTruck === index ? 'text-white' : 'text-gray-400 group-hover:text-white'} transition-colors duration-300`} />
@@ -272,7 +271,7 @@ export default function Flota() {
                     {truck.model} • {truck.year}
                   </span>
                 </div>
-                
+
                 {selectedTruck === index && (
                   <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r from-transparent via-white to-transparent opacity-80"></div>
                 )}
@@ -283,23 +282,23 @@ export default function Flota() {
           {/* Premium Truck Detail Card */}
           <div className="relative group">
             <div className={`absolute inset-0 bg-gradient-to-br ${currentTruck.gradient} opacity-10 rounded-[2rem] blur-3xl group-hover:blur-[100px] transition-all duration-700`}></div>
-            
+
             <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-white/[0.02] border-2 border-white/20 rounded-[2rem] overflow-hidden backdrop-blur-2xl p-6 sm:p-10 lg:p-14 shadow-2xl">
               <div className={`absolute inset-0 bg-gradient-to-br ${currentTruck.gradient} opacity-5`}></div>
-              
+
               <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-                
+
                 {/* Image Section */}
                 <div className="relative group/image">
-                  <div className={`absolute inset-0 rounded-3xl blur-2xl group-hover/image:blur-3xl transition-all duration-700`} 
-                        style={{ background: `radial-gradient(circle, ${currentTruck.glowColor} 0%, transparent 70%)` }}>
+                  <div className={`absolute inset-0 rounded-3xl blur-2xl group-hover/image:blur-3xl transition-all duration-700`}
+                    style={{ background: `radial-gradient(circle, ${currentTruck.glowColor} 0%, transparent 70%)` }}>
                   </div>
-                  
+
                   <div className="relative aspect-video bg-gradient-to-br from-gray-900 via-slate-900 to-black rounded-3xl overflow-hidden border-2 border-white/20 group-hover/image:border-white/40 transition-all duration-700 shadow-2xl group-hover/image:shadow-[0_0_80px_rgba(59,130,246,0.4)] cursor-pointer">
                     {!imageLoaded[selectedTruck] && (
                       <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-900 to-black"><div className="flex flex-col items-center gap-5"><div className="relative"><div className="w-20 h-20 border-4 border-blue-400/30 border-t-blue-400 rounded-full animate-spin"></div><div className="absolute inset-0 w-20 h-20 border-4 border-transparent border-t-cyan-400 rounded-full animate-spin" style={{ animationDuration: '1.5s', animationDirection: 'reverse' }}></div></div><p className="text-gray-400 text-base font-semibold">Cargando imagen...</p></div></div>
                     )}
-                    <img 
+                    <img
                       ref={imageRef}
                       src={currentTruck.image}
                       alt={currentTruck.name}
@@ -335,14 +334,14 @@ export default function Flota() {
                     <p className="text-gray-300 text-base sm:text-lg mb-8">
                       Modelo: <span className="text-white font-bold">{currentTruck.model}</span>
                     </p>
-                    
+
                     {/* Premium Specs Cards */}
                     <div className="grid grid-cols-3 gap-4 sm:gap-5 mb-8">
                       {currentTruck.specs.map((spec, index) => {
                         const SpecIcon = spec.icon;
                         return (
-                          <div 
-                            key={index} 
+                          <div
+                            key={index}
                             className={`relative group/spec p-4 sm:p-5 bg-gradient-to-br ${currentTruck.gradient} bg-opacity-10 border-2 border-white/30 rounded-2xl hover:scale-105 hover:border-white/50 transition-all duration-500 overflow-hidden`}
                           >
                             <div className={`absolute inset-0 bg-gradient-to-br ${currentTruck.gradient} opacity-0 group-hover/spec:opacity-20 transition-opacity duration-500`}></div>
@@ -386,16 +385,16 @@ export default function Flota() {
                       </div>
                       Características Premium
                     </h4>
-                    
+
                     {currentTruck.features.map((feature, index) => {
                       const FeatureIcon = feature.icon;
                       return (
-                        <div 
-                          key={index} 
+                        <div
+                          key={index}
                           className="relative group/feature p-5 bg-gradient-to-br from-white/5 to-white/[0.02] border-2 border-white/10 hover:border-white/30 rounded-xl hover:bg-gradient-to-br hover:from-white/10 hover:to-white/5 transition-all duration-500 overflow-hidden cursor-pointer"
                         >
                           <div className={`absolute inset-0 bg-gradient-to-br ${currentTruck.gradient} opacity-0 group-hover/feature:opacity-10 transition-opacity duration-500`}></div>
-                          
+
                           <div className="relative flex items-start gap-4">
                             <div className={`w-10 h-10 flex-shrink-0 bg-gradient-to-br ${currentTruck.gradient} rounded-lg flex items-center justify-center group-hover/feature:scale-110 transition-all duration-500`}>
                               <FeatureIcon className="w-5 h-5 text-white" />
@@ -416,57 +415,57 @@ export default function Flota() {
 
         {/* --- SECCIÓN REUBICADA: Cabina/Habitáculo --- */}
         <div className="mb-20 sm:mb-28">
-            <h2 className="text-4xl sm:text-5xl font-black text-center mb-12 text-white">
-                <span className="bg-gradient-to-r from-green-400 via-white to-green-400 bg-clip-text text-transparent">
-                    Habitáculo de Clase Mundial
-                </span>
-            </h2>
+          <h2 className="text-4xl sm:text-5xl font-black text-center mb-12 text-white">
+            <span>
+              Habitáculo de Clase Mundial
+            </span>
+          </h2>
 
-            <div className="relative group/cabin p-6 sm:p-10 bg-gradient-to-br from-white/10 to-white/5 border-2 border-white/20 rounded-3xl backdrop-blur-xl transition-all duration-500 hover:border-white/40 shadow-2xl">
-                <div className={`absolute inset-0 bg-gradient-to-br ${currentTruck.gradient} opacity-0 group-hover/cabin:opacity-10 transition-opacity duration-500 rounded-3xl`}></div>
-                
-                <div className="relative grid md:grid-cols-2 items-center gap-10">
-                    
-                    {/* Cabina Text */}
-                    <div className="text-left order-2 md:order-1">
-                        <div className="flex items-center gap-3 mb-4">
-                            <CheckCircle className="w-6 h-6 text-green-400" />
-                            <h4 className="text-2xl font-black text-white">Confort y Ergonomía Certificada</h4>
-                        </div>
-                        <p className="text-gray-300 text-lg mb-6 leading-relaxed">
-                            Nuestras cabinas **Mercedes-Benz Atego** están diseñadas para el **máximo confort** y **ergonomía**, reduciendo la fatiga del conductor en rutas largas.
-                            Esta dedicación a los detalles internos es una garantía de que su carga es transportada por un conductor **concentrado**, **descansado** y en un **ambiente seguro**.
-                        </p>
-                        <ul className="space-y-3">
-                            <li className="flex items-start gap-3 text-gray-400 font-semibold">
-                                <Star className="flex-shrink-0 w-5 h-5 mt-1 text-yellow-400" />
-                                <span>**Puesto de Mando Ergonómico:** Controles intuitivos y asientos con suspensión de aire.</span>
-                            </li>
-                            <li className="flex items-start gap-3 text-gray-400 font-semibold">
-                                <Shield className="flex-shrink-0 w-5 h-5 mt-1 text-blue-400" />
-                                <span>**Aislamiento Acústico Superior:** Reducción del ruido para mayor concentración.</span>
-                            </li>
-                            <li className="flex items-start gap-3 text-gray-400 font-semibold">
-                                <Clock className="flex-shrink-0 w-5 h-5 mt-1 text-purple-400" />
-                                <span>**Cabina Dormitorio:** Espacio optimizado para el descanso reglamentario del personal.</span>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    {/* Cabina Image */}
-                    <div className="flex-shrink-0 w-full aspect-video bg-gray-900 rounded-2xl overflow-hidden border-2 border-white/20 order-1 md:order-2 shadow-xl hover:shadow-cyan-500/30 transition-shadow duration-500">
-                        {!cabinImageLoaded ? (
-                            <div className="w-full h-full flex items-center justify-center text-gray-500 text-sm">Cargando imagen del habitáculo...</div>
-                        ) : (
-                            <img 
-                                src={currentTruck.cabinImage} 
-                                alt="Imagen del Habitáculo Mercedes-Benz Atego" 
-                                className="w-full h-full object-cover object-center md:object-contain group-hover/cabin:scale-[1.05] transition-transform duration-700"
-                            />
-                        )}
-                    </div>
+          <div className="relative group/cabin p-6 sm:p-10 bg-gradient-to-br from-white/10 to-white/5 border-2 border-white/20 rounded-3xl backdrop-blur-xl transition-all duration-500 hover:border-white/40 shadow-2xl">
+            <div className={`absolute inset-0 bg-gradient-to-br ${currentTruck.gradient} opacity-0 group-hover/cabin:opacity-10 transition-opacity duration-500 rounded-3xl`}></div>
+
+            <div className="relative grid md:grid-cols-2 items-center gap-10">
+
+              {/* Cabina Text */}
+              <div className="text-left order-2 md:order-1">
+                <div className="flex items-center gap-3 mb-4">
+                  <CheckCircle className="w-6 h-6 text-green-400" />
+                  <h4 className="text-2xl font-black text-white">Confort y Ergonomía Certificada</h4>
                 </div>
+                <p className="text-gray-300 text-lg mb-6 leading-relaxed">
+                  Nuestras cabinas "Mercedes-Benz Atego" están diseñadas para el "máximo confort" y "ergonomía", reduciendo la fatiga del conductor en rutas largas.
+                  Esta dedicación a los detalles internos es una garantía de que su carga es transportada por un conductor "concentrado", "descansado" y en un "ambiente seguro".
+                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-3 text-gray-400 font-semibold">
+                    <Star className="flex-shrink-0 w-5 h-5 mt-1 text-yellow-400" />
+                    <span>"Puesto de Mando Ergonómico": Controles intuitivos y asientos con suspensión de aire</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-gray-400 font-semibold">
+                    <Shield className="flex-shrink-0 w-5 h-5 mt-1 text-blue-400" />
+                    <span>"Aislamiento Acústico Superior": Reducción del ruido para mayor concentración</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-gray-400 font-semibold">
+                    <Clock className="flex-shrink-0 w-5 h-5 mt-1 text-purple-400" />
+                    <span>"Cabina Dormitorio": Espacio optimizado para el descanso reglamentario del personal</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Cabina Image */}
+              <div className="flex-shrink-0 w-full aspect-video bg-gray-900 rounded-2xl overflow-hidden border-2 border-white/20 order-1 md:order-2 shadow-xl hover:shadow-cyan-500/30 transition-shadow duration-500">
+                {!cabinImageLoaded ? (
+                  <div className="w-full h-full flex items-center justify-center text-gray-500 text-sm">Cargando imagen del habitáculo...</div>
+                ) : (
+                  <img
+                    src={currentTruck.cabinImage}
+                    alt="Imagen del Habitáculo Mercedes-Benz Atego"
+                    className="w-full h-full object-cover object-center md:object-contain group-hover/cabin:scale-[1.05] transition-transform duration-700"
+                  />
+                )}
+              </div>
             </div>
+          </div>
         </div>
 
         {/* Premium Stats Grid */}
@@ -476,27 +475,27 @@ export default function Flota() {
             return (
               <div key={index} className="relative group/stat">
                 <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover/stat:opacity-20 rounded-3xl blur-2xl transition-all duration-700`}></div>
-                
+
                 <div className="relative p-8 sm:p-10 bg-gradient-to-br from-white/10 via-white/5 to-white/[0.02] border-2 border-white/20 group-hover/stat:border-white/40 rounded-3xl backdrop-blur-2xl hover:scale-105 transition-all duration-500 text-center shadow-2xl">
                   <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-5 group-hover/stat:opacity-10 transition-opacity duration-500 rounded-3xl`}></div>
-                  
+
                   <div className="relative">
                     <div className={`w-16 h-16 mx-auto mb-6 bg-gradient-to-br ${stat.color} rounded-2xl flex items-center justify-center group-hover/stat:scale-110 group-hover/stat:rotate-12 transition-all duration-500 shadow-xl`}>
                       <Icon className="w-8 h-8 text-white" />
                     </div>
-                    
+
                     <div className={`text-5xl sm:text-6xl font-black mb-3 bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}>
                       {stat.number}
                     </div>
-                    
+
                     <p className="text-white text-base sm:text-lg font-bold uppercase tracking-wider mb-2">
                       {stat.label}
                     </p>
-                    
+
                     <p className="text-gray-400 text-sm group-hover/stat:text-gray-300 transition-colors duration-300">
                       {stat.description}
                     </p>
-                    
+
                     <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-1/3 h-1 bg-gradient-to-r ${stat.color} opacity-0 group-hover/stat:opacity-100 transition-opacity duration-500 rounded-full`}></div>
                   </div>
                 </div>

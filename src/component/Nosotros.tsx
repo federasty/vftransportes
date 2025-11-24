@@ -57,7 +57,7 @@ export default function Nosotros() {
 
   useEffect(() => {
     setIsVisible(true);
-    
+
     const handleMouseMove = (e: MouseEvent) => {
       if (window.innerWidth > 1024) {
         setMousePosition({
@@ -66,7 +66,7 @@ export default function Nosotros() {
         });
       }
     };
-    
+
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
@@ -96,17 +96,17 @@ export default function Nosotros() {
       {/* Background Effects Premium */}
       <div className="fixed inset-0 overflow-hidden -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-black via-slate-950 to-black"></div>
-        
+
         {/* Animated Gradient Orbs */}
         <div className="absolute inset-0">
           <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-blue-600/20 via-purple-600/10 to-transparent rounded-full blur-[120px] animate-mesh-move-1"></div>
           <div className="absolute bottom-0 right-0 w-[700px] h-[700px] bg-gradient-to-br from-fuchsia-600/20 via-pink-600/10 to-transparent rounded-full blur-[120px] animate-mesh-move-2"></div>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-br from-cyan-600/15 via-blue-600/5 to-transparent rounded-full blur-[100px] animate-pulse-slow"></div>
         </div>
-        
+
         {/* Grid Pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_50%,black_20%,transparent_100%)]"></div>
-        
+
         {/* Mouse Follow Effect */}
         <div
           className="absolute w-[600px] h-[600px] rounded-full blur-[150px] opacity-10 transition-all duration-700 pointer-events-none hidden lg:block"
@@ -117,7 +117,7 @@ export default function Nosotros() {
             transform: 'translate(-50%, -50%)'
           }}
         />
-        
+
         {/* Floating Particles */}
         {[...Array(40)].map((_, i) => {
           const size = Math.random() * 4 + 1;
@@ -140,38 +140,38 @@ export default function Nosotros() {
       </div>
 
       <div className={`relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-        
+
         {/* Hero Header */}
         <header className="text-center mb-20 sm:mb-24">
           <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/5 border border-white/10 backdrop-blur-xl rounded-full mb-8 group hover:bg-white/10 hover:border-white/20 transition-all duration-500">
             <Users className="w-6 h-6 text-fuchsia-400 group-hover:rotate-12 transition-transform duration-500" />
             <span className="text-white font-bold tracking-[0.2em] uppercase text-sm">Nuestra Historia</span>
-            <div className="w-2 h-2 bg-gradient-to-r from-fuchsia-400 to-purple-400 rounded-full animate-pulse"></div>
+            <div className="w-2 h-2 bg-gradient-to-r from-fuchsia-400 to-purple-400 rounded-full animate-pulse shadow-[0_0_10px_rgba(232,121,249,0.8)]"></div>
+            <div className="w-2 h-2 bg-gradient-to-r from-fuchsia-400 to-purple-400 rounded-full animate-pulse shadow-[0_0_10px_rgba(232,121,249,0.8)]" style={{ animationDelay: '0.3s' }}></div>
+            <div className="w-2 h-2 bg-gradient-to-r from-fuchsia-400 to-purple-400 rounded-full animate-pulse shadow-[0_0_10px_rgba(232,121,249,0.8)]" style={{ animationDelay: '0.6s' }}></div>
           </div>
-          
-          
 
-           <header className="text-center mb-20 sm:mb-24">
-    <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black mb-6">
-        <span className="bg-gradient-to-r from-white via-blue-200 to-white bg-clip-text text-transparent">
-            Quiénes Somos
-        </span>
-    </h1>
+          <header className="text-center mb-20 sm:mb-24">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black mb-6">
+              <span className="bg-gradient-to-r from-white via-blue-200 to-white bg-clip-text text-transparent">
+                Quiénes Somos
+              </span>
+            </h1>
 
-    <div className="h-1.5 w-32 mx-auto bg-gradient-to-r from-transparent via-fuchsia-500 to-transparent rounded-full mb-8"></div>
-    
-    <p className="text-gray-400 text-lg sm:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed">
-        Liderando la industria del transporte con <span className="text-white font-bold">excelencia</span>, 
-        <span className="text-white font-bold"> innovación</span> y <span className="text-white font-bold">compromiso</span>
-    </p>
-</header>
-          
-          
+            <div className="h-1.5 w-32 mx-auto bg-gradient-to-r from-transparent via-fuchsia-500 to-transparent rounded-full mb-8"></div>
+
+            <p className="text-gray-400 text-lg sm:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed">
+              Liderando la industria del transporte con <span className="text-white font-bold">excelencia</span>,
+              <span className="text-white font-bold"> innovación</span> y <span className="text-white font-bold">compromiso</span>
+            </p>
+          </header>
+
+
         </header>
-        
+
         {/* Video Section with Enhanced Design */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-32">
-          
+
           {/* Text Column */}
           <div className="space-y-8 lg:order-2">
             <div className="space-y-6">
@@ -182,16 +182,16 @@ export default function Nosotros() {
                 <br />
                 <span className="text-white">Compromiso en Movimiento</span>
               </h2>
-              
+
               <div className="h-1 w-24 bg-gradient-to-r from-fuchsia-500 to-purple-500 rounded-full"></div>
             </div>
-            
+
             <p className="text-gray-300 text-lg leading-relaxed">
               Somos <span className="text-white font-bold">VF Transportes</span>, una empresa líder en el sector logístico y de transporte pesado con una trayectoria sólida construida sobre años de excelencia operativa. Nuestra misión es <span className="text-blue-400 font-semibold">superar constantemente las expectativas</span> de nuestros clientes.
             </p>
 
-            
-            
+
+
             <div className="relative p-6 bg-gradient-to-br from-blue-500/10 via-purple-500/5 to-transparent border border-blue-500/20 rounded-2xl backdrop-blur-sm">
               <div className="absolute top-4 left-4">
                 <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
@@ -202,7 +202,7 @@ export default function Nosotros() {
                 "Desde nuestros inicios, nos hemos enfocado en construir relaciones duraderas basadas en la <span className="text-blue-400 font-bold">confianza</span> y el <span className="text-fuchsia-400 font-bold">servicio de calidad</span>, invirtiendo constantemente en la flota más moderna y la tecnología más avanzada."
               </p>
             </div>
-            
+
             <div className="flex items-center gap-4 p-4 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm">
               <Clock className="w-8 h-8 text-cyan-400 flex-shrink-0" />
               <div>
@@ -211,13 +211,13 @@ export default function Nosotros() {
               </div>
             </div>
           </div>
-          
+
           {/* Video Column with Premium Effects */}
           <div className="relative group lg:order-1">
             <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/20 via-purple-500/10 to-blue-500/20 rounded-3xl blur-3xl group-hover:blur-[100px] transition-all duration-700"></div>
-            
+
             <div className="relative aspect-video bg-gradient-to-br from-gray-900 via-slate-900 to-black rounded-3xl overflow-hidden shadow-2xl border-2 border-white/10 group-hover:border-fuchsia-500/50 transition-all duration-700 group-hover:scale-[1.02]">
-              
+
               <video
                 ref={videoRef}
                 src="/camion3.mp4"
@@ -230,16 +230,16 @@ export default function Nosotros() {
               >
                 Tu navegador no soporta el elemento de video.
               </video>
-              
+
               {/* Video Overlay Effects */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
-              
+
               {/* Shine Effect on Hover */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none">
                 <div className="absolute top-0 -left-full h-full w-1/2 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 animate-shine"></div>
               </div>
-              
-             
+
+
             </div>
           </div>
         </div>
@@ -251,15 +251,15 @@ export default function Nosotros() {
             return (
               <div key={index} className="relative group">
                 <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-10 rounded-3xl blur-2xl transition-all duration-700`}></div>
-                
+
                 <div className="relative p-8 sm:p-10 bg-gradient-to-br from-white/5 via-white/[0.02] to-transparent border-2 border-white/10 group-hover:border-white/30 rounded-3xl backdrop-blur-xl transition-all duration-500 group-hover:scale-[1.02]">
                   <div className={`w-16 h-16 bg-gradient-to-br ${item.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
                     <Icon className="w-8 h-8 text-white" />
                   </div>
-                  
+
                   <h3 className="text-3xl font-black text-white mb-4">{item.title}</h3>
                   <p className="text-gray-300 text-lg leading-relaxed">{item.description}</p>
-                  
+
                   <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${item.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
                 </div>
               </div>
@@ -279,30 +279,30 @@ export default function Nosotros() {
               Los valores que nos definen y guían cada decisión que tomamos
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
             {INFO_CARDS.map((card, index) => {
               const Icon = card.icon;
               return (
                 <div key={index} className="relative group">
                   <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} opacity-0 group-hover:opacity-20 rounded-3xl blur-2xl transition-all duration-700`}></div>
-                  
+
                   <div className="relative p-8 bg-gradient-to-br from-white/5 via-white/[0.02] to-transparent border-2 border-white/10 group-hover:border-white/30 rounded-3xl backdrop-blur-xl transition-all duration-500 group-hover:scale-[1.05] h-full">
                     <div className={`absolute inset-0 bg-gradient-to-br ${card.bg} opacity-50 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl`}></div>
-                    
+
                     <div className="relative z-10 space-y-4">
                       <div className={`w-14 h-14 bg-gradient-to-br ${card.gradient} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500`}>
                         <Icon className="w-7 h-7 text-white" />
                       </div>
-                      
+
                       <h4 className="text-2xl font-black text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300 group-hover:bg-clip-text transition-all duration-300">
                         {card.title}
                       </h4>
-                      
+
                       <p className="text-gray-400 text-base leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                         {card.description}
                       </p>
-                      
+
                       <div className={`w-12 h-1 bg-gradient-to-r ${card.gradient} rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500`}></div>
                     </div>
                   </div>
@@ -319,14 +319,14 @@ export default function Nosotros() {
             return (
               <div key={index} className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-                
+
                 <div className="relative p-6 sm:p-8 bg-gradient-to-br from-white/5 via-white/[0.02] to-transparent border border-white/10 group-hover:border-white/30 rounded-2xl backdrop-blur-xl transition-all duration-500 group-hover:scale-105 text-center">
                   <Icon className="w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-4 text-blue-400 group-hover:text-fuchsia-400 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500" />
-                  
+
                   <div className="text-4xl sm:text-5xl font-black mb-2 bg-gradient-to-r from-blue-400 to-fuchsia-400 bg-clip-text text-transparent">
                     {stat.number}
                   </div>
-                  
+
                   <p className="text-gray-400 text-xs sm:text-sm font-semibold uppercase tracking-wider group-hover:text-white transition-colors duration-300">
                     {stat.label}
                   </p>
@@ -339,19 +339,19 @@ export default function Nosotros() {
         {/* CTA Section */}
         <div className="relative">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-fuchsia-500/10 rounded-3xl blur-3xl"></div>
-          
+
           <div className="relative p-12 sm:p-16 bg-gradient-to-br from-white/5 via-white/[0.02] to-transparent border-2 border-white/10 rounded-3xl backdrop-blur-xl text-center">
             <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-6">
               <span className="bg-gradient-to-r from-white via-blue-200 to-white bg-clip-text text-transparent">
                 ¿Listo para la Excelencia?
               </span>
             </h3>
-            
+
             <p className="text-gray-300 text-lg sm:text-xl max-w-3xl mx-auto mb-10 leading-relaxed">
-              Experimente la diferencia de una logística impulsada por la <span className="text-blue-400 font-bold">innovación</span>, 
+              Experimente la diferencia de una logística impulsada por la <span className="text-blue-400 font-bold">innovación</span>,
               la <span className="text-fuchsia-400 font-bold">dedicación</span> y el <span className="text-purple-400 font-bold">compromiso absoluto</span> con su éxito
             </p>
-            
+
             <a
               href="/servicios"
               className="inline-flex items-center justify-center gap-3 px-10 py-5 font-bold text-lg rounded-full transition-all duration-500 transform hover:scale-105 shadow-2xl backdrop-blur-sm group bg-gradient-to-r from-blue-600 via-purple-600 to-fuchsia-600 text-white hover:shadow-[0_0_60px_rgba(139,92,246,0.6)]"
@@ -362,7 +362,7 @@ export default function Nosotros() {
             </a>
           </div>
         </div>
-        
+
       </div>
 
       <style>{`

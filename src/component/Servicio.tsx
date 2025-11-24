@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Truck, MapPin, Clock, Shield, Package, TrendingUp, CheckCircle2, Star, Zap, Award, Target, Users, ArrowRight, Phone, Layers, Mountain, Construction, Factory } from 'lucide-react';
+import { Truck, MapPin, Clock, Shield, Package, TrendingUp, CheckCircle2, Star, Award, Target, Users, ArrowRight, Phone, Layers, Mountain, Construction, Factory } from 'lucide-react';
 
 interface Service {
     icon: React.ElementType;
@@ -89,54 +89,52 @@ const services: Service[] = [
         glowColor: 'rgba(20, 184, 166, 0.4)'
     }
 ];
-
 const materials: Material[] = [
-    { icon: Layers, name: 'Balastro', description: 'Todo tipo y granulometría', gradient: 'from-green-500 to-emerald-500' },
-    { icon: Mountain, name: 'Pedregullo', description: 'Varios tamaños disponibles', gradient: 'from-emerald-500 to-teal-500' },
-    { icon: Package, name: 'Arena', description: 'Fina, gruesa y especializada', gradient: 'from-teal-500 to-cyan-500' },
-    { icon: Mountain, name: 'Piedra', description: 'Triturada y decorativa', gradient: 'from-lime-500 to-green-500' },
-    { icon: Construction, name: 'Tosca', description: 'Para relleno y base', gradient: 'from-green-600 to-emerald-600' },
-    { icon: Layers, name: 'Tierra Negra', description: 'Fertilizada y compactada', gradient: 'from-emerald-600 to-teal-600' },
-    { icon: Factory, name: 'Escombros', description: 'Retiro y transporte', gradient: 'from-teal-600 to-cyan-600' },
-    { icon: Package, name: 'Materiales Especiales', description: 'Según requerimiento', gradient: 'from-lime-600 to-green-600' }
+    { icon: Layers, name: 'Balastro', description: 'Todo tipo y granulometría', gradient: 'from-blue-500 to-cyan-400' },          // Azul Frío a Cian
+    { icon: Mountain, name: 'Pedregullo', description: 'Varios tamaños disponibles', gradient: 'from-red-500 to-orange-500' },    // Rojo Vibrante a Naranja
+    { icon: Package, name: 'Arena', description: 'Fina, gruesa y especializada', gradient: 'from-amber-400 to-yellow-300' },     // Dorado a Amarillo Claro
+    { icon: Mountain, name: 'Piedra', description: 'Triturada y decorativa', gradient: 'from-violet-600 to-fuchsia-500' },       // Violeta Oscuro a Fucsia
+    { icon: Construction, name: 'Tosca', description: 'Para relleno y base', gradient: 'from-green-600 to-emerald-500' },        // Verde Bosque a Esmeralda
+    { icon: Layers, name: 'Tierra Negra', description: 'Fertilizada y compactada', gradient: 'from-gray-500 to-stone-400' },      // Gris Oscuro a Piedra (Neutro)
+    { icon: Factory, name: 'Escombros', description: 'Retiro y transporte', gradient: 'from-teal-400 to-lime-400' },             // Verde Azulado a Lima
+    { icon: Package, name: 'Materiales Especiales', description: 'Según requerimiento', gradient: 'from-pink-500 to-rose-400' }    // Rosa Cálido a Rosa Claro
 ];
-
 const benefits: Benefit[] = [
     {
         icon: Clock,
         title: 'Puntualidad Garantizada',
         description: 'Compromiso absoluto con los tiempos de entrega acordados. Nuestro historial de cumplimiento es del 100%, optimizando la planificación de sus proyectos.',
-        color: 'from-green-400 to-emerald-400'
+        color: 'from-blue-500 to-sky-500' // ¡Cambiado! Azul a Cielo
     },
     {
         icon: Shield,
         title: 'Seguridad Certificada',
-        description: 'Protocolos de seguridad ISO 9001, personal capacitado continuamente y cobertura de seguro completa para su absoluta tranquilidad.',
-        color: 'from-emerald-400 to-teal-400'
+        description: 'Protocolos de seguridad ISO 9001, personal capacitado continuamente para su absoluta tranquilidad.',
+        color: 'from-red-500 to-pink-500' // ¡Cambiado! Rojo a Rosa
     },
     {
         icon: Award,
         title: 'Flota Premium',
-        description: 'Vehículos 100% Mercedes-Benz con tecnología BlueTec 5, mantenimiento preventivo riguroso y renovación constante de unidades.',
-        color: 'from-teal-400 to-cyan-400'
+        description: 'Vehículos 100% Mercedes-Benz con tecnología BlueTec 5, mantenimiento preventivo riguroso y constante de unidades.',
+        color: 'from-yellow-500 to-amber-500' // ¡Cambiado! Amarillo a Ámbar
     },
     {
         icon: Users,
         title: 'Equipo Profesional',
-        description: 'Conductores certificados con más de 5 años de experiencia, capacitación continua y evaluaciones periódicas de desempeño.',
-        color: 'from-lime-400 to-green-400'
+        description: 'Conductores certificados con mucha experiencia, con una capacitación continua y evaluaciones periódicas de desempeño.',
+        color: 'from-fuchsia-500 to-purple-500' // ¡Cambiado! Fucsia a Morado
     },
     {
         icon: Star,
         title: 'Excelencia Operativa',
-        description: 'Procesos optimizados, tecnología de rastreo avanzada y sistemas de gestión que garantizan eficiencia en cada operación.',
-        color: 'from-green-500 to-emerald-500'
+        description: 'Procesos optimizados con un sistema de gestión que garantiza eficiencia en cada operación.',
+        color: 'from-indigo-600 to-blue-600' // ¡Cambiado! Índigo a Azul Profundo
     },
     {
         icon: TrendingUp,
         title: 'Mejora Continua',
         description: 'Inversión constante en tecnología, capacitación del personal y actualización de procedimientos para mantenernos a la vanguardia.',
-        color: 'from-emerald-500 to-teal-500'
+        color: 'from-teal-400 to-emerald-400' // ¡Cambiado! Verde-Azulado (Manteniendo un toque de color anterior, pero diferente)
     }
 ];
 

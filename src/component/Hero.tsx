@@ -70,15 +70,7 @@ export default function Hero() {
         {/* 1. MESH GRADIENT BASE */}
         <div className="absolute inset-0 bg-gradient-to-br from-black via-slate-950 to-black"></div>
 
-        {/* 1.5. IMAGEN DE FONDO (rueda.png) - AÑADIDA AQUÍ */}
-        <div className="absolute inset-0">
-          <img
-            src="/rueda.png" // ⬅️ Ruta en la carpeta public
-            alt="Fondo de Rueda Industrial"
-            className="w-full h-full object-cover opacity-[0.03] mix-blend-lighten pointer-events-none" // Opacidad muy baja (3%)
-            style={{ transform: 'scale(1.2)' }}
-          />
-        </div>
+    
 
         {/* 2. ANIMATED MESH GRADIENT ORBS */}
         <div className="absolute inset-0">
@@ -194,28 +186,18 @@ export default function Hero() {
 {/* Premium Badge (Contenedor con relative) */}
 <div className="text-center mb-8 sm:mb-10 lg:mb-12 relative"> 
     {/* Contenedor del Badge */}
-    <div className="inline-flex items-center gap-2 sm:gap-3 px-4 py-2 sm:px-6 sm:py-3 lg:px-8 lg:py-4 bg-white/5 border border-white/10 backdrop-blur-xl hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all duration-500 group cursor-pointer rounded-full shadow-[0_0_50px_rgba(255,255,255,0.1)]">
-        <Award className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white group-hover:rotate-12 group-hover:scale-110 transition-all duration-500" />
-        <span className="text-white font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase text-[10px] sm:text-xs lg:text-sm">Líder en Transporte Pesado</span>
-        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-pulse shadow-[0_0_10px_rgba(59,130,246,0.8)]"></div>
-    </div>
+  <div className="inline-flex items-center gap-2 sm:gap-3 px-4 py-2 sm:px-6 sm:py-3 lg:px-8 lg:py-4 bg-white/5 border border-white/10 backdrop-blur-xl hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all duration-500 group cursor-pointer rounded-full shadow-[0_0_50px_rgba(255,255,255,0.1)]">
+  <Award className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white group-hover:rotate-12 group-hover:scale-110 transition-all duration-500" />
+  <span className="text-white font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase text-xs sm:text-sm lg:text-base">Líder en Transporte Pesado</span>
+  <div className="flex gap-1.5">
+   <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
+<div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(168,85,247,0.8)] [animation-delay:0.2s]"></div>
+<div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(168,85,247,0.8)] [animation-delay:0.4s]"></div>
+  </div>
+</div>
     
     
-  {/* ⚙️ RUEDA DERECHA (Más cerca del badge) */}
-    <img
-        src="/rueda.png" 
-        alt="Símbolo de Rueda" 
-        className="absolute w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 top-1/2 -translate-y-1/2 opacity-70 animate-spin-slow pointer-events-none brightness-200 contrast-125"
-        style={{ right: '05px', filter: 'brightness(1) contrast(1.25) saturate(0)' }} 
-    />
-    
-    {/* ⚙️ RUEDA IZQUIERDA (Más cerca del badge) */}
-    <img
-        src="/rueda.png" 
-        alt="Símbolo de Rueda" 
-        className="absolute w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 top-1/2 -translate-y-1/2 opacity-70 animate-spin-slow-reverse pointer-events-none brightness-200 contrast-125"
-        style={{ left: '05px', filter: 'brightness(1) contrast(1.25) saturate(0)' }} 
-    />
+ 
 </div>
 
          {/* Premium Logo Section */}

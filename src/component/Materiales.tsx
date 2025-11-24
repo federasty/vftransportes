@@ -160,12 +160,12 @@ export default function Materiales() {
             <div className={`w-2 h-2 bg-gradient-to-r from-${ORANGE_PRIMARY}-400 to-${ORANGE_SECONDARY}-400 rounded-full animate-pulse shadow-[0_0_10px_rgba(251,146,60,0.8)]`} style={{ animationDelay: '0.3s' }}></div>
             <div className={`w-2 h-2 bg-gradient-to-r from-${ORANGE_PRIMARY}-400 to-${ORANGE_SECONDARY}-400 rounded-full animate-pulse shadow-[0_0_10px_rgba(251,146,60,0.8)]`} style={{ animationDelay: '0.6s' }}></div>
           </div>
-
           <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 text-white">
             Nuestros Materiales
           </h1>
+          <div className="h-1.5 w-32 mx-auto bg-gradient-to-r from-transparent via-orange-500 to-transparent rounded-full mb-8"></div>
 
-          <div className={`h-1.5 w-32 mx-auto bg-gradient-to-r from-transparent via-${ORANGE_PRIMARY}-500 to-transparent rounded-full mb-8`}></div>
+
 
           <p className="text-gray-400 text-lg sm:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed mb-16">
             Suministramos materiales de <span className="text-white font-bold">primera categoría</span>, garantizando
@@ -262,7 +262,7 @@ export default function Materiales() {
 
             <h3 className="text-4xl sm:text-5xl font-black text-white mb-4">
               <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent drop-shadow-2xl">
-                Catálogo 
+                Catálogo
               </span>
             </h3>
 

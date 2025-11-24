@@ -186,15 +186,71 @@ export default function Hero() {
 {/* Premium Badge (Contenedor con relative) */}
 <div className="text-center mb-8 sm:mb-10 lg:mb-12 relative"> 
     {/* Contenedor del Badge */}
-  <div className="inline-flex items-center gap-2 sm:gap-3 px-4 py-2 sm:px-6 sm:py-3 lg:px-8 lg:py-4 bg-white/5 border border-white/10 backdrop-blur-xl hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all duration-500 group cursor-pointer rounded-full shadow-[0_0_50px_rgba(255,255,255,0.1)]">
-  <Award className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white group-hover:rotate-12 group-hover:scale-110 transition-all duration-500" />
-  <span className="text-white font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase text-xs sm:text-sm lg:text-base">Líder en Transporte Pesado</span>
-  <div className="flex gap-1.5">
-   <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(168,85,247,0.8)]"></div>
-<div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(168,85,247,0.8)] [animation-delay:0.2s]"></div>
-<div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(168,85,247,0.8)] [animation-delay:0.4s]"></div>
+<div className="relative inline-flex group/badge cursor-pointer">
+  {/* Glow exterior premium */}
+  <div className="absolute -inset-2 bg-gradient-to-r from-purple-500/30 via-pink-500/30 to-purple-500/30 rounded-full blur-xl opacity-0 group-hover/badge:opacity-100 transition-opacity duration-700"></div>
+  
+  {/* Badge principal */}
+  <div className="relative inline-flex items-center gap-2 sm:gap-3 px-4 py-2 sm:px-6 sm:py-3 lg:px-8 lg:py-4 bg-gradient-to-r from-white/[0.08] via-white/[0.05] to-white/[0.08] border border-white/20 backdrop-blur-2xl rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.4)] group-hover/badge:shadow-[0_8px_48px_rgba(168,85,247,0.4)] group-hover/badge:border-purple-400/40 group-hover/badge:scale-105 transition-all duration-500 overflow-hidden">
+    
+    {/* Shimmer effect animado */}
+    <div className="absolute inset-0 translate-x-[-100%] group-hover/badge:translate-x-[100%] transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+    
+    {/* Icono con animación */}
+    <div className="relative flex items-center justify-center">
+      <div className="absolute inset-0 bg-purple-500/20 rounded-full blur-md group-hover/badge:bg-purple-400/30 transition-colors duration-500"></div>
+      <Award className="relative w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] group-hover/badge:rotate-12 group-hover/badge:scale-110 transition-all duration-500" />
+    </div>
+    
+    {/* Texto premium */}
+    <span className="relative text-white font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase text-xs sm:text-sm lg:text-base drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+      Líder en Transporte Pesado
+    </span>
+    
+    {/* Puntos animados con gradiente blanco-púrpura-blanco */}
+    <div className="relative flex gap-1.5">
+      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full shadow-[0_0_12px_rgba(168,85,247,0.9)] animate-pulse-glow" style={{
+        background: 'linear-gradient(90deg, white 0%, #a855f7 50%, white 100%)',
+        backgroundSize: '200% 100%',
+        animation: 'pulse-glow 2s ease-in-out infinite, gradient-shift 3s ease-in-out infinite'
+      }}></div>
+      
+      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full shadow-[0_0_12px_rgba(168,85,247,0.9)]" style={{
+        background: 'linear-gradient(90deg, white 0%, #a855f7 50%, white 100%)',
+        backgroundSize: '200% 100%',
+        animation: 'pulse-glow 2s ease-in-out infinite 0.3s, gradient-shift 3s ease-in-out infinite 0.3s'
+      }}></div>
+      
+      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full shadow-[0_0_12px_rgba(168,85,247,0.9)]" style={{
+        background: 'linear-gradient(90deg, white 0%, #a855f7 50%, white 100%)',
+        backgroundSize: '200% 100%',
+        animation: 'pulse-glow 2s ease-in-out infinite 0.6s, gradient-shift 3s ease-in-out infinite 0.6s'
+      }}></div>
+    </div>
   </div>
 </div>
+
+<style >{`
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(0.9);
+    }
+  }
+  
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+`}</style>
     
     
  

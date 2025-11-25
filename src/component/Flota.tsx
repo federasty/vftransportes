@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Truck, Shield, Award, Zap, Star, Clock, Users, TrendingUp, Package, Settings, CheckCircle } from 'lucide-react';
+import { Truck, Shield, Award, Zap, Star, Clock, Users, TrendingUp, Package, Settings, CheckCircle, BadgeCheck, Gauge } from 'lucide-react';
 
 
 // Tipado para un componente más limpio
@@ -97,10 +97,12 @@ const trucks: TruckModel[] = [
 ];
 
 const certifications: Certification[] = [
-  { icon: Star, text: 'Flota 100% Mercedes-Benz', color: 'from-yellow-400 to-orange-400', bgGlow: 'from-yellow-500/20' },
-  { icon: Shield, text: 'Certificación ISO 9001', color: 'from-blue-400 to-cyan-400', bgGlow: 'from-blue-500/20' },
-  { icon: Zap, text: 'Tecnología BlueTec 5', color: 'from-green-400 to-emerald-400', bgGlow: 'from-green-500/20' }
+  { icon: Truck, text: 'Flota Certificada', color: 'from-yellow-400 to-orange-500', bgGlow: 'from-yellow-400 to-orange-400' },
+  { icon: Gauge, text: 'Motores de Alta Eficiencia', color: 'from-green-400 to-emerald-400', bgGlow: 'from-green-500/20' },
+  { icon: BadgeCheck, text: 'Mantenimiento Preventivo', color: 'from-blue-400 to-cyan-400', bgGlow: 'from-blue-500/20' }
 ];
+
+
 
 const stats: Stat[] = [
   { number: '100%', label: 'Flota Mercedes-Benz', icon: Truck, color: 'from-blue-400 to-cyan-400', description: 'Calidad alemana certificada y estandarizada' },
@@ -225,21 +227,41 @@ export default function Flota() {
             Flota 100% "Mercedes-Benz Atego", equipamiento alemán de primer nivel para garantizar "seguridad absoluta", "eficiencia máxima" y "confiabilidad total" en cada transporte.
           </p>
         </div>
-
         {/* Premium Certifications */}
-        <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-16 sm:mb-20">
+        <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-16 sm:mb-20 px-4">
           {certifications.map((cert, index) => {
             const Icon = cert.icon;
             return (
-              <div key={index} className="group relative overflow-hidden">
-                <div className={`absolute inset-0 bg-gradient-to-r ${cert.bgGlow} to-transparent rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-                <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-white/[0.02] border-2 border-white/20 hover:border-white/40 rounded-full px-6 py-3 sm:px-8 sm:py-4 backdrop-blur-2xl transition-all duration-500 hover:scale-105 shadow-xl hover:shadow-2xl">
-                  <div className="flex items-center gap-3">
-                    <div className={`w-10 h-10 bg-gradient-to-br ${cert.color} rounded-lg flex items-center justify-center group-hover:scale-110 transition-all duration-500`}>
-                      <Icon className="w-5 h-5 text-white" />
+              <div key={index} className="group relative p-2">
+                {/* Glow effect exterior - solo en hover */}
+                <div className={`absolute -inset-2 bg-gradient-to-r ${cert.bgGlow} to-transparent rounded-full blur-xl opacity-0 group-hover:opacity-60 group-active:opacity-70 transition-all duration-700`}></div>
+
+                {/* Segundo glow más intenso - solo en hover */}
+                <div className={`absolute -inset-1 bg-gradient-to-r ${cert.bgGlow} to-transparent rounded-full blur-md opacity-0 group-hover:opacity-40 group-active:opacity-50 transition-all duration-500`}></div>
+
+                {/* Card principal con efecto glassmorphism mejorado */}
+                <div className="relative bg-gradient-to-br from-white/[0.15] via-white/[0.08] to-transparent border border-white/30 group-hover:border-white/50 group-active:border-white/60 rounded-full px-5 py-2.5 sm:px-7 sm:py-3.5 backdrop-blur-xl transition-all duration-500 group-hover:scale-[1.03] group-active:scale-[1.01] shadow-[0_8px_32px_0_rgba(255,255,255,0.1)] group-hover:shadow-[0_8px_48px_0_rgba(255,255,255,0.2)] group-hover:translate-y-[-2px] group-active:translate-y-[-1px]">
+                  <div className="flex items-center gap-2.5 sm:gap-3">
+                    {/* Icon container con efecto shine */}
+                    <div className="relative">
+                      <div className={`w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br ${cert.color} rounded-lg flex items-center justify-center group-hover:scale-110 group-active:scale-105 transition-all duration-500 shadow-lg group-hover:shadow-xl relative overflow-hidden`}>
+                        {/* Shine effect - solo en hover */}
+                        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/30 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
+                        <Icon className="w-5 h-5 text-white relative z-10" />
+                      </div>
                     </div>
-                    <span className="text-white text-sm sm:text-base font-bold tracking-wide">{cert.text}</span>
+
+                    {/* Text con gradient sutil */}
+                    <span className="text-white text-sm sm:text-base font-bold tracking-wide whitespace-nowrap">
+                      {cert.text}
+                    </span>
                   </div>
+                </div>
+
+                {/* Particle effect - solo en hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+                  <div className={`absolute top-0 left-1/4 w-1 h-1 bg-white rounded-full animate-ping`}></div>
+                  <div className={`absolute top-1/2 right-1/4 w-1 h-1 bg-white rounded-full animate-ping`} style={{ animationDelay: '200ms' }}></div>
                 </div>
               </div>
             );
@@ -255,8 +277,8 @@ export default function Flota() {
                 key={index}
                 onClick={() => setSelectedTruck(index)}
                 className={`relative px-8 py-4 sm:px-12 sm:py-6 rounded-2xl font-black text-base sm:text-lg tracking-wider transition-all duration-500 overflow-hidden group backdrop-blur-2xl shadow-2xl ${selectedTruck === index
-                    ? 'bg-gradient-to-r from-white/15 to-white/10 border-2 border-white/40 scale-105'
-                    : 'bg-gradient-to-r from-white/5 to-white/[0.02] border-2 border-white/20 hover:bg-gradient-to-r hover:from-white/10 hover:to-white/5 hover:border-white/30 hover:scale-[1.02]'
+                  ? 'bg-gradient-to-r from-white/15 to-white/10 border-2 border-white/40 scale-105'
+                  : 'bg-gradient-to-r from-white/5 to-white/[0.02] border-2 border-white/20 hover:bg-gradient-to-r hover:from-white/10 hover:to-white/5 hover:border-white/30 hover:scale-[1.02]'
                   }`}
               >
                 <div className={`absolute inset-0 bg-gradient-to-r ${truck.gradient} opacity-0 ${selectedTruck === index ? 'opacity-20' : 'group-hover:opacity-10'} transition-all duration-500`}></div>

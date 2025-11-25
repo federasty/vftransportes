@@ -152,7 +152,7 @@ const processSteps: Process[] = [
     {
         number: '04',
         title: 'Confirmación y Seguimiento',
-        description: "Confirmación de entrega finalizada, registro documental completo, firma de recepción para asegurar su plena satisfacción.",
+        description: "Confirmación de entrega finalizada, registro de documentos completo, firma de recepción para asegurar su plena satisfacción.",
         icon: CheckCircle2
     }
 ];
@@ -253,7 +253,7 @@ export default function Servicio() {
                 <div className="text-center mb-20 sm:mb-24">
                     <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-white/10 via-white/5 to-white/10 border border-white/20 backdrop-blur-2xl rounded-full mb-10 group hover:bg-gradient-to-r hover:from-green-500/20 hover:via-emerald-500/10 hover:to-green-500/20 hover:border-green-400/40 transition-all duration-500 shadow-[0_0_40px_rgba(16,185,129,0.1)] hover:shadow-[0_0_60px_rgba(16,185,129,0.3)]">
                         <Package className="w-7 h-7 text-green-400 group-hover:rotate-12 group-hover:scale-110 transition-transform duration-500" />
-                        <span className="text-white font-black tracking-[0.3em] uppercase text-base">Servicios de Excelencia</span>
+                        <span className="text-white font-black tracking-[0.3em] uppercase text-base">Atención de primer nivel</span>
                         <div className="flex gap-1.5">
                             <div className="w-2 h-2 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]"></div>
                             <div className="w-2 h-2 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]" style={{ animationDelay: '0.3s' }}></div>

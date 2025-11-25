@@ -5,7 +5,7 @@ const INFO_CARDS = [
   {
     icon: ShieldCheck,
     title: 'Seguridad',
-    description: 'Priorizamos la integridad de la carga y el personal. Nuestros protocolos de seguridad son rigurosos, certificados bajo normas internacionales.',
+    description: 'Priorizamos la integridad de la carga y el personal. Nuestros protocolos de seguridad son rigurosos, certificados bajo normas nacionales.',
     color: 'text-emerald-400',
     bg: 'from-emerald-500/10 to-transparent',
     gradient: 'from-emerald-600 to-teal-500',
@@ -13,7 +13,7 @@ const INFO_CARDS = [
   {
     icon: Award,
     title: 'Experiencia',
-    description: 'Con años en el sector, garantizamos conocimiento logístico profundo y la capacidad de resolver cualquier desafío en ruta.',
+    description: 'Con años en el sector, garantizamos conocimiento logístico y la capacidad de resolver cualquier desafío en ruta.',
     color: 'text-amber-400',
     bg: 'from-amber-500/10 to-transparent',
     gradient: 'from-amber-600 to-orange-500',
@@ -21,7 +21,7 @@ const INFO_CARDS = [
   {
     icon: TrendingUp,
     title: 'Eficiencia',
-    description: 'Optimizamos rutas y tiempos de entrega mediante tecnología de punta, asegurando la máxima rentabilidad para su negocio.',
+    description: 'Optimizamos rutas y tiempos de entrega , asegurando la máxima rentabilidad para su negocio.',
     color: 'text-blue-400',
     bg: 'from-blue-500/10 to-transparent',
     gradient: 'from-blue-600 to-cyan-500',
@@ -39,7 +39,7 @@ const MISSION_VISION = [
   {
     icon: Target,
     title: 'Nuestra Misión',
-    description: 'Proveer soluciones de transporte integral que superen las expectativas, combinando seguridad, eficiencia y tecnología de vanguardia para garantizar el éxito logístico de nuestros clientes.',
+    description: 'Proveer soluciones de transporte integral que superen las expectativas, combinando seguridad, eficiencia y tecnología para garantizar el éxito logístico de nuestros clientes.',
     gradient: 'from-blue-600 to-purple-600',
   },
   {

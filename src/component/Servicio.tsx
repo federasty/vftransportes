@@ -35,13 +35,11 @@ const services: Service[] = [
     {
         icon: Truck,
         title: 'Transporte de Materiales de Cantera',
-        description: 'Servicio integral especializado en el movimiento de todo tipo de materiales de construcción con flota Mercedes-Benz de última generación.',
+        description: 'Servicio integral especializado en el movimiento de todo tipo de materiales de construcción.',
         features: [
             'Flota 100% Mercedes-Benz Atego 2425/2428',
             'Capacidad de hasta 17+ toneladas por viaje',
-            'Rutas optimizadas con 100% de eficiencia',
-            'Entregas puntuales con garantía de cumplimiento',
-            'Documentación completa y trazabilidad total'
+            'Entregas puntuales con garantía de cumplimiento', 
         ],
         gradient: 'from-green-600 via-emerald-500 to-teal-600',
         glowColor: 'rgba(16, 185, 129, 0.4)'
@@ -49,27 +47,23 @@ const services: Service[] = [
     {
         icon: Shield,
         title: 'Logística y Distribución Especializada',
-        description: 'Soluciones logísticas integrales con protocolos de seguridad certificados y personal altamente capacitado para operaciones complejas.',
+        description: 'Soluciones logísticas integrales con protocolos de seguridad certificados y personal altamente capacitado.',
         features: [
             'Planificación logística profesional',
-            'Certificaciones ISO 9001 y BlueTec 5',
             'Personal certificado en manejo de cargas pesadas',
             'Servicio de alta disponibilidad',
-            'Asesoramiento especializado'
         ],
         gradient: 'from-emerald-600 via-green-500 to-lime-600',
         glowColor: 'rgba(52, 211, 153, 0.4)'
     },
     {
         icon: Clock,
-        title: 'Transporte Programado y Urgente',
-        description: 'Flexibilidad total con servicios programados para proyectos a largo plazo y respuesta inmediata para necesidades urgentes.',
+        title: 'Transporte Programado',
+        description: 'Flexibilidad total con servicios programados para proyectos a largo plazo y respuesta inmediata para sus necesidades.',
         features: [
             'Programación flexible según su cronograma',
             'Entregas en horarios extendidos disponibles',
             'Coordinación con múltiples proyectos simultáneos',
-            'Sistemas de alerta y notificación automática',
-            'Gestión eficiente de flotas '
         ],
         gradient: 'from-lime-600 via-green-500 to-emerald-600',
         glowColor: 'rgba(132, 204, 22, 0.4)'
@@ -82,15 +76,13 @@ const services: Service[] = [
             'Análisis detallado de necesidades específicas',
             'Propuestas comerciales personalizadas',
             'Adaptación a volúmenes variables',
-            'Integración con sus sistemas de gestión',
-            'Soporte técnico dedicado permanente'
         ],
         gradient: 'from-teal-600 via-emerald-500 to-green-600',
         glowColor: 'rgba(20, 184, 166, 0.4)'
     }
 ];
 const materials: Material[] = [
-    { icon: Layers, name: 'Balastro', description: 'Todo tipo y granulometría', gradient: 'from-blue-500 to-cyan-400' },          // Azul Frío a Cian
+    { icon: Layers, name: 'Balasto', description: 'Todo tipo y granulometría', gradient: 'from-blue-500 to-cyan-400' },          // Azul Frío a Cian
     { icon: Mountain, name: 'Pedregullo', description: 'Varios tamaños disponibles', gradient: 'from-red-500 to-orange-500' },    // Rojo Vibrante a Naranja
     { icon: Package, name: 'Arena', description: 'Fina, gruesa y especializada', gradient: 'from-amber-400 to-yellow-300' },     // Dorado a Amarillo Claro
     { icon: Mountain, name: 'Piedra', description: 'Triturada y decorativa', gradient: 'from-violet-600 to-fuchsia-500' },       // Violeta Oscuro a Fucsia
@@ -103,25 +95,25 @@ const benefits: Benefit[] = [
     {
         icon: Clock,
         title: 'Puntualidad Garantizada',
-        description: 'Compromiso absoluto con los tiempos de entrega acordados. Nuestro historial de cumplimiento es del 100%, optimizando la planificación de sus proyectos.',
+        description: 'Compromiso absoluto con los tiempos de entrega acordados. Nuestro historial de cumplimiento es del 100%.',
         color: 'from-blue-500 to-sky-500' // ¡Cambiado! Azul a Cielo
     },
     {
         icon: Shield,
         title: 'Seguridad Certificada',
-        description: 'Protocolos de seguridad ISO 9001, personal capacitado continuamente para su absoluta tranquilidad.',
+        description: "Cumplimos estrictamente con todas las normativas nacionales de transporte, garantizando servicio seguro, responsable y supervisado.",
         color: 'from-red-500 to-pink-500' // ¡Cambiado! Rojo a Rosa
     },
     {
         icon: Award,
-        title: 'Flota Premium',
-        description: 'Vehículos 100% Mercedes-Benz con tecnología BlueTec 5, mantenimiento preventivo riguroso y constante de unidades.',
+        title: 'Flota de Primera Calidad',
+        description: 'Vehículos 100% Mercedes-Benz con un mantenimiento preventivo riguroso y constante de unidades.',
         color: 'from-yellow-500 to-amber-500' // ¡Cambiado! Amarillo a Ámbar
     },
     {
         icon: Users,
         title: 'Equipo Profesional',
-        description: 'Conductores certificados con mucha experiencia, con una capacitación continua y evaluaciones periódicas de desempeño.',
+        description: "Conductores plenamente habilitados y aptos para el servicio, evaluados regularmente para garantizar su desempeño y profesionalismo.",
         color: 'from-fuchsia-500 to-purple-500' // ¡Cambiado! Fucsia a Morado
     },
     {
@@ -142,25 +134,25 @@ const processSteps: Process[] = [
     {
         number: '01',
         title: 'Solicitud de Cotización',
-        description: 'Contáctenos a través de WhatsApp, teléfono o email. Nuestro equipo comercial responderá en menos de 2 horas hábiles con una cotización detallada y personalizada.',
+        description: 'Contáctenos a través de WhatsApp o llamada teléfonica. Nuestro equipo responderá en menos de 2 horas hábiles con una cotización detallada y personalizada.',
         icon: Phone
     },
     {
         number: '02',
         title: 'Planificación Estratégica',
-        description: 'Nuestros especialistas en logística diseñan la ruta óptima, programan horarios y coordinan todos los detalles según sus necesidades específicas.',
+        description:"Nuestro equipo analiza cada requerimiento y organiza rutas, tiempos y recursos para asegurar una planificación precisa y eficiente.",
         icon: MapPin
     },
     {
         number: '03',
         title: 'Ejecución Profesional',
-        description: 'Transporte con monitoreo GPS en tiempo real, comunicación constante durante todo el proceso y cumplimiento estricto de protocolos de seguridad.',
+        description: 'Comunicación continua durante el traslado y operación bajo estrictos estándares de seguridad.',
         icon: Truck
     },
     {
         number: '04',
         title: 'Confirmación y Seguimiento',
-        description: 'Verificación de entrega exitosa, documentación completa, firma de conformidad y seguimiento post-servicio para garantizar su satisfacción total.',
+        description: "Confirmación de entrega finalizada, registro documental completo, firma de recepción para asegurar su plena satisfacción.",
         icon: CheckCircle2
     }
 ];
@@ -493,7 +485,7 @@ export default function Servicio() {
                             <p className="text-gray-300 text-lg sm:text-xl lg:text-2xl max-w-4xl mx-auto mb-12 leading-relaxed">
                                 Solicite una cotización personalizada y descubra por qué somos la empresa líder en transporte de materiales.
                                 Nuestro equipo está listo para brindarle
-                                <span className="text-green-400 font-extrabold"> soluciones premium</span>,
+                                <span className="text-green-400 font-extrabold"> soluciones</span>,
                                 <span className="text-emerald-400 font-extrabold"> servicio impecable</span> y
                                 <span className="text-teal-400 font-extrabold"> resultados garantizados</span>
                             </p>

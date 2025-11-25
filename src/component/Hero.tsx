@@ -36,8 +36,8 @@ export default function Hero() {
 
   const materials = [
     {
-      title: 'Balastro',
-      desc: 'Transporte especializado de balastro para construcción con máxima eficiencia',
+      title: 'Balasto',
+      desc: 'Transporte especializado de balasto para construcción con máxima eficiencia',
       icon: Package,
       gradient: 'from-blue-500/20 to-cyan-500/20'
     },

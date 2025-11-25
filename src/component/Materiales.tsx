@@ -5,7 +5,7 @@ import { Package, Truck, ShieldCheck, Clock8, MessageSquare, Layers, Mountain, C
 const ALL_MATERIALS = [
   {
     icon: Layers,
-    name: 'Balastro',
+    name: 'Balasto',
     description: 'Todo tipo y granulometría',
     longDescription: 'Material fundamental para bases de construcción y ferrocarriles. Ofrecemos diferentes granulometrías certificadas (como 15-50, 40-70, etc.) para asegurar la estabilidad estructural y el drenaje adecuado en cualquier proyecto.',
     gradient: 'from-blue-500 to-cyan-400',

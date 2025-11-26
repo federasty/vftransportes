@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Phone, MapPin, Clock, MessageCircle } from 'lucide-react';
 
@@ -22,6 +22,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const navRef = useRef<HTMLDivElement>(null);
 
   // Determinar la sección activa basada en la ruta actual
   const getActiveSectionFromPath = (path: string) => {
@@ -46,7 +47,24 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // 2. Manejo de WhatsApp
+  // 2. Cerrar menú al hacer click fuera
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
+  // 3. Manejo de WhatsApp
   const handleWhatsAppClick = useCallback(() => {
     const numero = '59894044545'; 
     const mensaje = 'Hola, solicito información/cotización sobre el servicio de transporte de ...';
@@ -102,7 +120,7 @@ export default function Navbar() {
   return (
     <>
      {/* 🚢 Ultra Premium Elite Navbar - Barra de Navegación Superior */}
-<nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${scrolled
+<nav ref={navRef} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${scrolled
   ? 'bg-black/98 backdrop-blur-3xl shadow-[0_20px_120px_rgba(255,255,255,0.15)] border-b border-white/20'
   : 'bg-black/70 backdrop-blur-2xl border-b border-white/10'
   }`}>

@@ -101,42 +101,100 @@ export default function Navbar() {
 
   return (
     <>
-      {/* 🚢 Elite Navbar - Barra de Navegación Principal */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${scrolled
-        ? 'bg-black/95 backdrop-blur-3xl shadow-[0_10px_100px_rgba(255,255,255,0.1)] border-b border-white/10'
-        : 'bg-black/60 backdrop-blur-2xl border-b border-white/5'
-        }`}>
+     {/* 🚢 Ultra Premium Elite Navbar - Barra de Navegación Superior */}
+<nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${scrolled
+  ? 'bg-black/98 backdrop-blur-3xl shadow-[0_20px_120px_rgba(255,255,255,0.15)] border-b border-white/20'
+  : 'bg-black/70 backdrop-blur-2xl border-b border-white/10'
+  }`}>
 
-        {/* Elegant Top Bar */}
-        <div className="border-b border-white/5 bg-gradient-to-r from-black via-gray-900/50 to-black">
-          <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
-            <div className="flex items-center justify-between h-8 sm:h-10 text-[10px] sm:text-xs text-white">
-              
-              {/* Información de Contacto */}
-              <div className="flex items-center gap-4 md:gap-8"> 
-                <a href="tel:+59894044545" className="flex items-center gap-1.5 sm:gap-2 text-white hover:text-gray-300 transition-all duration-300 cursor-pointer group">
-                  <Phone className="w-2.5 h-2.5 sm:w-3 sm:h-3 group-hover:rotate-12 transition-transform duration-300" />
-                  <span className="tracking-wide">+598 94 044 545</span>
-                </a>
-                
-                <div className="hidden sm:flex items-center gap-1.5 sm:gap-2 text-gray-500 hover:text-white transition-all duration-300 cursor-pointer group">
-                  <MapPin className="w-2.5 h-2.5 sm:w-3 sm:h-3 group-hover:scale-110 transition-transform duration-300" />
-                  <span className="tracking-wide hidden md:inline">Montevideo, Uruguay</span>
-                  <span className="tracking-wide md:hidden">MVD, UY</span>
-                </div>
-              </div>
-              
-              {/* Servicio Disponible */}
-              <div className="flex items-center gap-1.5 sm:gap-2 font-semibold tracking-wide">
-                <Clock className="w-2.5 h-2.5 sm:w-3 sm:h-3 animate-pulse text-white" />
-                <span className="bg-gradient-to-r from-white via-white to-white bg-clip-text text-transparent">
-                  <span className="hidden sm:inline">Servicio Disponible</span>
-                  <span className="sm:hidden">Disponible</span>
-                </span>
-              </div>
+  {/* Elite Premium Top Bar */}
+  <div className="relative overflow-hidden border-b border-white/10 bg-gradient-to-r from-black via-gray-950 to-black">
+    
+    {/* Animated Shimmer Effect */}
+    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"
+         style={{
+           backgroundSize: '200% 100%',
+           animation: 'shimmer 8s infinite linear'
+         }} />
+    
+    <style>{`
+      @keyframes shimmer {
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
+      }
+      @keyframes pulse-glow {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.6; }
+      }
+    `}</style>
+    
+    <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="flex items-center justify-between h-10 sm:h-12">
+        
+        {/* Premium Contact Information */}
+        <div className="flex items-center gap-6 md:gap-10"> 
+          
+          {/* Phone with Glow Effect */}
+          <a 
+            href="tel:+59894044545" 
+            className="group flex items-center gap-2.5 text-white/90 hover:text-white transition-all duration-500 cursor-pointer relative"
+          >
+            <div className="relative">
+              <div className="absolute inset-0 bg-white/20 rounded-full blur-md group-hover:bg-white/40 transition-all duration-500" />
+              <Phone className="relative w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:rotate-12 group-hover:scale-110 transition-all duration-500" />
+            </div>
+            <span className="text-xs sm:text-sm font-medium tracking-wider group-hover:tracking-widest transition-all duration-500 bg-gradient-to-r from-white to-white/80 bg-clip-text">
+              +598 94 044 545
+            </span>
+            <div className="absolute inset-0 border border-white/0 group-hover:border-white/20 rounded-lg transition-all duration-500" />
+          </a>
+          
+          {/* Location with Premium Style */}
+          <div className="hidden sm:group sm:flex items-center gap-2.5 text-white/80 hover:text-white transition-all duration-500 cursor-pointer relative">
+            <div className="relative">
+              <div className="absolute inset-0 bg-blue-400/20 rounded-full blur-md group-hover:bg-blue-400/40 transition-all duration-500" />
+              <MapPin className="relative w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:scale-110 group-hover:-translate-y-0.5 transition-all duration-500" />
+            </div>
+            <span className="text-xs sm:text-sm font-medium tracking-wider group-hover:tracking-widest transition-all duration-500">
+              <span className="hidden md:inline bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent">
+                Montevideo, Uruguay
+              </span>
+              <span className="md:hidden bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
+                MVD, UY
+              </span>
+            </span>
+          </div>
+        </div>
+        
+        {/* Premium Service Status Badge */}
+        <div className="relative group">
+          <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 via-emerald-500/20 to-green-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
+          
+          <div className="relative flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-green-500/10 via-emerald-500/10 to-green-500/10 border border-green-500/30 group-hover:border-green-400/50 transition-all duration-500">
+            <div className="relative">
+              <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-400" 
+                     style={{ animation: 'pulse-glow 2s infinite ease-in-out' }} />
+              <div className="absolute inset-0 bg-green-400/50 rounded-full blur-sm" 
+                   style={{ animation: 'pulse-glow 2s infinite ease-in-out' }} />
+            </div>
+            
+            <span className="text-xs sm:text-sm font-bold tracking-widest bg-gradient-to-r from-green-300 via-emerald-200 to-green-300 bg-clip-text text-transparent">
+              <span className="hidden sm:inline">SERVICIO DISPONIBLE</span>
+              <span className="sm:hidden">DISPONIBLE</span>
+            </span>
+            
+            {/* Animated Dot Indicator */}
+            <div className="relative">
+              <div className="w-2 h-2 bg-green-400 rounded-full" 
+                   style={{ animation: 'pulse-glow 2s infinite ease-in-out' }} />
+              <div className="absolute inset-0 w-2 h-2 bg-green-400 rounded-full animate-ping" />
             </div>
           </div>
         </div>
+        
+      </div>
+    </div>
+  </div>
 
         {/* Main Premium Navbar */}
         <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">

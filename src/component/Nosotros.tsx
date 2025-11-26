@@ -278,29 +278,50 @@ export default function Nosotros() {
         </div>
 
 
-        {/* Mission & Vision Cards */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-32">
-          {MISSION_VISION.map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <div key={index} className="relative group">
-                <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-10 rounded-3xl blur-2xl transition-all duration-700`}></div>
+  {/* Mission & Vision Cards */}
+<div className="grid lg:grid-cols-2 gap-8 mb-32">
+  {MISSION_VISION.map((item, index) => {
+    const Icon = item.icon;
+    return (
+      <div key={index} className="relative group">
+        {/* Glow exterior suave - sin parpadeo */}
+        <div className={`absolute -inset-1 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-10 rounded-3xl blur-2xl transition-all duration-700`}></div>
 
-                <div className="relative p-8 sm:p-10 bg-gradient-to-br from-white/5 via-white/[0.02] to-transparent border-2 border-white/10 group-hover:border-white/30 rounded-3xl backdrop-blur-xl transition-all duration-500 group-hover:scale-[1.02]">
-                  <div className={`w-16 h-16 bg-gradient-to-br ${item.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
-                    <Icon className="w-8 h-8 text-white" />
-                  </div>
+        {/* Card principal */}
+        <div className="relative p-8 sm:p-10 bg-gradient-to-br from-white/[0.08] via-white/[0.03] to-transparent border-2 border-white/10 group-hover:border-white/25 rounded-3xl backdrop-blur-xl transition-all duration-500 group-hover:scale-[1.02] group-hover:translate-y-[-4px] shadow-[0_20px_80px_-20px_rgba(0,0,0,0.5)] group-hover:shadow-[0_30px_100px_-20px_rgba(0,0,0,0.7)] overflow-hidden">
+          
+          {/* Icon container con efectos sutiles */}
+          <div className="relative mb-6">
+            <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} rounded-2xl blur-md opacity-0 group-hover:opacity-30 transition-all duration-500`}></div>
+            <div className={`relative w-16 h-16 bg-gradient-to-br ${item.gradient} rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg`}>
+              <Icon className="w-8 h-8 text-white relative z-10" />
+            </div>
+          </div>
 
-                  <h3 className="text-3xl font-black text-white mb-4">{item.title}</h3>
-                  <p className="text-gray-300 text-lg leading-relaxed">{item.description}</p>
+          {/* Content */}
+          <h3 className="text-3xl font-black text-white mb-4 relative">
+            {item.title}
+            {/* Underline animado */}
+            <span className={`absolute -bottom-2 left-0 h-1 w-0 bg-gradient-to-r ${item.gradient} group-hover:w-20 transition-all duration-500 rounded-full`}></span>
+          </h3>
+          
+          <p className="text-gray-300 text-lg leading-relaxed relative z-10">
+            {item.description}
+          </p>
 
-                  <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${item.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-                </div>
-              </div>
-            );
-          })}
+          {/* Bottom accent line */}
+          <div className="absolute bottom-0 left-0 right-0 h-1 overflow-hidden rounded-b-3xl">
+            <div className={`h-full bg-gradient-to-r ${item.gradient} opacity-0 group-hover:opacity-80 transition-all duration-500 transform translate-x-[-100%] group-hover:translate-x-0`}></div>
+          </div>
+
+          {/* Corner glow effects sutiles */}
+          <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${item.gradient} rounded-full blur-3xl opacity-0 group-hover:opacity-5 transition-opacity duration-700`}></div>
+          <div className={`absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr ${item.gradient} rounded-full blur-3xl opacity-0 group-hover:opacity-5 transition-opacity duration-700`}></div>
         </div>
-
+      </div>
+    );
+  })}
+</div>
         {/* Core Values Section */}
         <div className="mb-32">
           <div className="text-center mb-16">

@@ -139,7 +139,7 @@ const Footer = () => {
                   {/* Subrayado en hover */}
                   <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-blue-500 to-purple-600 group-hover/copy:w-full transition-all duration-500 rounded-full"></span>
                 </span>
-                {' '}· Todos los derechos reservados
+                {' '}·Derechos Reservados
               </div>
               
               {/* Brillo sutil de fondo */}

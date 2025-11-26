@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Truck, Shield, Award, Zap, Star, Clock, Users, TrendingUp, Package, Settings, CheckCircle, BadgeCheck, Gauge } from 'lucide-react';
+import { Truck, Shield, Award, Zap, Star, Clock, Users, TrendingUp, Package, Settings, CheckCircle , BadgeCheck , Gauge , ShieldCheck} from 'lucide-react';
 
 
 // Tipado para un componente más limpio
@@ -97,7 +97,7 @@ const trucks: TruckModel[] = [
 ];
 
 const certifications: Certification[] = [
-  { icon: Truck, text: 'Flota Certificada', color: 'from-yellow-400 to-orange-500', bgGlow: 'from-yellow-400 to-orange-400' },
+  { icon: Truck,text: 'Flota Certificada',color: 'from-yellow-400 to-orange-500',bgGlow: 'from-yellow-400 to-orange-400' },
   { icon: Gauge, text: 'Motores de Alta Eficiencia', color: 'from-green-400 to-emerald-400', bgGlow: 'from-green-500/20' },
   { icon: BadgeCheck, text: 'Mantenimiento Preventivo', color: 'from-blue-400 to-cyan-400', bgGlow: 'from-blue-500/20' }
 ];
@@ -106,8 +106,9 @@ const certifications: Certification[] = [
 
 const stats: Stat[] = [
   { number: '100%', label: 'Flota Mercedes-Benz', icon: Truck, color: 'from-blue-400 to-cyan-400', description: 'Calidad alemana certificada y estandarizada' },
-  { number: '24/7', label: 'Alta Disponibilidad', icon: Clock, color: 'from-purple-400 to-pink-400', description: 'Servicio ininterrumpido' },
-  { number: '+5000', label: 'Viajes Exitosos', icon: Users, color: 'from-green-400 to-emerald-400', description: 'Experiencia y logística comprobada' }
+  { number: '+5000', label: 'Viajes Exitosos', icon: Users, color: 'from-green-400 to-emerald-400', description: 'Experiencia y logística comprobada' },
+  { number: '100%', label: 'Conductores Certificados', icon: ShieldCheck, color: 'from-purple-400 to-pink-400', description: 'Profesionales capacitados para rutas seguras' }
+  
 ];
 
 // --- Componente Principal Flota ---
@@ -203,17 +204,19 @@ export default function Flota() {
 
       <div className={`relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
 
-        {/* Hero Header and Certifications */}
-        <div className="text-center mb-16 sm:mb-20 lg:mb-24">
-          <div className="inline-flex items-center gap-3 px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-white/10 via-white/5 to-white/10 border border-white/20 backdrop-blur-2xl rounded-full mb-8 sm:mb-10 group hover:bg-gradient-to-r hover:from-white/15 hover:via-white/10 hover:to-white/15 hover:border-white/30 transition-all duration-500 shadow-2xl hover:shadow-blue-500/20">
-            <Truck className="w-6 h-6 sm:w-7 sm:h-7 text-blue-400 group-hover:rotate-12 group-hover:scale-110 transition-transform duration-500" />
-            <span className="text-white font-black tracking-[0.25em] uppercase text-sm sm:text-base">Mercedes Benz Atego</span>
-            <div className="flex gap-1">
-              <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-pulse"></div>
-              <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-              <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
-            </div>
-          </div>
+    {/* Hero Header and Certifications */}
+<div className="text-center mb-16 sm:mb-20 lg:mb-24">
+    <div className="inline-flex items-center gap-3 px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-white/10 via-white/5 to-white/10 border border-white/20 backdrop-blur-2xl rounded-full mb-8 sm:mb-10 group hover:bg-gradient-to-r hover:from-blue-500/20 hover:via-cyan-500/10 hover:to-blue-500/20 hover:border-blue-400/40 transition-all duration-500 shadow-[0_0_40px_rgba(59,130,246,0.1)] hover:shadow-[0_0_60px_rgba(59,130,246,0.3)]">
+        <Truck className="w-6 h-6 sm:w-7 sm:h-7 text-blue-400 group-hover:rotate-12 group-hover:scale-110 transition-transform duration-500" />
+        <span className="text-white font-black tracking-[0.25em] uppercase text-sm sm:text-base">Mercedes Benz Atego</span>
+        <div className="flex gap-1.5">
+            <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(59,130,246,0.8)]"></div>
+            <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(59,130,246,0.8)]" style={{ animationDelay: '0.2s' }}></div>
+            <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(59,130,246,0.8)]" style={{ animationDelay: '0.4s' }}></div>
+        </div>
+    </div>
+
+          
 
           <h2 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 sm:mb-8">
             <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent drop-shadow-2xl">
@@ -227,46 +230,30 @@ export default function Flota() {
             Flota 100% "Mercedes-Benz Atego", equipamiento alemán de primer nivel para garantizar "seguridad absoluta", "eficiencia máxima" y "confiabilidad total" en cada transporte.
           </p>
         </div>
-        {/* Premium Certifications */}
-        <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-16 sm:mb-20 px-4">
-          {certifications.map((cert, index) => {
-            const Icon = cert.icon;
-            return (
-              <div key={index} className="group relative p-2">
-                {/* Glow effect exterior - solo en hover */}
-                <div className={`absolute -inset-2 bg-gradient-to-r ${cert.bgGlow} to-transparent rounded-full blur-xl opacity-0 group-hover:opacity-60 group-active:opacity-70 transition-all duration-700`}></div>
 
-                {/* Segundo glow más intenso - solo en hover */}
-                <div className={`absolute -inset-1 bg-gradient-to-r ${cert.bgGlow} to-transparent rounded-full blur-md opacity-0 group-hover:opacity-40 group-active:opacity-50 transition-all duration-500`}></div>
-
-                {/* Card principal con efecto glassmorphism mejorado */}
-                <div className="relative bg-gradient-to-br from-white/[0.15] via-white/[0.08] to-transparent border border-white/30 group-hover:border-white/50 group-active:border-white/60 rounded-full px-5 py-2.5 sm:px-7 sm:py-3.5 backdrop-blur-xl transition-all duration-500 group-hover:scale-[1.03] group-active:scale-[1.01] shadow-[0_8px_32px_0_rgba(255,255,255,0.1)] group-hover:shadow-[0_8px_48px_0_rgba(255,255,255,0.2)] group-hover:translate-y-[-2px] group-active:translate-y-[-1px]">
-                  <div className="flex items-center gap-2.5 sm:gap-3">
-                    {/* Icon container con efecto shine */}
-                    <div className="relative">
-                      <div className={`w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br ${cert.color} rounded-lg flex items-center justify-center group-hover:scale-110 group-active:scale-105 transition-all duration-500 shadow-lg group-hover:shadow-xl relative overflow-hidden`}>
-                        {/* Shine effect - solo en hover */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/30 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
-                        <Icon className="w-5 h-5 text-white relative z-10" />
-                      </div>
-                    </div>
-
-                    {/* Text con gradient sutil */}
-                    <span className="text-white text-sm sm:text-base font-bold tracking-wide whitespace-nowrap">
-                      {cert.text}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Particle effect - solo en hover */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-                  <div className={`absolute top-0 left-1/4 w-1 h-1 bg-white rounded-full animate-ping`}></div>
-                  <div className={`absolute top-1/2 right-1/4 w-1 h-1 bg-white rounded-full animate-ping`} style={{ animationDelay: '200ms' }}></div>
-                </div>
-              </div>
-            );
-          })}
+        
+{/* Premium Certifications */}
+<div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-16 sm:mb-20 px-4">
+  {certifications.map((cert, index) => {
+    const Icon = cert.icon;
+    return (
+      <div key={index} className="group relative overflow-visible p-2">
+        {/* Glow effect - ahora con más espacio */}
+        <div className={`absolute inset-0 bg-gradient-to-r ${cert.bgGlow} to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-70 transition-all duration-500 scale-150`}></div>
+        
+        {/* Card principal */}
+        <div className="relative bg-gradient-to-br from-white/10 via-white/5 to-white/[0.02] border-2 border-white/20 hover:border-white/40 rounded-full px-5 py-2.5 sm:px-7 sm:py-3.5 backdrop-blur-2xl transition-all duration-500 hover:scale-105 shadow-xl hover:shadow-2xl">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <div className={`w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br ${cert.color} rounded-lg flex items-center justify-center group-hover:scale-110 transition-all duration-500 shadow-lg`}>
+              <Icon className="w-5 h-5 text-white" />
+            </div>
+            <span className="text-white text-sm sm:text-base font-bold tracking-wide whitespace-nowrap">{cert.text}</span>
+          </div>
         </div>
+      </div>
+    );
+  })}
+</div>
 
         {/* Truck Selection with Premium Design */}
         <div className="mb-20 sm:mb-28">
@@ -277,8 +264,8 @@ export default function Flota() {
                 key={index}
                 onClick={() => setSelectedTruck(index)}
                 className={`relative px-8 py-4 sm:px-12 sm:py-6 rounded-2xl font-black text-base sm:text-lg tracking-wider transition-all duration-500 overflow-hidden group backdrop-blur-2xl shadow-2xl ${selectedTruck === index
-                  ? 'bg-gradient-to-r from-white/15 to-white/10 border-2 border-white/40 scale-105'
-                  : 'bg-gradient-to-r from-white/5 to-white/[0.02] border-2 border-white/20 hover:bg-gradient-to-r hover:from-white/10 hover:to-white/5 hover:border-white/30 hover:scale-[1.02]'
+                    ? 'bg-gradient-to-r from-white/15 to-white/10 border-2 border-white/40 scale-105'
+                    : 'bg-gradient-to-r from-white/5 to-white/[0.02] border-2 border-white/20 hover:bg-gradient-to-r hover:from-white/10 hover:to-white/5 hover:border-white/30 hover:scale-[1.02]'
                   }`}
               >
                 <div className={`absolute inset-0 bg-gradient-to-r ${truck.gradient} opacity-0 ${selectedTruck === index ? 'opacity-20' : 'group-hover:opacity-10'} transition-all duration-500`}></div>

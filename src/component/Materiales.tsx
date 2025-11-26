@@ -151,15 +151,18 @@ export default function Materiales() {
 
       <div className={`relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
 
-        {/* Hero Header */}
-        <header className="text-center mb-20 sm:mb-24">
-          <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/5 border border-white/10 backdrop-blur-xl rounded-full mb-8 group hover:bg-white/10 hover:border-orange-500/30 transition-all duration-500">
-            <Package className={`w-6 h-6 text-${ORANGE_PRIMARY}-400 group-hover:rotate-12 transition-transform duration-500`} />
-            <span className="text-white font-bold tracking-[0.2em] uppercase text-sm">Calidad Superior</span>
-            <div className={`w-2 h-2 bg-gradient-to-r from-${ORANGE_PRIMARY}-400 to-${ORANGE_SECONDARY}-400 rounded-full animate-pulse shadow-[0_0_10px_rgba(251,146,60,0.8)]`}></div>
-            <div className={`w-2 h-2 bg-gradient-to-r from-${ORANGE_PRIMARY}-400 to-${ORANGE_SECONDARY}-400 rounded-full animate-pulse shadow-[0_0_10px_rgba(251,146,60,0.8)]`} style={{ animationDelay: '0.3s' }}></div>
-            <div className={`w-2 h-2 bg-gradient-to-r from-${ORANGE_PRIMARY}-400 to-${ORANGE_SECONDARY}-400 rounded-full animate-pulse shadow-[0_0_10px_rgba(251,146,60,0.8)]`} style={{ animationDelay: '0.6s' }}></div>
-          </div>
+   {/* Hero Header */}
+<header className="text-center mb-20 sm:mb-24">
+    <div className="inline-flex items-center gap-3 px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-white/10 via-white/5 to-white/10 border border-white/20 backdrop-blur-2xl rounded-full mb-8 sm:mb-10 group hover:bg-gradient-to-r hover:from-orange-500/20 hover:via-amber-500/10 hover:to-orange-500/20 hover:border-orange-400/40 transition-all duration-500 shadow-[0_0_40px_rgba(251,146,60,0.1)] hover:shadow-[0_0_60px_rgba(251,146,60,0.3)]">
+        <Package className="w-6 h-6 sm:w-7 sm:h-7 text-orange-400 group-hover:rotate-12 group-hover:scale-110 transition-transform duration-500" />
+        <span className="text-white font-black tracking-[0.25em] uppercase text-sm sm:text-base">Calidad Superior</span>
+        <div className="flex gap-1.5">
+            <div className="w-2 h-2 bg-gradient-to-r from-orange-400 to-amber-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(251,146,60,0.8)]"></div>
+            <div className="w-2 h-2 bg-gradient-to-r from-orange-400 to-amber-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(251,146,60,0.8)]" style={{ animationDelay: '0.3s' }}></div>
+            <div className="w-2 h-2 bg-gradient-to-r from-orange-400 to-amber-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(251,146,60,0.8)]" style={{ animationDelay: '0.6s' }}></div>
+        </div>
+    </div>
+
           <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 text-white">
             Nuestros Materiales
           </h1>
@@ -381,7 +384,7 @@ export default function Materiales() {
               Logística Impecable a Gran Escala
             </h3>
             <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
-              Nuestra flota de camiones garantiza una <span className={`text-${ORANGE_PRIMARY}-300 font-semibold`}>entrega eficiente, segura y puntual</span> de todos sus materiales, sin importar el volumen o la complejidad.
+              Nuestros camiones garantizan una <span className={`text-${ORANGE_PRIMARY}-300 font-semibold`}>entrega eficiente, segura y puntual</span> de todos sus materiales, sin importar el volumen o la complejidad.
             </p>
           </div>
 

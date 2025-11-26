@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Truck, MapPin, Clock, Shield, Package, TrendingUp, CheckCircle2, Star, Award, Target, Users, ArrowRight, Phone, Layers, Mountain, Construction, Factory } from 'lucide-react';
+import { Truck, MapPin, Clock, Shield, Package, TrendingUp, CheckCircle2, Star, Award, Target, Users, Phone, Layers, Mountain, Construction, Factory } from 'lucide-react';
 
 interface Service {
     icon: React.ElementType;
@@ -107,7 +107,7 @@ const benefits: Benefit[] = [
     {
         icon: Award,
         title: 'Flota de Primera Calidad',
-        description: 'Vehículos 100% Mercedes-Benz con un mantenimiento preventivo riguroso y constante de unidades.',
+        description: 'Vehículos 100% Mercedes-Benz con un mantenimiento preventivo riguroso y constante de las unidades.',
         color: 'from-yellow-500 to-amber-500' // ¡Cambiado! Amarillo a Ámbar
     },
     {
@@ -505,13 +505,12 @@ export default function Servicio() {
 
                                     <div className="relative px-8 py-5 sm:px-12 sm:py-6 flex items-center justify-center gap-4">
                                         <Phone className="w-7 h-7 text-white group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
-                                        <Truck className="w-6 h-6 text-white group-hover:scale-110 transition-all duration-300" />
+                                        
                                         <span className="font-black text-base sm:text-lg tracking-[0.15em] uppercase text-white">
                                             Solicitar Cotización
-                                        </span>
-                                        <ArrowRight className="w-6 h-6 text-white group-hover:translate-x-2 transition-transform duration-300" />
+                                        </span>   
+                                        <Truck className="w-6 h-6 text-white group-hover:scale-110 transition-all duration-300" />
                                     </div>
-
                                     <div className="absolute inset-0 rounded-2xl shadow-[0_0_40px_rgba(16,185,129,0.4)] group-hover:shadow-[0_0_80px_rgba(16,185,129,0.7)] transition-shadow duration-700"></div>
                                 </a>
 
@@ -537,25 +536,8 @@ export default function Servicio() {
                                     </div>
                                 </div>
 
-                                <div className="flex items-center gap-3">
-                                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-lg flex items-center justify-center">
-                                        <Shield className="w-6 h-6 text-white" />
-                                    </div>
-                                    <div className="text-left">
-                                        <p className="text-white font-bold text-sm">Seguro Total</p>
-                                        <p className="text-gray-400 text-xs">Cobertura Completa</p>
-                                    </div>
-                                </div>
+                             
 
-                                <div className="flex items-center gap-3">
-                                    <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-lg flex items-center justify-center">
-                                        <Star className="w-6 h-6 text-white" />
-                                    </div>
-                                    <div className="text-left">
-                                        <p className="text-white font-bold text-sm">5 Estrellas</p>
-                                        <p className="text-gray-400 text-xs">Satisfacción Total</p>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

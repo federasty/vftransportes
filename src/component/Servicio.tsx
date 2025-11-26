@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Truck, MapPin, Clock, Shield, Package, TrendingUp, CheckCircle2, Star, Award, Target, Users, Phone, Layers, Mountain, Construction, Factory } from 'lucide-react';
+import { Truck, MapPin, Clock, Shield, Package, TrendingUp, CheckCircle2, Star, Award, Target, Users, Phone, Layers, Mountain, Construction, Factory , Crown } from 'lucide-react';
 
 interface Service {
     icon: React.ElementType;
@@ -248,18 +248,18 @@ export default function Servicio() {
             </div>
 
             <div className={`relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+{/* Hero Header */}
+<div className="text-center mb-20 sm:mb-24">
+    <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-white/10 via-white/5 to-white/10 border border-white/20 backdrop-blur-2xl rounded-full mb-10 group hover:bg-gradient-to-r hover:from-green-500/20 hover:via-emerald-500/10 hover:to-green-500/20 hover:border-green-400/40 transition-all duration-500 shadow-[0_0_40px_rgba(16,185,129,0.1)] hover:shadow-[0_0_60px_rgba(16,185,129,0.3)]">
+        <Crown className="w-7 h-7 text-green-400 group-hover:rotate-12 group-hover:scale-110 transition-transform duration-500" />
+        <span className="text-white font-black tracking-[0.3em] uppercase text-base">Atención de primer nivel</span>
+        <div className="flex gap-1.5">
+            <div className="w-2 h-2 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]"></div>
+            <div className="w-2 h-2 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]" style={{ animationDelay: '0.3s' }}></div>
+            <div className="w-2 h-2 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]" style={{ animationDelay: '0.6s' }}></div>
+        </div>
+    </div>
 
-                {/* Hero Header */}
-                <div className="text-center mb-20 sm:mb-24">
-                    <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-white/10 via-white/5 to-white/10 border border-white/20 backdrop-blur-2xl rounded-full mb-10 group hover:bg-gradient-to-r hover:from-green-500/20 hover:via-emerald-500/10 hover:to-green-500/20 hover:border-green-400/40 transition-all duration-500 shadow-[0_0_40px_rgba(16,185,129,0.1)] hover:shadow-[0_0_60px_rgba(16,185,129,0.3)]">
-                        <Package className="w-7 h-7 text-green-400 group-hover:rotate-12 group-hover:scale-110 transition-transform duration-500" />
-                        <span className="text-white font-black tracking-[0.3em] uppercase text-base">Atención de primer nivel</span>
-                        <div className="flex gap-1.5">
-                            <div className="w-2 h-2 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]"></div>
-                            <div className="w-2 h-2 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]" style={{ animationDelay: '0.3s' }}></div>
-                            <div className="w-2 h-2 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]" style={{ animationDelay: '0.6s' }}></div>
-                        </div>
-                    </div>
 
                     <h2 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 sm:mb-8">
                         <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent drop-shadow-2xl">
@@ -288,49 +288,47 @@ export default function Servicio() {
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
-                        {services.map((service, index) => {
-                            const Icon = service.icon;
-                            return (
-                                <div key={index} className="relative group">
-                                    <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-25 rounded-[2rem] blur-3xl transition-all duration-700`}></div>
+                 <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
+    {services.map((service, index) => {
+        const Icon = service.icon;
+        return (
+            <div key={index} className="relative group">
+                <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-25 rounded-[2rem] blur-3xl transition-all duration-700`}></div>
 
-                                    <div className="relative p-10 sm:p-12 bg-gradient-to-br from-white/10 via-white/5 to-white/[0.02] border-2 border-white/20 group-hover:border-green-400/50 rounded-[2rem] backdrop-blur-2xl transition-all duration-500 group-hover:scale-[1.02] h-full shadow-2xl group-hover:shadow-[0_0_60px_rgba(16,185,129,0.3)]">
-                                        <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-5 group-hover:opacity-15 transition-opacity duration-500 rounded-[2rem]`}></div>
+                <div className="relative p-10 sm:p-12 bg-gradient-to-br from-white/10 via-white/5 to-white/[0.02] border-2 border-white/20 group-hover:border-green-400/50 rounded-[2rem] backdrop-blur-2xl transition-all duration-500 group-hover:scale-[1.02] h-full shadow-2xl group-hover:shadow-[0_0_60px_rgba(16,185,129,0.3)]">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-5 group-hover:opacity-15 transition-opacity duration-500 rounded-[2rem]`}></div>
 
-                                        <div className="relative z-10 space-y-6">
-                                            <div className={`w-20 h-20 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-[0_0_30px_rgba(16,185,129,0.4)]`}>
-                                                <Icon className="w-10 h-10 text-white" />
-                                            </div>
+                    <div className="relative z-10 space-y-6">
+                        <div className={`w-20 h-20 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-[0_0_30px_rgba(16,185,129,0.4)]`}>
+                            <Icon className="w-10 h-10 text-white" />
+                        </div>
 
-                                            <h3 className="text-3xl sm:text-4xl font-black text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-green-300 group-hover:to-emerald-300 group-hover:bg-clip-text transition-all duration-300">
-                                                {service.title}
-                                            </h3>
+                        <h3 className="text-3xl sm:text-4xl font-black text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-green-300 group-hover:to-emerald-300 group-hover:bg-clip-text transition-all duration-300">
+                            {service.title}
+                        </h3>
 
-                                            <p className="text-gray-400 text-base sm:text-lg leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
-                                                {service.description}
-                                            </p>
+                        <p className="text-gray-400 text-base sm:text-lg leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
+                            {service.description}
+                        </p>
 
-                                            <div className="space-y-4 pt-6 border-t-2 border-white/10">
-                                                {service.features.map((feature, fIndex) => (
-                                                    <div key={fIndex} className="flex items-start gap-3 group/feature">
-                                                        <div className={`w-6 h-6 flex-shrink-0 mt-0.5 bg-gradient-to-br ${service.gradient} rounded-lg flex items-center justify-center group-hover/feature:scale-110 transition-all duration-300`}>
-                                                            <CheckCircle2 className="w-4 h-4 text-white" />
-                                                        </div>
-                                                        <span className="text-gray-400 text-sm sm:text-base group-hover:text-gray-300 transition-colors duration-300 font-medium">
-                                                            {feature}
-                                                        </span>
-                                                    </div>
-                                                ))}
-                                            </div>
-
-                                            <div className={`absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-b-[2rem]`}></div>
-                                        </div>
+                        <div className="space-y-4 pt-6 border-t-2 border-white/10">
+                            {service.features.map((feature, fIndex) => (
+                                <div key={fIndex} className="flex items-start gap-3 group/feature">
+                                    <div className={`w-6 h-6 flex-shrink-0 mt-0.5 bg-gradient-to-br ${service.gradient} rounded-lg flex items-center justify-center group-hover/feature:scale-110 transition-all duration-300`}>
+                                        <CheckCircle2 className="w-4 h-4 text-white" />
                                     </div>
+                                    <span className="text-gray-400 text-sm sm:text-base group-hover:text-gray-300 transition-colors duration-300 font-medium">
+                                        {feature}
+                                    </span>
                                 </div>
-                            );
-                        })}
+                            ))}
+                        </div>
                     </div>
+                </div>
+            </div>
+        );
+    })}
+</div>
                 </div>
 
                 {/* Materials We Transport */}
